@@ -1,40 +1,39 @@
-import React from 'react';
-import { OnboardingProvider } from './context/OnboardingContext';
-import { ThemeProvider } from './context/ThemeContext';
-import { Header } from './components/ui/Header';
-import AuthOptions from './components/AuthOptions';
-import SignUpForm from './components/SignUpForm';
-import VerificationCode from './components/VerificationCode';
-import EmailVerification from './components/EmailVerification';
-import ServicesSelection from './components/ServicesSelection';
-import ServiceLocation from './components/ServiceLocation';
-import AddressInput from './components/AddressInput';
-import SuccessCompletion from './components/SuccessCompletion';
-import WebsiteSuccess from './components/WebsiteSuccess';
-import PoliciesConfirmation from './components/PoliciesConfirmation';
-import ScheduleConfirmation from './components/ScheduleConfirmation';
-import AvailabilityConfirmation from './components/AvailabilityConfirmation';
-import ServiceConfirmation from './components/ServiceConfirmation';
-import ServiceArea from './components/ServiceArea';
-import WebsiteThemeSelection from './components/WebsiteThemeSelection';
-import WebsiteSlug from './components/WebsiteSlug';
-import WebsiteLogo from './components/WebsiteLogo';
-import WebsiteCover from './components/WebsiteCover';
-import WebsiteMainHeadline from './components/WebsiteMainHeadline';
-import WebsiteSubheadline from './components/WebsiteSubheadline';
-import WebsitePortfolio from './components/WebsitePortfolio';
-import WebsiteBio from './components/WebsiteBio';
-import MarketplaceVerification from './components/MarketplaceVerification';
-import DepositSettings from './components/DepositSettings';
-import CashPaymentSettings from './components/CashPaymentSettings';
-import BalanceReminder from './components/BalanceReminder';
-import WebsitePaymentsSuccess from './components/WebsitePaymentsSuccess';
-import CreditCardPayments from './components/CreditCardPayments';
-import SubscriptionPlans from './components/SubscriptionPlans';
-import SubscriptionSuccess from './components/SubscriptionSuccess';
-import AppDownload from './components/AppDownload';
-import ContactDisplaySettings from './components/ContactDisplaySettings';
-import { useOnboarding } from './context/OnboardingContext';
+import { OnboardingProvider } from "./context/OnboardingContext";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Header } from "./ui/Header";
+import AuthOptions from "./components/common/AuthOptions";
+import SignUpForm from "./components/provider/SignUpForm";
+import VerificationCode from "./components/common/VerificationCode";
+import EmailVerification from "./components/common/EmailVerification";
+import ServicesSelection from "./components/provider/ServicesSelection";
+import ServiceLocation from "./components/provider/ServiceLocation";
+import AddressInput from "./components/provider/AddressInput";
+import SuccessCompletion from "./components/provider/SuccessCompletion";
+import WebsiteSuccess from "./components/provider/WebsiteSuccess";
+import PoliciesConfirmation from "./components/provider/PoliciesConfirmation";
+import ScheduleConfirmation from "./components/provider/ScheduleConfirmation";
+import AvailabilityConfirmation from "./components/provider/AvailabilityConfirmation";
+import ServiceConfirmation from "./components/provider/ServiceConfirmation";
+import ServiceArea from "./components/provider/ServiceArea";
+import WebsiteThemeSelection from "./components/provider/WebsiteThemeSelection";
+import WebsiteSlug from "./components/provider/WebsiteSlug";
+import WebsiteLogo from "./components/provider/WebsiteLogo";
+import WebsiteCover from "./components/provider/WebsiteCover";
+import WebsiteMainHeadline from "./components/provider/WebsiteMainHeadline";
+import WebsiteSubheadline from "./components/provider/WebsiteSubheadline";
+import WebsitePortfolio from "./components/provider/WebsitePortfolio";
+import WebsiteBio from "./components/provider/WebsiteBio";
+import MarketplaceVerification from "./components/provider/MarketplaceVerification";
+import DepositSettings from "./components/provider/DepositSettings";
+import CashPaymentSettings from "./components/provider/CashPaymentSettings";
+import BalanceReminder from "./components/provider/BalanceReminder";
+import WebsitePaymentsSuccess from "./components/provider/WebsitePaymentsSuccess";
+import CreditCardPayments from "./components/provider/CreditCardPayments";
+import SubscriptionPlans from "./components/provider/SubscriptionPlans";
+import SubscriptionSuccess from "./components/provider/SubscriptionSuccess";
+import AppDownload from "./components/common/AppDownload";
+import ContactDisplaySettings from "./components/provider/ContactDisplaySettings";
+import { useOnboarding } from "./context/OnboardingContext";
 
 function OnboardingFlow() {
   const { state } = useOnboarding();
@@ -55,9 +54,9 @@ function OnboardingFlow() {
         return <ServiceLocation />;
       case 7:
         return <AddressInput />;
-      case 8: 
+      case 8:
         return <ServiceArea />;
-      case 9: 
+      case 9:
         return <SuccessCompletion />;
       case 10:
         return <ServiceConfirmation />;
@@ -114,8 +113,12 @@ function OnboardingFlow() {
     <div className="h-[100dvh] bg-background flex flex-col overflow-hidden">
       <Header />
       <div className="flex-1 overflow-y-auto pb-safe">
-        <div className={`w-full ${state.step === 4 ? 'max-w-5xl' : 'max-w-3xl'} mx-auto px-[7.5px] sm:px-4 md:px-6 py-4 md:py-6`}>
-        {renderStep()}
+        <div
+          className={`w-full ${
+            state.step === 4 ? "max-w-5xl" : "max-w-3xl"
+          } mx-auto px-[7.5px] sm:px-4 md:px-6 py-4 md:py-6`}
+        >
+          {renderStep()}
         </div>
       </div>
     </div>
