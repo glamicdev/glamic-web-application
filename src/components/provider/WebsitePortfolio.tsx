@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ReactCrop, { Crop, PixelCrop } from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
-import { useOnboarding } from "../../context/OnboardingContext";
-import { Heading, Text } from "../../ui/Typography";
-import { Button } from "../../ui/Button";
-import { Image, X } from "lucide-react";
-import { fadeIn, staggerChildren } from "../../ui/animations";
-import { ImageUpload } from "../../ui/ImageUpload";
-import { savePortfolioImages } from "../../services/api";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import ReactCrop, { Crop, PixelCrop } from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+import { useOnboarding } from '../../context/OnboardingContext';
+import { useLanguage } from '../../context/LanguageContext';
+import { Heading, Text } from '../../ui/Typography';
+import { Button } from '../../ui/Button';
+import { Image, X, Loader } from 'lucide-react';
+import { fadeIn, staggerChildren } from '../../ui/animations';
+import { ImageUpload } from '../../ui/ImageUpload';
+import { savePortfolioImages } from '../../services/api';
+import { Layout } from '../../ui/Layout';
 
 interface PortfolioImage {
   id: string;
@@ -19,6 +21,7 @@ interface PortfolioImage {
 
 export default function WebsitePortfolio() {
   const { dispatch } = useOnboarding();
+  const { translations } = useLanguage();
   const [images, setImages] = useState<PortfolioImage[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -26,13 +29,13 @@ export default function WebsitePortfolio() {
   const [crop, setCrop] = useState<Crop>();
 
   const handleCropComplete = (crop: PixelCrop, id: string) => {
-    setImages((prev) =>
-      prev.map((img) => (img.id === id ? { ...img, crop } : img))
-    );
+    setImages(prev => prev.map(img => 
+      img.id === id ? { ...img, crop } : img
+    ));
   };
 
   const deleteImage = (id: string) => {
-    setImages((prev) => prev.filter((img) => img.id !== id));
+    setImages(prev => prev.filter(img => img.id !== id));
     if (selectedImage === id) {
       setSelectedImage(null);
       setCrop(undefined);
@@ -42,58 +45,64 @@ export default function WebsitePortfolio() {
   const handleContinue = async () => {
     setLoading(true);
     setError(null);
-
+    
     try {
-      console.log("Saving portfolio images:", images);
+      console.log('Saving portfolio images:', images);
       const response = await savePortfolioImages(images);
-
+      
       if (!response.success) {
-        throw new Error(response.error || "Failed to save portfolio images");
+        throw new Error(response.error || 'Failed to save portfolio images');
       }
 
-      console.log("Portfolio images saved successfully:", response.data);
-
+      console.log('Portfolio images saved successfully:', response.data);
+      
       // Update state with confirmed images
-      dispatch({
-        type: "SET_PORTFOLIO_IMAGES",
-        payload: images.map((img) => ({
+      dispatch({ 
+        type: 'SET_PORTFOLIO_IMAGES', 
+        payload: images.map(img => ({
           id: img.id,
           url: img.url,
-          crop: img.crop,
-        })),
+          crop: img.crop
+        }))
       });
-
+      
       // Navigate to WebsiteBio
-      dispatch({ type: "SET_STEP", payload: 23 });
+      dispatch({ type: 'SET_STEP', payload: 23 });
     } catch (err) {
-      console.error("Error saving portfolio images:", err);
-      setError("Failed to save portfolio images. Please try again.");
+      console.error('Error saving portfolio images:', err);
+      setError('Failed to save portfolio images. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <motion.div {...fadeIn} className="w-full max-w-2xl mx-auto">
-      <div className="text-center mb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 bg-primary-gold/10 text-primary-gold px-4 py-2 rounded-full mb-4"
-        >
-          <Image className="w-4 h-4" />
-          <span className="text-sm font-medium">Portfolio Images</span>
-        </motion.div>
+    <Layout maxWidth="2xl">
+      <motion.div 
+        {...fadeIn}
+        className="w-full mx-auto"
+      >
+        <div className="text-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 bg-primary-gold/10 text-primary-gold px-4 py-2 rounded-full mb-4"
+          >
+            <Image className="w-4 h-4" />
+            <span className="text-sm font-medium">{translations?.websitePortfolio?.badge || "Portfolio Images"}</span>
+          </motion.div>
+          
+          <Heading className="mb-4">{translations?.websitePortfolio?.title || "Add Your Best Work"}</Heading>
+          
+          <Text className="max-w-md mx-auto">
+            {translations?.websitePortfolio?.subtitle || "Upload photos of your work to showcase your skills and style. You can crop and adjust each image. This step is optional."}
+          </Text>
+        </div>
 
-        <Heading className="mb-4">Add Your Best Work</Heading>
-
-        <Text className="max-w-md mx-auto">
-          Upload photos of your work to showcase your skills and style. You can
-          crop and adjust each image. This step is optional.
-        </Text>
-      </div>
-
-      <motion.div variants={staggerChildren} className="space-y-6">
+      <motion.div 
+        variants={staggerChildren}
+        className="space-y-6"
+      >
         <div className="flex justify-center">
           {/* Upload Button */}
           {images.length < 6 && (
@@ -106,7 +115,7 @@ export default function WebsitePortfolio() {
                       resolve({
                         id: Math.random().toString(36).substring(7),
                         url: e.target?.result as string,
-                        file,
+                        file
                       });
                     };
                     reader.readAsDataURL(file);
@@ -114,14 +123,14 @@ export default function WebsitePortfolio() {
                 };
 
                 const newImage = await loadImage(file);
-                setImages((prev) => {
+                setImages(prev => {
                   // Check if we're still under the limit
                   if (prev.length >= 6) return prev;
                   return [...prev, newImage];
                 });
               }}
-              placeholder="Add Image"
-              helperText="PNG or JPG (max 10MB)"
+              placeholder={translations?.websitePortfolio?.upload?.placeholder || "Add Image"}
+              helperText={translations?.websitePortfolio?.upload?.helperText || "PNG or JPG (max 10MB)"}
               aspectRatio="free"
               className="w-full max-w-xs"
               multiple={true}
@@ -136,9 +145,8 @@ export default function WebsitePortfolio() {
               key={image.id}
               image={image.url}
               onImageDelete={() => deleteImage(image.id)}
-              onCropClick={() =>
-                setSelectedImage(selectedImage === image.id ? null : image.id)
-              }
+              onCropClick={() => setSelectedImage(selectedImage === image.id ? null : image.id)}
+              onImageChange={() => {}} // Add empty handler since it's required but not used here
               aspectRatio="free"
               className="w-full"
             />
@@ -154,7 +162,7 @@ export default function WebsitePortfolio() {
           >
             <div className="bg-white rounded-2xl p-6 max-w-2xl w-full">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Crop Image</h3>
+                <h3 className="text-lg font-semibold">{translations?.websitePortfolio?.cropModal?.title || "Crop Image"}</h3>
                 <button
                   onClick={() => setSelectedImage(null)}
                   className="p-2 hover:bg-gray-100 rounded-full"
@@ -162,16 +170,16 @@ export default function WebsitePortfolio() {
                   <X className="w-5 h-5" />
                 </button>
               </div>
-
+              
               <div className="max-h-[60vh] overflow-auto">
                 <ReactCrop
                   crop={crop}
-                  onChange={(c) => setCrop(c)}
+                  onChange={c => setCrop(c)}
                   onComplete={(c) => handleCropComplete(c, selectedImage)}
                   aspect={undefined}
                 >
                   <img
-                    src={images.find((img) => img.id === selectedImage)?.url}
+                    src={images.find(img => img.id === selectedImage)?.url}
                     alt="Crop preview"
                   />
                 </ReactCrop>
@@ -182,25 +190,33 @@ export default function WebsitePortfolio() {
                   variant="primary"
                   onClick={() => setSelectedImage(null)}
                 >
-                  Done
+                  {translations?.websitePortfolio?.cropModal?.done || "Done"}
                 </Button>
               </div>
             </div>
           </motion.div>
         )}
 
-        <motion.div variants={fadeIn} className="grid gap-4 pt-4">
-          <Button
-            variant="primary"
-            onClick={handleContinue}
-            disabled={loading}
-            className="w-full"
+          <motion.div
+            variants={fadeIn}
+            className="grid gap-4 pt-4"
           >
-            {loading ? "Saving..." : images.length > 0 ? "Save" : "Skip"}
-          </Button>
-          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+            <Button
+              variant="primary"
+              onClick={handleContinue}
+              disabled={loading}
+              className="w-full"
+            >
+              {loading ? translations?.websitePortfolio?.saving || 'Saving...' : 
+                images.length > 0 ? translations?.websitePortfolio?.save || 'Save' : 
+                translations?.websitePortfolio?.skip || 'Skip'}
+            </Button>
+            {error && (
+              <p className="text-sm text-red-500 text-center">{error || translations?.websitePortfolio?.error}</p>
+            )}
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </Layout>
   );
 }

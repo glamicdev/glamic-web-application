@@ -1,11 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Search, ChevronDown, X } from "lucide-react";
-import { detectCountry } from "../services/geolocation";
-import {
-  validatePhoneNumber,
-  normalizePhoneNumber,
-} from "../utils/phoneNumber";
-import { Country, countries } from "../data/countries";
+import React, { useState, useRef, useEffect } from 'react';
+import { Search, ChevronDown, X } from 'lucide-react';
+import { detectCountry } from '../services/geolocation';
+import { formatPhoneNumber, validatePhoneNumber, normalizePhoneNumber } from '../utils/phoneNumber';
+import { Country, countries } from '../data/countries';
 
 interface PhoneInputProps {
   value: string;
@@ -16,18 +13,18 @@ interface PhoneInputProps {
   required?: boolean;
 }
 
-export function PhoneInput({
-  value,
-  onChange,
+export function PhoneInput({ 
+  value, 
+  onChange, 
   onValidChange,
-  error,
+  error, 
   disabled,
-  required,
+  required 
 }: PhoneInputProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
-  const [displayValue, setDisplayValue] = useState("");
+  const [displayValue, setDisplayValue] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [isValid, setIsValid] = useState(false);
@@ -37,12 +34,12 @@ export function PhoneInput({
     const initializeCountry = async () => {
       try {
         const countryCode = await detectCountry();
-        const detectedCountry = countries.find((c) => c.code === countryCode);
+        const detectedCountry = countries.find(c => c.code === countryCode);
         if (detectedCountry) {
           setSelectedCountry(detectedCountry);
         }
       } catch (error) {
-        console.error("Error detecting country:", error);
+        console.error('Error detecting country:', error);
       }
     };
 
@@ -52,72 +49,68 @@ export function PhoneInput({
   // Handle outside clicks
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   // Filter countries based on search
-  const filteredCountries = countries.filter(
-    (country) =>
-      country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      country.dialCode.includes(searchQuery)
+  const filteredCountries = countries.filter(country =>
+    country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    country.dialCode.includes(searchQuery)
   );
 
   const handleCountrySelect = (country: Country) => {
     setSelectedCountry(country);
     setIsOpen(false);
-    setSearchQuery("");
-
+    setSearchQuery('');
+    
     // Revalidate current number with new country code
     if (displayValue) {
-      const fullNumber = `${country.dialCode}${displayValue.replace(
-        /\D/g,
-        ""
-      )}`;
+      const fullNumber = `${country.dialCode}${displayValue.replace(/\D/g, '')}`;
       const isValid = validatePhoneNumber(fullNumber, country.code);
       onValidChange?.(isValid);
-
+      
       if (isValid) {
         onChange(normalizePhoneNumber(fullNumber, country.code));
       }
     }
-
+    
     // Focus input after country selection
     inputRef.current?.focus();
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const nationalNumber = inputValue.replace(/\D/g, "");
+    const nationalNumber = inputValue.replace(/\D/g, '');
     setDisplayValue(nationalNumber);
-
+    
     const fullNumber = `${selectedCountry.dialCode}${nationalNumber}`;
     const isValid = validatePhoneNumber(fullNumber, selectedCountry.code);
     setIsValid(isValid);
-
+    
+    console.log('Input Value:', inputValue); // Log the raw input value
+    console.log('National Number:', nationalNumber); // Log the national number
+    console.log('Full Number:', fullNumber); // Log the full number being validated
+    console.log('Is Valid:', isValid); // Log the validation result
+    
     if (isValid) {
       onChange(normalizePhoneNumber(fullNumber, selectedCountry.code));
     } else {
-      onChange("");
+      onChange('');
     }
 
     // Only call onValidChange when validation state changes
-    if (isValid !== isValid) {
-      onValidChange?.(isValid);
-    }
+    onValidChange?.(isValid);
   };
 
   const clearInput = () => {
-    setDisplayValue("");
-    onChange("");
+    setDisplayValue('');
+    onChange('');
     setIsValid(false);
     onValidChange?.(false);
     inputRef.current?.focus();
@@ -125,27 +118,19 @@ export function PhoneInput({
 
   return (
     <div className="relative">
-      <div
-        className={`flex rounded-2xl border-2 transition-colors ${
-          error
-            ? "border-red-500"
-            : "border-gray-200 focus-within:border-primary-gold"
-        }`}
-      >
+      <div className={`flex rounded-2xl border-2 transition-colors ${
+        error ? 'border-red-500' : 'border-gray-200 focus-within:border-primary-gold'
+      }`}>
         <div className="relative" ref={dropdownRef}>
           <button
             type="button"
             onClick={() => !disabled && setIsOpen(!isOpen)}
             className={`flex items-center gap-2 px-4 py-4 text-gray-600 hover:text-gray-900 transition-colors bg-transparent ${
-              disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+              disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
             }`}
           >
             <span className="text-xl">{selectedCountry.flag}</span>
-            <ChevronDown
-              className={`w-4 h-4 transition-transform ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            />
+            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
           </button>
 
           {isOpen && (
@@ -173,9 +158,7 @@ export function PhoneInput({
                     <span className="text-xl">{country.flag}</span>
                     <div>
                       <div className="font-medium">{country.name}</div>
-                      <div className="text-sm text-gray-500">
-                        {country.dialCode}
-                      </div>
+                      <div className="text-sm text-gray-500">{country.dialCode}</div>
                     </div>
                   </button>
                 ))}
@@ -205,8 +188,10 @@ export function PhoneInput({
           </button>
         )}
       </div>
-
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      
+      {error && (
+        <p className="mt-1 text-sm text-red-500">{error}</p>
+      )}
     </div>
   );
 }

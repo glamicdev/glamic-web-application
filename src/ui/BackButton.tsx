@@ -1,11 +1,12 @@
-import { ArrowLeft } from "lucide-react";
-import { useOnboarding } from "../context/OnboardingContext";
+import React from 'react';
+import { ArrowLeft } from 'lucide-react';
+import { useOnboarding } from '../context/OnboardingContext';
 
 export function BackButton() {
   const { state, dispatch } = useOnboarding();
 
   const handleBack = () => {
-    dispatch({ type: "SET_STEP", payload: state.step - 1 });
+    dispatch({ type: 'SET_STEP', payload: state.step - 1 });
   };
 
   return (

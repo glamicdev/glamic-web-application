@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface TimeSlot {
   time: string;
   format: string;
@@ -5,29 +7,13 @@ interface TimeSlot {
 
 const timeSlots: TimeSlot[] = Array.from({ length: 13 }, (_, i) => ({
   time: `${i + 2}:00`,
-  format: "pm",
+  format: 'pm'
 }));
 
 const team = [
-  {
-    id: "DK",
-    name: "Didar Kursun",
-    initials: "DK",
-    color: "bg-indigo-100 text-indigo-600",
-  },
-  {
-    id: "OH",
-    name: "Omarov Hassanov",
-    initials: "OH",
-    color: "bg-purple-100 text-purple-600",
-  },
-  {
-    id: "WS",
-    name: "Wendy Smith",
-    initials: "WS",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80",
-  },
+  { id: 'DK', name: 'Didar Kursun', initials: 'DK', color: 'bg-indigo-100 text-indigo-600' },
+  { id: 'OH', name: 'Omarov Hassanov', initials: 'OH', color: 'bg-purple-100 text-purple-600' },
+  { id: 'WS', name: 'Wendy Smith', initials: 'WS', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80' }
 ];
 
 export function Calendar() {
@@ -39,15 +25,13 @@ export function Calendar() {
         {team.map((member) => (
           <div key={member.id} className="py-4 px-6 flex justify-center">
             {member.avatar ? (
-              <img
-                src={member.avatar}
+              <img 
+                src={member.avatar} 
                 alt={member.name}
                 className="w-10 h-10 rounded-full"
               />
             ) : (
-              <div
-                className={`w-10 h-10 rounded-full ${member.color} flex items-center justify-center font-medium`}
-              >
+              <div className={`w-10 h-10 rounded-full ${member.color} flex items-center justify-center font-medium`}>
                 {member.initials}
               </div>
             )}
@@ -69,9 +53,7 @@ export function Calendar() {
       <div className="relative">
         {/* Current Time Indicator */}
         <div className="absolute left-0 right-0 border-t-2 border-red-400 top-[200px] z-10">
-          <div className="absolute -top-3 -left-20 text-xs text-red-400">
-            4:55
-          </div>
+          <div className="absolute -top-3 -left-20 text-xs text-red-400">4:55</div>
         </div>
 
         {timeSlots.map((slot, i) => (
@@ -81,8 +63,8 @@ export function Calendar() {
               <span className="text-xs">{slot.format}</span>
             </div>
             {team.map((member) => (
-              <div
-                key={member.id}
+              <div 
+                key={member.id} 
                 className="border-l border-gray-200 group-hover:bg-gray-50"
               />
             ))}

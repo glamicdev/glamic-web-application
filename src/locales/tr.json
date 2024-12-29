@@ -1,0 +1,553 @@
+{
+  "auth": {
+    "title": "Giriş yap veya Kaydol",
+    "subtitle": "İşletmenizi yönetmek için hesap oluşturun veya giriş yapın",
+    "continueWithEmail": "E-posta ile devam et",
+    "continueWithPhone": "Telefon ile devam et",
+    "continueWithGoogle": "Google ile devam et",
+    "continueWithApple": "Apple ile devam et",
+    "or": "VEYA",
+    "phoneNumber": "Telefon numarası",
+    "emailAddress": "E-posta Adresi",
+    "continue": "Devam et",
+    "pleaseWait": "Lütfen bekleyin..."
+  },
+  "signup": {
+    "businessName": {
+      "title": "İşletmenizin adı nedir?",
+      "placeholder": "İşletme adını girin (isteğe bağlı)",
+      "hint": "Emin değilseniz daha sonra ekleyebilirsiniz"
+    },
+    "firstName": {
+      "title": "Adınız nedir?",
+      "placeholder": "Adınızı girin"
+    },
+    "lastName": {
+      "title": "Soyadınız nedir?",
+      "placeholder": "Soyadınızı girin"
+    },
+    "email": {
+      "title": "E-posta adresiniz nedir?",
+      "placeholder": "E-posta adresinizi girin"
+    },
+    "instagram": {
+      "title": "Instagram kullanıcı adınız nedir?",
+      "placeholder": "@isletmeniz"
+    },
+    "complete": "Tamamla",
+    "continue": "Devam et",
+    "validation": {
+      "required": "Bu alan zorunludur",
+      "email": "Lütfen geçerli bir e-posta adresi girin"
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Telefonunuzu Doğrulayın",
+      "message": "Doğrulama kodu {phone} numarasına gönderildi",
+      "socialMessage": "Doğrulama kodu telefon numaranıza gönderildi"
+    },
+    "email": {
+      "title": "E-postanızı Doğrulayın",
+      "message": "{email} adresine gönderilen 4 haneli kodu girin"
+    },
+    "common": {
+      "codeExpires": "Kod {seconds} saniye içinde sona erecek",
+      "resendCode": "Kodu Tekrar Gönder"
+    }
+  },
+  "services": {
+    "title": "Sunduğunuz Hizmetleri Seçin!",
+    "subtitle": "Sunduğunuz hizmetleri seçin. Daha sonra hizmet ekleyip çıkarabilirsiniz.",
+    "categories": {
+      "makeup": "Makyaj",
+      "nails": "Tırnak",
+      "sprayTan": "Sprey Bronzluk",
+      "hair": "Saç",
+      "waxing": "Epilasyon",
+      "esthetics": "Estetik",
+      "henna": "Kına",
+      "eyelashes": "Kirpik",
+      "eyelashesEyebrows": "Kirpik Kaş",
+      "hairstyling": "Saç Şekillendirme",
+      "barber": "Berber",
+      "wedding": "Düğün"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "location": {
+    "title": "Hizmetleri Nerede Sunuyorsunuz?",
+    "subtitle": "Hizmetlerinizi nerede sunmak istediğinizi seçin. Mobil olabilir, stüdyodan çalışabilir veya her ikisini de yapabilirsiniz.",
+    "mobile": {
+      "title": "Mobil Hizmetler",
+      "description": "Müşterilerinizin konumuna gidin"
+    },
+    "studio": {
+      "title": "Stüdyo Hizmetleri",
+      "description": "Müşteriler size gelsin"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "address": {
+    "title": "Baz Adresinizi Girin",
+    "subtitle": "Stüdyonuzun konumunu veya mobil hizmetler için başlangıç noktanızı ekleyin. Bu, seyahat mesafelerini doğru hesaplamamıza yardımcı olur.",
+    "searchPlaceholder": "Adres ara...",
+    "billingAddress": {
+      "same": "Fatura adresi baz adres ile aynı",
+      "title": "Fatura Adresi",
+      "searchPlaceholder": "Fatura adresi ara..."
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor...",
+    "validation": {
+      "selectAddress": "Lütfen önerilerden geçerli bir adres seçin",
+      "selectBilling": "Lütfen önerilerden geçerli bir fatura adresi seçin"
+    }
+  },
+  "serviceArea": {
+    "title": "Hizmet Alanınız",
+    "subtitle": "Sektör standartlarına göre bazı önerilen ayarlar belirledik. Bu değerleri işletmenizin ihtiyaçlarına göre özelleştirebilirsiniz.",
+    "radius": {
+      "title": "km yarıçap",
+      "description": "{address} çevresindeki hizmet alanı"
+    },
+    "travelFee": {
+      "title": "/ km",
+      "description": "Km başına yol ücreti"
+    },
+    "minimumFee": {
+      "title": "minimum yol ücreti",
+      "description": "Mesafeden bağımsız"
+    },
+    "minimumSpend": {
+      "title": "minimum harcama",
+      "description": "Rezervasyon başına minimum harcama"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "success": {
+    "title": "Temel Bilgiler Tamamlandı",
+    "subtitle": "Şimdi ayarlarınızı gözden geçirelim",
+    "continue": "Devam et"
+  },
+  "serviceConfirmation": {
+    "badge": "Hizmetler Eklendi",
+    "title": "Hizmetleriniz",
+    "addedToProfile": "Profilinize eklendi",
+    "pricing": {
+      "value": "Sektör Standart Fiyatlandırması",
+      "label": "Fiyatlandırma uygulandı"
+    },
+    "addons": {
+      "value": "Ek hizmetler eklendi",
+      "label": "Süreleri ve fiyatları daha sonra ayarlayın"
+    },
+    "continue": "Devam et"
+  },
+  "policies": {
+    "badge": "İşletme Koruması",
+    "title": "Politikalar ve Feragatnameler",
+    "subtitle": "İşletmeniz için kapsamlı politikalar ve feragatnameler oluşturduk, böylece sıfırdan başlamanıza gerek kalmaz. Bunları ihtiyaçlarınıza göre özelleştirebilirsiniz.",
+    "stats": {
+      "policies": {
+        "value": "10 Politika",
+        "label": "Önceden yazılmış işletme politikaları"
+      },
+      "waivers": {
+        "value": "7 Feragatname",
+        "label": "Kullanıma hazır koruma anlaşmaları"
+      }
+    },
+    "continue": "Devam et"
+  },
+  "schedule": {
+    "badge": "Çalışma Saatleri",
+    "title": "Programınız",
+    "subtitle": "{type} hizmet saatlerinizi ayarlayın",
+    "types": {
+      "mobile": "mobil",
+      "studio": "stüdyo"
+    },
+    "days": {
+      "monday": "Pazartesi",
+      "tuesday": "Salı",
+      "wednesday": "Çarşamba",
+      "thursday": "Perşembe",
+      "friday": "Cuma",
+      "saturday": "Cumartesi",
+      "sunday": "Pazar"
+    },
+    "dayOff": "İzin günü",
+    "to": "ile",
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "balanceReminder": {
+    "badge": "Bakiye Hatırlatıcısı",
+    "title": "Bakiye Ödeme Hatırlatıcısı",
+    "subtitle": "Müşteriler ilk ödeme hatırlatıcısını ne zaman almalı?",
+    "options": {
+      "after": {
+        "label": "Randevu tamamlandıktan sonra",
+        "description": "Hizmet tamamlandığında hatırlatma gönder"
+      },
+      "24h": {
+        "label": "24 Saat Önce",
+        "description": "Son dakika onayları için en iyisi"
+      },
+      "3d": {
+        "label": "3 Gün Önce",
+        "description": "Çoğu hizmet için önerilir"
+      },
+      "1w": {
+        "label": "1 Hafta Önce",
+        "description": "Standart randevular için uygun"
+      },
+      "2w": {
+        "label": "2 Hafta Önce",
+        "description": "Premium hizmetler için ideal"
+      },
+      "1m": {
+        "label": "1 Ay Önce",
+        "description": "Önemli etkinlikler için mükemmel"
+      }
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor..."
+  },
+  "availability": {
+    "badge": "Rezervasyon Ayarları",
+    "title": "Müsaitlik Durumunuz",
+    "bookingWindow": {
+      "title": "Ön rezervasyon penceresi",
+      "options": {
+        "1m": "1 Ay",
+        "2m": "2 Ay",
+        "3m": "3 Ay",
+        "6m": "6 Ay",
+        "1y": "1 Yıl",
+        "18m": "18 Ay"
+      }
+    },
+    "minimumNotice": {
+      "title": "Gerekli minimum bildirim süresi",
+      "options": {
+        "4h": "4 Saat",
+        "6h": "6 Saat",
+        "24h": "24 Saat",
+        "2d": "2 Gün",
+        "1w": "1 Hafta"
+      }
+    },
+    "rescheduleWindow": {
+      "title": "Yeniden planlama penceresi",
+      "description": "Müşteriler bu pencere kapandıktan sonra yeniden planlama veya iptal yapamaz",
+      "options": {
+        "4h": "4 Saat",
+        "6h": "6 Saat",
+        "24h": "24 Saat",
+        "2d": "2 Gün",
+        "1w": "1 Hafta"
+      }
+    },
+    "save": "Kaydet"
+  },
+  "websiteThemeSelection": {
+    "websiteTheme": "Web Sitesi Teması",
+    "title": "Tarzınızı Seçin",
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "error": "Tema kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteSlug": {
+    "badge": "Web Sitesi Adresi",
+    "title": "URL'nizi Seçin",
+    "subtitle": "Web siteniz için benzersiz bir adres seçin. Sadece harf, rakam ve tire kullanın.",
+    "available": "Bu URL kullanılabilir!",
+    "notAvailable": "Bu URL kullanılamaz. Lütfen başka bir tane deneyin.",
+    "placeholder": "isletmenizin-adi",
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "error": "URL kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteLogo": {
+    "badge": "Web Sitesi Logosu",
+    "title": "Logonuzu Ekleyin",
+    "subtitle": "Metin tabanlı bir logo seçin veya kendi görselinizi yükleyin.",
+    "textLogo": {
+      "title": "Metin Logo",
+      "description": "İşletme adınızı stilize edilmiş metin logo olarak kullanın",
+      "inputLabel": "İşletmenizin adını veya kişisel markanızı girin",
+      "placeholder": "İşletmenizin adını girin"
+    },
+    "imageLogo": {
+      "title": "Logo Yükle",
+      "description": "Kendi logonuzu yükleyin (PNG, JPG, SVG)",
+      "placeholder": "Logo yüklemek için tıklayın",
+      "sizeError": "Dosya boyutu 5MB'dan küçük olmalıdır"
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor...",
+    "error": "Logo kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteMainHeadline": {
+    "badge": "Ana Başlık",
+    "title": "Ana Başlığınızı Oluşturun",
+    "subtitle": "Ana başlığınız ziyaretçilerin göreceği ilk şeydir. Net, ikna edici ve temel değer teklifinize odaklı olmasını sağlayın.",
+    "examples": {
+      "title": "Örnek Başlıklar:",
+      "1": "Özel Gününüz için Profesyonel Makyaj Sanatçısı",
+      "2": "New York'ta Uzman Saç Stilisti",
+      "3": "Uzman Güzellik Hizmetleriyle Görünümünüzü Dönüştürün"
+    },
+    "input": {
+      "label": "Ana Başlık",
+      "placeholder": "Ana başlığınızı girin...",
+      "characters": "karakter"
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor...",
+    "error": "Başlık kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteCover": {
+    "badge": "Site Kapak Görseli",
+    "title": "Kapak Görseli Ekleyin",
+    "subtitle": "Web sitenizin ana bölümü için güzel bir kapak görseli yükleyin. Bu adımı atlarsanız varsayılan görselimizi kullanacağız.",
+    "placeholder": "Kapak görseli yüklemek için tıklayın",
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "skip": "Atla",
+    "error": "Kapak görseli kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteSuccess": {
+    "badge": "Web Sitesi Kurulumu",
+    "title": "Ayarlar Tamamlandı",
+    "subtitle": "Şimdi, web sitenizi 1 dakikadan kısa sürede tasarlayalım",
+    "continue": "Devam et"
+  },
+  "websiteSubheadline": {
+    "badge": "Alt Başlık",
+    "title": "Alt Başlığınızı Ekleyin",
+    "subtitle": "Alt başlığınız ana mesajınıza ek bağlam sağlar ve onu destekler. Temel faydaları veya benzersiz satış noktalarını vurgulamak için kullanın.",
+    "examples": {
+      "title": "Alt Başlık Örnekleri:",
+      "example1": "Düğünler, etkinlikler ve fotoğraf çekimleri için doğal güzelliğinizi ortaya çıkarıyoruz",
+      "example2": "Size güven ve güzellik katan etkileyici görünümler yaratıyoruz",
+      "example3": "Uzmanlık ve özenle sunulan kişiselleştirilmiş güzellik hizmetleri"
+    },
+    "input": {
+      "label": "Alt Başlık",
+      "placeholder": "Alt başlığınızı girin...",
+      "characters": "120 karakter"
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor...",
+    "error": "Alt başlık kaydedilemedi. Lütfen tekrar deneyin."
+  },
+  "contactDisplay": {
+    "badge": "İletişim Bilgileri Görünümü",
+    "title": "İletişim Bilgileri",
+    "subtitle": "Web sitenizde hangi iletişim bilgilerinin görüntüleneceğini seçin. Bu ayarları istediğiniz zaman değiştirebilirsiniz.",
+    "instagram": {
+      "title": "Instagram",
+      "placeholder": "@isletmeniz"
+    },
+    "phone": {
+      "title": "Telefon Numarası"
+    },
+    "email": {
+      "title": "E-posta Adresi"
+    },
+    "save": "Kaydet",
+    "saving": "Kaydediliyor...",
+    "error": "Ayarlar kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websitePortfolio": {
+    "badge": "Portfolyo Görselleri",
+    "title": "En İyi Çalışmalarınızı Ekleyin",
+    "subtitle": "Becerilerinizi ve tarzınızı göstermek için çalışmalarınızın fotoğraflarını yükleyin. Her görseli kırpabilir ve ayarlayabilirsiniz. Bu adım isteğe bağlıdır.",
+    "upload": {
+      "placeholder": "Görsel Ekle",
+      "helperText": "PNG veya JPG (maksimum 10MB)"
+    },
+    "cropModal": {
+      "title": "Görseli Kırp",
+      "done": "Tamam"
+    },
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "skip": "Atla",
+    "error": "Portfolyo görselleri kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "marketplaceVerification": {
+    "badge": "Pazar Yeri Doğrulaması",
+    "title": "Onaylı Satıcılarımıza Katılın",
+    "subtitle": "Glamic pazar yerine katılmak ve yüksek değerli rezervasyonlara erişim kazanmak, özel avantajlara sahip onaylı satıcı olma fırsatı için profil fotoğrafınızı ekleyin.",
+    "requirements": {
+      "profilePhoto": {
+        "title": "Gerekli: Profesyonel Profil Fotoğrafı",
+        "description": "Pazar yerinde listelenebilmek için net bir fotoğrafınızı yükleyin"
+      },
+      "verifiedBadge": {
+        "title": "Onaylı Rozet Avantajları",
+        "description": "Pazar yerinden rezervasyonlar alın, daha yüksek görünürlük ve özel özellikler kazanın. Yeterlilik kazanıldığında kimlik doğrulaması ve geçmiş kontrolü gereklidir."
+      },
+      "badgeRequirements": {
+        "title": "Onaylı Rozet Gereksinimleri",
+        "description": "Düzenli müşteri rezervasyonlarıyla 6 ay boyunca 4 yıldızın üzerinde puan ortalaması tutturun. Yeterlilik kazanıldığında kimlik doğrulaması ve geçmiş kontrolünü tamamlayın."
+      }
+    },
+    "photoGuidelines": {
+      "title": "Profil fotoğrafınız potansiyel müşterilerle güven oluşturmak için çok önemlidir. Fotoğrafınızın şu özelliklere sahip olduğundan emin olun:",
+      "items": [
+        "Yüzünüzü net göstersin",
+        "İyi aydınlatılmış olsun",
+        "Açık, düz bir arka plan kullanın",
+        "Profesyonel görünsün",
+        "Güncel ve gerçekçi olsun"
+      ]
+    },
+    "securityNotice": "Herkesin güvenliği için, yerel kolluk kuvvetleriyle işbirliği yapıyoruz ve nadir durumlarda soruşturma veya yasal işlemler için hesap bilgilerini paylaşabiliriz.",
+    "upload": {
+      "placeholder": "Profil fotoğrafınızı yükleyin",
+      "helperText": "PNG veya JPG (maksimum 5MB)"
+    },
+    "verificationStatus": {
+      "withPhoto": "Profiliniz incelendikten sonra pazar yerinde listelenecek. Premium avantajları ve arttırılmış görünürlüğü açmak için onaylı rozetinizi kazanın.",
+      "withoutPhoto": "Pazar yerinde listelenmek için profil fotoğrafı ekleyin."
+    },
+    "buttons": {
+      "continue": "Devam et",
+      "skip": "Atla",
+      "saving": "Kaydediliyor..."
+    },
+    "error": "Profil fotoğrafı kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websitePaymentsSuccess": {
+    "title": "Web Sitesi Tamamlandı",
+    "subtitle": "Şimdi, ödemeleri ayarlayalım",
+    "continue": "Devam et"
+  },
+  "depositSettings": {
+    "badge": "Depozito Ayarları",
+    "title": "Depozito Tutarını Seçin",
+    "subtitle": "Rezervasyonlar için gereken depozito yüzdesini belirleyin. Bu tutar, müşteriler hizmetlerinizi rezerve ettiğinde peşin olarak tahsil edilecektir.",
+    "options": {
+      "noDeposit": "Depozito Yok",
+      "custom": "Özel"
+    },
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "error": "Ayarlar kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "websiteBio": {
+    "badge": "Profesyonel Biyografi",
+    "title": "Hikayenizi Anlatın",
+    "subtitle": "Uzmanlığınızı sergileyen ve potansiyel müşterilerle bağlantı kuran ikna edici bir biyografi yazın.",
+    "exampleSection": {
+      "title": "Örnek Biyografi:",
+      "content": "8 yılı aşkın profesyonel makyaj sanatçılığı deneyimimle, düğünler, özel etkinlikler ve fotoğraf çekimleri için etkileyici görünümler yaratmada uzmanlaştım. Yaklaşımım, doğal güzelliğinizi ortaya çıkarmak için klasik teknikleri güncel trendlerle birleştirir. İster hayalinizdeki düğün için planlama yapıyor olun, ister önemli bir fotoğraf çekimine hazırlanıyor olun, size en iyi görünümü ve hissi yaşatmak için buradayım"
+    },
+    "input": {
+      "placeholder": "Profesyonel biyografinizi buraya yazın...",
+      "charactersRemaining": "karakter kaldı"
+    },
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "error": "Biyografi kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "cashPaymentSettings": {
+    "badge": "Nakit Ödemeler",
+    "title": "Nakit Ödeme Talimatları",
+    "subtitle": "Müşterilerin rezervasyondan sonra SMS ile alacağı ödeme talimatlarını özelleştirin. Depozito tutarı mesaja otomatik olarak eklenecektir.",
+    "countryTag": {
+      "us": "ABD Ödeme Talimatları",
+      "other": "Kanada Ödeme Talimatları"
+    },
+    "input": {
+      "label": "Ödeme Talimatları",
+      "placeholder": "Ödeme talimatlarınızı girin..."
+    },
+    "saving": "Kaydediliyor...",
+    "save": "Kaydet",
+    "error": "Ayarlar kaydedilirken hata oluştu. Lütfen tekrar deneyin."
+  },
+  "subscriptionPlans": {
+    "badge": "Abonelik Planı",
+    "title": "Bugün Başlayın",
+    "subtitle": "Tüm özelliklere erişin ve Glamic ile işletmenizi büyütmeye başlayın",
+    "plans": {
+      "yearly": {
+        "title": "Yıllık Plan",
+        "subtitle": "Yıllık faturalandırma",
+        "savings": "%20 Tasarruf"
+      },
+      "monthly": {
+        "title": "Aylık Plan",
+        "subtitle": "Aylık faturalandırma"
+      }
+    },
+    "features": {
+      "booking": "İşletmenizi büyütmek için gelişmiş rezervasyon araçları",
+      "automation": "Zamandan tasarruf için otomatik yönetim görevleri",
+      "security": "Profesyonel web sitesi ve güvenli ödemeler"
+    },
+    "action": {
+      "button": "Bugün Başlayın - Şimdi 0$ Ödeyin",
+      "disclaimer": "İstediğiniz zaman iptal edin. Uzun vadeli taahhüt gerekmez."
+    }
+  },
+  "creditCardPayments": {
+    "badge": "Kart Ödemeleri",
+    "title": "Kart Ödemelerini Kabul Edin",
+    "subtitle": "Müşterilerin kredi kartları, Apple Pay ve daha fazlasıyla güvenli bir şekilde ödeme yapmasına olanak tanıyın. Stripe'ın güvenilir ödeme işleme altyapısı ile desteklenmektedir.",
+    "features": {
+      "cards": {
+        "title": "Kredi ve Banka Kartları",
+        "description": "Tüm büyük kredi ve banka kartlarını güvenle kabul edin"
+      },
+      "digitalWallets": {
+        "title": "Dijital Cüzdanlar",
+        "description": "Apple Pay, Google Pay ve telefonunuzda temassız ödeme"
+      },
+      "financing": {
+        "title": "Affirm Finansmanı",
+        "description": "Müşterilerin ödemeleri kolay taksitlere bölmesine izin verin"
+      },
+      "pricing": {
+        "title": "Basit Fiyatlandırma",
+        "description": "İşlem başına %4. Gizli ücret veya aylık masraf yok"
+      }
+    },
+    "setup": "Kart Ödemelerini Ayarla",
+    "skip": "Şimdilik Atla"
+  },
+  "appDownload": {
+    "badge": "Mobil Uygulama",
+    "title": "Glamic'i İndirin",
+    "subtitle": "Güzellik işletmenizi mobil cihazınızdan yönetmenin geleceğini keşfedin. Web deneyimimiz yakında geliyor!",
+    "downloadButton": "Uygulamayı İndir",
+    "qrCodeInstruction": "QR kodunu mobil cihazınızla tarayın",
+    "availableDevices": "iOS ve Android cihazlar için kullanılabilir"
+  },
+  "subscriptionSuccess": {
+    "title": "Glamic'e Hoş Geldiniz! 🎉",
+    "subtitle": "Profesyonel web siteniz hazır. Müşterilerinizle paylaşın ve rezervasyon almaya başlayın!",
+    "websiteUrl": {
+      "copyTooltip": "Bağlantıyı kopyala",
+      "copied": "Kopyalandı!",
+      "instagramHint": "Instagram biyografinize bu bağlantıyı ekleyerek profilinizden direkt rezervasyon almaya başlayın"
+    },
+    "actions": {
+      "previewWebsite": "Web Sitesi Önizleme",
+      "goToAccount": "Hesaba Git",
+      "accountHint": {
+        "preview": "Hesap erişimini etkinleştirmek için önce web sitenizi önizleyin",
+        "ready": "Takviminize erişin ve işletmenizi yönetin"
+      }
+    }
+  }
+}

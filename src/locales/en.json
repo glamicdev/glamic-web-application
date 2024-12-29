@@ -1,0 +1,553 @@
+{
+  "auth": {
+    "title": "Log In or Sign Up",
+    "subtitle": "Create an account or log in to manage your business",
+    "continueWithEmail": "Continue with Email",
+    "continueWithPhone": "Continue with Phone",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
+    "or": "OR",
+    "phoneNumber": "Phone Number",
+    "emailAddress": "Email Address",
+    "continue": "Continue",
+    "pleaseWait": "Please wait..."
+  },
+  "signup": {
+    "businessName": {
+      "title": "What is the name of your business?",
+      "placeholder": "Enter your business name (optional)",
+      "hint": "If you're unsure, you can add this later"
+    },
+    "firstName": {
+      "title": "What is your first name?",
+      "placeholder": "Enter your first name"
+    },
+    "lastName": {
+      "title": "What is your last name?",
+      "placeholder": "Enter your last name"
+    },
+    "email": {
+      "title": "What is your email address?",
+      "placeholder": "Enter your email address"
+    },
+    "instagram": {
+      "title": "What is your Instagram username?",
+      "placeholder": "@yourbusiness"
+    },
+    "complete": "Complete",
+    "continue": "Continue",
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address"
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Verify Your Phone",
+      "message": "A verification code has been sent to {phone}",
+      "socialMessage": "The verification code was sent to your phone number"
+    },
+    "email": {
+      "title": "Verify Your Email",
+      "message": "Enter the 4-digit code sent to {email}"
+    },
+    "common": {
+      "codeExpires": "The code expires in {seconds} seconds",
+      "resendCode": "Resend Code"
+    }
+  },
+  "services": {
+    "title": "Select the Services You Offer!",
+    "subtitle": "Select the services you offer. You can add or remove services later.",
+    "categories": {
+      "makeup": "Makeup",
+      "nails": "Nails",
+      "sprayTan": "Spray Tan",
+      "hair": "Hair",
+      "waxing": "Waxing",
+      "esthetics": "Esthetics",
+      "henna": "Henna",
+      "eyelashes": "Eyelashes",
+      "eyelashesEyebrows": "Eyelashes & Eyebrows",
+      "hairstyling": "Hairstyling",
+      "barber": "Barber",
+      "wedding": "Wedding"
+    },
+    "continue": "Continue",
+    "saving": "Saving..."
+  },
+  "location": {
+    "title": "Where Do You Provide Services?",
+    "subtitle": "Choose where you want to provide your services. It can be mobile, studio-based, or both.",
+    "mobile": {
+      "title": "Mobile Services",
+      "description": "Travel to your clients' locations"
+    },
+    "studio": {
+      "title": "Studio Services",
+      "description": "Clients come to you"
+    },
+    "continue": "Continue",
+    "saving": "Saving..."
+  },
+  "address": {
+    "title": "Enter Your Base Address",
+    "subtitle": "Add your studio location or a starting point for mobile services. This helps us calculate distances accurately.",
+    "searchPlaceholder": "Search for an address...",
+    "billingAddress": {
+      "same": "Billing address is the same as the base address",
+      "title": "Billing Address",
+      "searchPlaceholder": "Search for a billing address..."
+    },
+    "continue": "Continue",
+    "saving": "Saving...",
+    "validation": {
+      "selectAddress": "Please select a valid address from the suggestions",
+      "selectBilling": "Please select a valid billing address from the suggestions"
+    }
+  },
+  "serviceArea": {
+    "title": "Your Service Area",
+    "subtitle": "We've set some recommended settings based on industry standards. You can customize these values to suit your business needs.",
+    "radius": {
+      "title": "radius in km",
+      "description": "Service area around {address}"
+    },
+    "travelFee": {
+      "title": "/ km",
+      "description": "Charge per kilometer"
+    },
+    "minimumFee": {
+      "title": "minimum travel fee",
+      "description": "Regardless of distance"
+    },
+    "minimumSpend": {
+      "title": "minimum spend",
+      "description": "Minimum spend per booking"
+    },
+    "continue": "Continue",
+    "saving": "Saving..."
+  },
+  "success": {
+    "title": "Basic Information Complete",
+    "subtitle": "Now let's review your settings",
+    "continue": "Continue"
+  },
+  "serviceConfirmation": {
+    "badge": "Services Added",
+    "title": "Your Services",
+    "addedToProfile": "Added to your profile",
+    "pricing": {
+      "value": "Industry Standard Pricing",
+      "label": "Pricing applied"
+    },
+    "addons": {
+      "value": "Add-ons added",
+      "label": "Adjust durations and prices later"
+    },
+    "continue": "Continue"
+  },
+  "policies": {
+    "badge": "Business Protection",
+    "title": "Policies & Waivers",
+    "subtitle": "We've created comprehensive policies and waivers for your business so you don't have to start from scratch. You can customize them to fit your needs.",
+    "stats": {
+      "policies": {
+        "value": "10 Policies",
+        "label": "Pre-written business policies"
+      },
+      "waivers": {
+        "value": "7 Waivers",
+        "label": "Ready-to-use protection agreements"
+      }
+    },
+    "continue": "Continue"
+  },
+  "schedule": {
+    "badge": "Working Hours",
+    "title": "Your Schedule",
+    "subtitle": "Set your hours for {type} services",
+    "types": {
+      "mobile": "mobile",
+      "studio": "studio"
+    },
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "dayOff": "Day off",
+    "to": "to",
+    "continue": "Continue",
+    "saving": "Saving..."
+  },
+  "balanceReminder": {
+    "badge": "Balance Reminder",
+    "title": "Balance Payment Reminder",
+    "subtitle": "When should clients receive their first payment reminder?",
+    "options": {
+      "after": {
+        "label": "After appointment is completed",
+        "description": "Send a reminder once the service is complete"
+      },
+      "24h": {
+        "label": "24 Hours Before",
+        "description": "Best for last-minute confirmations"
+      },
+      "3d": {
+        "label": "3 Days Before",
+        "description": "Recommended for most services"
+      },
+      "1w": {
+        "label": "1 Week Before",
+        "description": "Suitable for standard appointments"
+      },
+      "2w": {
+        "label": "2 Weeks Before",
+        "description": "Ideal for premium services"
+      },
+      "1m": {
+        "label": "1 Month Before",
+        "description": "Perfect for important events"
+      }
+    },
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "availability": {
+    "badge": "Booking Settings",
+    "title": "Your Availability",
+    "bookingWindow": {
+      "title": "Advance booking window",
+      "options": {
+        "1m": "1 Month",
+        "2m": "2 Months",
+        "3m": "3 Months",
+        "6m": "6 Months",
+        "1y": "1 Year",
+        "18m": "18 Months"
+      }
+    },
+    "minimumNotice": {
+      "title": "Minimum required notice",
+      "options": {
+        "4h": "4 Hours",
+        "6h": "6 Hours",
+        "24h": "24 Hours",
+        "2d": "2 Days",
+        "1w": "1 Week"
+      }
+    },
+    "rescheduleWindow": {
+      "title": "Reschedule window",
+      "description": "Clients won't be able to reschedule or cancel after this window closes",
+      "options": {
+        "4h": "4 Hours",
+        "6h": "6 Hours",
+        "24h": "24 Hours",
+        "2d": "2 Days",
+        "1w": "1 Week"
+      }
+    },
+    "save": "Save"
+  },
+  "websiteThemeSelection": {
+    "websiteTheme": "Website Theme",
+    "title": "Choose Your Style",
+    "saving": "Saving...",
+    "save": "Save",
+    "error": "Failed to save theme. Please try again."
+  },
+  "websiteSlug": {
+    "badge": "Website Address",
+    "title": "Choose Your URL",
+    "subtitle": "Pick a unique address for your website. Use only letters, numbers, and hyphens.",
+    "available": "This URL is available!",
+    "notAvailable": "This URL is not available. Please try another.",
+    "placeholder": "your-business-name",
+    "saving": "Saving...",
+    "save": "Save",
+    "error": "Failed to save slug. Please try again."
+  },
+  "websiteLogo": {
+    "badge": "Website Logo",
+    "title": "Add Your Logo",
+    "subtitle": "Choose between a text-based logo or upload your own image.",
+    "textLogo": {
+      "title": "Text Logo",
+      "description": "Use your business name as a stylized text logo",
+      "inputLabel": "Enter your business name or personal brand name",
+      "placeholder": "Enter your business name"
+    },
+    "imageLogo": {
+      "title": "Upload Logo",
+      "description": "Upload your own logo image (PNG, JPG, SVG)",
+      "placeholder": "Click to upload your logo",
+      "sizeError": "File size must be less than 5MB"
+    },
+    "save": "Save",
+    "saving": "Saving...",
+    "error": "Failed to save logo. Please try again."
+  },
+  "websiteSuccess": {
+    "badge": "Website Setup",
+    "title": "Settings Completed",
+    "subtitle": "Now, let's design your website in under 1 minute",
+    "continue": "Continue"
+  },
+  "websiteCover": {
+    "badge": "Cover Image",
+    "title": "Add a Cover Image",
+    "subtitle": "Upload a beautiful cover image for your website's hero section. We'll use our default image if you skip this step.",
+    "placeholder": "Click to upload a cover image",
+    "saving": "Saving...",
+    "save": "Save",
+    "skip": "Skip",
+    "error": "Failed to save cover image. Please try again."
+  },
+  "websiteMainHeadline": {
+    "badge": "Main Headline",
+    "title": "Create Your Main Headline",
+    "subtitle": "Your main headline is the first thing visitors will see. Make it clear, compelling, and focused on your core value proposition.",
+    "examples": {
+      "title": "Example Headlines:",
+      "1": "Professional Makeup Artist for Your Special Day",
+      "2": "Expert Hair Styling in New York City",
+      "3": "Transform Your Look with Expert Beauty Services"
+    },
+    "input": {
+      "label": "Main Headline",
+      "placeholder": "Enter your main headline...",
+      "characters": "characters"
+    },
+    "save": "Save",
+    "saving": "Saving...",
+    "error": "Failed to save headline. Please try again."
+  },
+  "websiteSubheadline": {
+    "badge": "Subheadline",
+    "title": "Add Your Subheadline",
+    "subtitle": "Your subheadline provides additional context and supports your main message. Use it to highlight key benefits or unique selling points.",
+    "examples": {
+      "title": "Example Subheadlines:",
+      "example1": "Bringing out your natural beauty for weddings, events, and photoshoots",
+      "example2": "Creating stunning looks that make you feel confident and beautiful",
+      "example3": "Personalized beauty services delivered with expertise and care"
+    },
+    "input": {
+      "label": "Subheadline",
+      "placeholder": "Enter your subheadline...",
+      "characters": "120 characters"
+    },
+    "save": "Save",
+    "saving": "Saving...",
+    "error": "Failed to save subheadline. Please try again."
+  },
+  "contactDisplay": {
+    "badge": "Contact Display",
+    "title": "Contact Information",
+    "subtitle": "Choose which contact information to display on your website. You can change these settings anytime.",
+    "instagram": {
+      "title": "Instagram",
+      "placeholder": "@yourbusiness"
+    },
+    "phone": {
+      "title": "Phone Number"
+    },
+    "email": {
+      "title": "Email Address"
+    },
+    "save": "Save",
+    "saving": "Saving...",
+    "error": "Failed to save settings. Please try again."
+  },
+  "websitePortfolio": {
+    "badge": "Portfolio Images",
+    "title": "Add Your Best Work",
+    "subtitle": "Upload photos of your work to showcase your skills and style. You can crop and adjust each image. This step is optional.",
+    "upload": {
+      "placeholder": "Add Image",
+      "helperText": "PNG or JPG (max 10MB)"
+    },
+    "cropModal": {
+      "title": "Crop Image",
+      "done": "Done"
+    },
+    "saving": "Saving...",
+    "save": "Save",
+    "skip": "Skip",
+    "error": "Failed to save portfolio images. Please try again."
+  },
+  "marketplaceVerification": {
+    "badge": "Marketplace Verification",
+    "title": "Join Our Verified Sellers",
+    "subtitle": "Add your profile photo to join Glamic's marketplace and unlock access to eventually get high ticket bookings, opportunity to become a verified seller with exclusive benefits.",
+    "requirements": {
+      "profilePhoto": {
+        "title": "Required: Professional Profile Photo",
+        "description": "Upload a clear photo of yourself to get listed on the marketplace"
+      },
+      "verifiedBadge": {
+        "title": "Verified Badge Benefits",
+        "description": "Get bookings from marketplace, higher visibility, and exclusive features. ID verification and background check required upon qualifying."
+      },
+      "badgeRequirements": {
+        "title": "Verified Badge Requirements",
+        "description": "Maintain a 4+ star rating for 6 months with your own regular customer bookings. Complete ID verification and background check when qualified."
+      }
+    },
+    "photoGuidelines": {
+      "title": "Your profile photo is crucial for building trust with potential clients. Ensure your photo:",
+      "items": [
+        "Shows your face clearly",
+        "Has good lighting",
+        "Uses a light, solid background",
+        "Looks professional",
+        "Is recent and accurate"
+      ]
+    },
+    "securityNotice": "For everyone's safety, we cooperate with local law enforcement and may share account information in the rare case of investigations or legal proceedings.",
+    "upload": {
+      "placeholder": "Upload your profile photo",
+      "helperText": "PNG or JPG (max 5MB)"
+    },
+    "verificationStatus": {
+      "withPhoto": "Your profile will be listed on the marketplace after review. Earn your verified badge to unlock premium benefits and increased visibility.",
+      "withoutPhoto": "Add your profile photo to get listed on the marketplace."
+    },
+    "buttons": {
+      "continue": "Continue",
+      "skip": "Skip",
+      "saving": "Saving..."
+    },
+    "error": "Failed to save profile photo. Please try again."
+  },
+  "websitePaymentsSuccess": {
+    "title": "Website Completed",
+    "subtitle": "Now, let's setup payments",
+    "continue": "Continue"
+  },
+  "depositSettings": {
+    "badge": "Deposit Settings",
+    "title": "Choose Deposit Amount",
+    "subtitle": "Set the deposit percentage required for bookings. This amount will be collected upfront when clients book your services.",
+    "options": {
+      "noDeposit": "No Deposit",
+      "custom": "Custom"
+    },
+    "saving": "Saving...",
+    "save": "Save",
+    "error": "Failed to save settings. Please try again."
+  },
+  "websiteBio": {
+    "badge": "Professional Bio",
+    "title": "Tell Your Story",
+    "subtitle": "Write a compelling bio that showcases your expertise and connects with potential clients.",
+    "exampleSection": {
+      "title": "Example Bio:",
+      "content": "With over 8 years of experience in professional makeup artistry, I specialize in creating stunning looks for weddings, special events, and photo shoots. My approach combines classic techniques with current trends to enhance your natural beauty. Whether you're planning your dream wedding or preparing for an important photo session, I'm here to help you look and feel your absolute best"
+    },
+    "input": {
+      "placeholder": "Write your professional bio here...",
+      "charactersRemaining": "characters remaining"
+    },
+    "saving": "Saving...",
+    "save": "Save",
+    "error": "Failed to save bio. Please try again."
+  },
+  "cashPaymentSettings": {
+    "badge": "Cash Payments",
+    "title": "Cash Payment Instructions",
+    "subtitle": "Customize the payment instructions that clients will receive via SMS after booking. The deposit amount will be automatically added to the message.",
+    "countryTag": {
+      "us": "USA Cash Instructions",
+      "other": "Canada Cash Instructions"
+    },
+    "input": {
+      "label": "Payment Instructions",
+      "placeholder": "Enter your payment instructions..."
+    },
+    "saving": "Saving...",
+    "save": "Save",
+    "error": "Failed to save settings. Please try again."
+  },
+  "subscriptionPlans": {
+    "badge": "Subscription Plan",
+    "title": "Get Started Today",
+    "subtitle": "Access all features and start growing your business with Glamic",
+    "plans": {
+      "yearly": {
+        "title": "Annual Plan",
+        "subtitle": "Billed yearly",
+        "savings": "Save 20%"
+      },
+      "monthly": {
+        "title": "Monthly Plan",
+        "subtitle": "Billed monthly"
+      }
+    },
+    "features": {
+      "booking": "Advanced booking tools to grow your business",
+      "automation": "Automated admin tasks to save you time",
+      "security": "Professional website and secure payments"
+    },
+    "action": {
+      "button": "Start Today - $0 Due Now",
+      "disclaimer": "Cancel anytime. No long-term commitment required."
+    }
+  },
+  "creditCardPayments": {
+    "badge": "Card Payments",
+    "title": "Accept Card Payments",
+    "subtitle": "Let clients pay securely with credit cards, Apple Pay, and more. Powered by Stripe's trusted payment processing.",
+    "features": {
+      "cards": {
+        "title": "Credit & Debit Cards",
+        "description": "Accept all major credit and debit cards securely"
+      },
+      "digitalWallets": {
+        "title": "Digital Wallets",
+        "description": "Apple Pay, Google Pay, and tap-to-pay on your phone"
+      },
+      "financing": {
+        "title": "Affirm Financing",
+        "description": "Let clients split payments into easy installments"
+      },
+      "pricing": {
+        "title": "Simple Pricing",
+        "description": "4% per transaction. No hidden fees or monthly charges"
+      }
+    },
+    "setup": "Setup Card Payments",
+    "skip": "Skip for Now"
+  },
+  "appDownload": {
+    "badge": "Mobile App",
+    "title": "Download Glamic",
+    "subtitle": "Experience the future of beauty business management on your mobile device. Our web experience is coming soon!",
+    "downloadButton": "Download App",
+    "qrCodeInstruction": "Scan QR code with your mobile device",
+    "availableDevices": "Available for iOS and Android devices"
+  },
+  "subscriptionSuccess": {
+    "title": "Welcome to Glamic! 🎉",
+    "subtitle": "Your professional website is ready. Share it with your clients and start accepting bookings!",
+    "websiteUrl": {
+      "copyTooltip": "Copy link",
+      "copied": "Copied!",
+      "instagramHint": "Add this link to your Instagram bio to start accepting bookings directly from your profile"
+    },
+    "actions": {
+      "previewWebsite": "Preview Your Website",
+      "goToAccount": "Go to Account",
+      "accountHint": {
+        "preview": "Preview your website first to enable account access",
+        "ready": "Access your calendar and manage your business"
+      }
+    }
+  }
+}

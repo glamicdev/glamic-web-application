@@ -15,6 +15,7 @@ export function Dropdown({ isOpen, onClose, children, className = '' }: Dropdown
     <motion.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
       className={`absolute z-10 w-full mt-2 bg-white dark:bg-primary-navy/95 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden backdrop-blur-sm ${className}`}
     >
       {children}
@@ -27,14 +28,15 @@ interface DropdownItemProps {
   selected?: boolean;
   children: React.ReactNode;
   description?: string;
+  className?: string;
 }
 
-export function DropdownItem({ onClick, selected, children, description }: DropdownItemProps) {
+export function DropdownItem({ onClick, selected, children, description, className = '' }: DropdownItemProps) {
   return (
     <button
       onClick={onClick}
       className={`w-full px-6 py-4 text-left hover:bg-gray-50 dark:hover:bg-white/10 transition-colors
-        ${selected ? 'bg-primary-gold/10 dark:bg-white/10' : ''}`}
+        ${selected ? 'bg-primary-gold/10 dark:bg-white/10' : ''} ${className}`}
     >
       <div className="font-medium text-gray-900 dark:text-white">{children}</div>
       {description && (

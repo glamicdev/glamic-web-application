@@ -1,3 +1,6 @@
+.theme-name {
+  color: #FFFFFF; /* Change to white for better visibility in dark mode */
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

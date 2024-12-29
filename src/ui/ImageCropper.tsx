@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
-import ReactCrop, { Crop } from "react-image-crop";
-import { X } from "lucide-react";
-import { Button } from "./Button";
-import "react-image-crop/dist/ReactCrop.css";
+import React from 'react';
+import { motion } from 'framer-motion';
+import ReactCrop, { Crop } from 'react-image-crop';
+import { X } from 'lucide-react';
+import { Button } from './Button';
+import 'react-image-crop/dist/ReactCrop.css';
 
 interface ImageCropperProps {
   image: string;
@@ -19,7 +20,7 @@ export function ImageCropper({
   onCropChange,
   onCropComplete,
   onClose,
-  aspectRatio = 1,
+  aspectRatio = 1
 }: ImageCropperProps) {
   return (
     <motion.div
@@ -37,7 +38,7 @@ export function ImageCropper({
             <X className="w-5 h-5" />
           </button>
         </div>
-
+        
         <div className="max-h-[60vh] overflow-auto">
           <ReactCrop
             crop={crop}
@@ -46,12 +47,19 @@ export function ImageCropper({
             aspect={aspectRatio}
             className="max-w-full"
           >
-            <img src={image} alt="Crop preview" className="max-w-full" />
+            <img
+              src={image}
+              alt="Crop preview"
+              className="max-w-full"
+            />
           </ReactCrop>
         </div>
 
         <div className="flex justify-end mt-4">
-          <Button variant="primary" onClick={onClose}>
+          <Button
+            variant="primary"
+            onClick={onClose}
+          >
             Done
           </Button>
         </div>

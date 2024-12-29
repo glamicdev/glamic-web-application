@@ -1,6 +1,6 @@
-import { HTMLMotionProps } from 'framer-motion';
+import { Variants } from 'framer-motion';
 
-export const fadeIn: HTMLMotionProps<'div'> = {
+export const fadeIn: Variants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: 20 },

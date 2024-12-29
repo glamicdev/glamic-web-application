@@ -33,12 +33,26 @@ const initialState: OnboardingState = {
   ],
   serviceLocation: {
     type: 'mobile',
+    address: '',
+    billingAddress: '',
+    sameAsBilling: true,
     mobileRadius: 50,
     travelFeePerKm: 1,
+    minTravelFee: 15,
     minimumSpend: 60,
+    scheduleSettings: {
+      bookingWindow: '1y',
+      minimumNotice: '24h',
+      rescheduleWindow: '24h'
+    }
   },
   loading: false,
   error: null,
+  paymentSettings: {
+    cashInstructions: '',
+    depositPercentage: 20,
+    balanceReminderTiming: '3d'
+  }
 };
 
 const OnboardingContext = createContext<{
@@ -54,7 +68,14 @@ function onboardingReducer(
     case 'SET_USER_DATA':
       return {
         ...state,
-        userData: { ...state.userData, ...action.payload },
+        userData: { 
+          ...state.userData,
+          ...action.payload,
+          displaySettings: {
+            ...state.userData.displaySettings,
+            ...(action.payload.displaySettings || {})
+          }
+        },
       };
     case 'SET_SERVICES':
       return {

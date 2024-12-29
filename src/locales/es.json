@@ -1,0 +1,553 @@
+{
+  "auth": {
+    "title": "Iniciar Sesión o Registrarse",
+    "subtitle": "Crea una cuenta o inicia sesión para gestionar tu negocio",
+    "continueWithEmail": "Continuar con correo electrónico",
+    "continueWithPhone": "Continuar con teléfono",
+    "continueWithGoogle": "Continuar con Google",
+    "continueWithApple": "Continuar con Apple",
+    "or": "O",
+    "phoneNumber": "Número de teléfono",
+    "emailAddress": "Correo electrónico",
+    "continue": "Continuar",
+    "pleaseWait": "Por favor, espera..."
+  },
+  "signup": {
+    "businessName": {
+      "title": "¿Cuál es el nombre de tu negocio?",
+      "placeholder": "Introduce el nombre del negocio (opcional)",
+      "hint": "Si no estás seguro, puedes agregarlo más tarde"
+    },
+    "firstName": {
+      "title": "¿Cuál es tu nombre?",
+      "placeholder": "Introduce tu nombre"
+    },
+    "lastName": {
+      "title": "¿Cuál es tu apellido?",
+      "placeholder": "Introduce tu apellido"
+    },
+    "email": {
+      "title": "¿Cuál es tu correo electrónico?",
+      "placeholder": "Introduce tu correo electrónico"
+    },
+    "instagram": {
+      "title": "¿Cuál es tu usuario de Instagram?",
+      "placeholder": "@tubusiness"
+    },
+    "complete": "Completar",
+    "continue": "Continuar",
+    "validation": {
+      "required": "Este campo es obligatorio",
+      "email": "Por favor, introduce un correo electrónico válido"
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Verifica tu teléfono",
+      "message": "Se envió un código de verificación al {phone}",
+      "socialMessage": "El código de verificación fue enviado a tu número de teléfono"
+    },
+    "email": {
+      "title": "Verifica tu correo electrónico",
+      "message": "Introduce el código de 4 dígitos enviado a {email}"
+    },
+    "common": {
+      "codeExpires": "El código expirará en {seconds} segundos",
+      "resendCode": "Reenviar código"
+    }
+  },
+  "services": {
+    "title": "¡Selecciona los servicios que ofreces!",
+    "subtitle": "Selecciona los servicios que ofreces. Puedes agregar o quitar servicios más tarde.",
+    "categories": {
+      "makeup": "Maquillaje",
+      "nails": "Uñas",
+      "sprayTan": "Bronceado en spray",
+      "hair": "Cabello",
+      "waxing": "Depilación",
+      "esthetics": "Estética",
+      "henna": "Henna",
+      "eyelashes": "Pestañas",
+      "eyelashesEyebrows": "Pestañas y Cejas",
+      "hairstyling": "Estilismo",
+      "barber": "Barbería",
+      "wedding": "Boda"
+    },
+    "continue": "Continuar",
+    "saving": "Guardando..."
+  },
+  "location": {
+    "title": "¿Dónde ofreces tus servicios?",
+    "subtitle": "Elige dónde deseas ofrecer tus servicios. Puede ser móvil, en un estudio o ambos.",
+    "mobile": {
+      "title": "Servicios Móviles",
+      "description": "Desplázate al lugar de tus clientes"
+    },
+    "studio": {
+      "title": "Servicios en Estudio",
+      "description": "Los clientes vienen a ti"
+    },
+    "continue": "Continuar",
+    "saving": "Guardando..."
+  },
+  "address": {
+    "title": "Introduce tu dirección principal",
+    "subtitle": "Agrega la ubicación de tu estudio o el punto de partida para servicios móviles. Esto nos ayudará a calcular las distancias correctamente.",
+    "searchPlaceholder": "Buscar dirección...",
+    "billingAddress": {
+      "same": "La dirección de facturación es igual a la dirección principal",
+      "title": "Dirección de Facturación",
+      "searchPlaceholder": "Buscar dirección de facturación..."
+    },
+    "continue": "Continuar",
+    "saving": "Guardando...",
+    "validation": {
+      "selectAddress": "Por favor, selecciona una dirección válida de las sugerencias",
+      "selectBilling": "Por favor, selecciona una dirección de facturación válida de las sugerencias"
+    }
+  },
+  "serviceArea": {
+    "title": "Tu área de servicio",
+    "subtitle": "Hemos definido algunos ajustes recomendados según los estándares del sector. Puedes personalizar estos valores según tus necesidades.",
+    "radius": {
+      "title": "radio en km",
+      "description": "Área de servicio alrededor de {address}"
+    },
+    "travelFee": {
+      "title": "/ km",
+      "description": "Tarifa por kilómetro"
+    },
+    "minimumFee": {
+      "title": "tarifa mínima de viaje",
+      "description": "Independientemente de la distancia"
+    },
+    "minimumSpend": {
+      "title": "gasto mínimo",
+      "description": "Gasto mínimo por reserva"
+    },
+    "continue": "Continuar",
+    "saving": "Guardando..."
+  },
+  "success": {
+    "title": "Información básica completada",
+    "subtitle": "Ahora revisemos tus configuraciones",
+    "continue": "Continuar"
+  },
+  "serviceConfirmation": {
+    "badge": "Servicios Añadidos",
+    "title": "Tus Servicios",
+    "addedToProfile": "Añadido a tu perfil",
+    "pricing": {
+      "value": "Precios estándar del sector",
+      "label": "Precios aplicados"
+    },
+    "addons": {
+      "value": "Servicios adicionales añadidos",
+      "label": "Ajusta las duraciones y precios más tarde"
+    },
+    "continue": "Continuar"
+  },
+  "policies": {
+    "badge": "Protección del Negocio",
+    "title": "Políticas y Exenciones",
+    "subtitle": "Hemos creado políticas y exenciones completas para tu negocio para que no tengas que empezar desde cero. Puedes personalizarlas según tus necesidades.",
+    "stats": {
+      "policies": {
+        "value": "10 Políticas",
+        "label": "Políticas comerciales preescritas"
+      },
+      "waivers": {
+        "value": "7 Exenciones",
+        "label": "Acuerdos de protección listos para usar"
+      }
+    },
+    "continue": "Continuar"
+  },
+  "schedule": {
+    "badge": "Horas de Trabajo",
+    "title": "Tu Horario",
+    "subtitle": "Configura tus horas de servicio para {type}",
+    "types": {
+      "mobile": "móviles",
+      "studio": "en estudio"
+    },
+    "days": {
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo"
+    },
+    "dayOff": "Día libre",
+    "to": "a",
+    "continue": "Continuar",
+    "saving": "Guardando..."
+  },
+  "balanceReminder": {
+    "badge": "Recordatorio de Saldo",
+    "title": "Recordatorio de Pago de Saldo",
+    "subtitle": "¿Cuándo deben recibir los clientes su primer recordatorio de pago?",
+    "options": {
+      "after": {
+        "label": "Después de completar la cita",
+        "description": "Envía un recordatorio al finalizar el servicio"
+      },
+      "24h": {
+        "label": "24 horas antes",
+        "description": "Ideal para confirmaciones de última hora"
+      },
+      "3d": {
+        "label": "3 días antes",
+        "description": "Recomendado para la mayoría de los servicios"
+      },
+      "1w": {
+        "label": "1 semana antes",
+        "description": "Adecuado para citas estándar"
+      },
+      "2w": {
+        "label": "2 semanas antes",
+        "description": "Ideal para servicios premium"
+      },
+      "1m": {
+        "label": "1 mes antes",
+        "description": "Perfecto para eventos importantes"
+      }
+    },
+    "save": "Guardar",
+    "saving": "Guardando..."
+  },
+  "availability": {
+    "badge": "Configuraciones de Reserva",
+    "title": "Tu Disponibilidad",
+    "bookingWindow": {
+      "title": "Ventana de reserva anticipada",
+      "options": {
+        "1m": "1 Mes",
+        "2m": "2 Meses",
+        "3m": "3 Meses",
+        "6m": "6 Meses",
+        "1y": "1 Año",
+        "18m": "18 Meses"
+      }
+    },
+    "minimumNotice": {
+      "title": "Tiempo mínimo de aviso",
+      "options": {
+        "4h": "4 Horas",
+        "6h": "6 Horas",
+        "24h": "24 Horas",
+        "2d": "2 Días",
+        "1w": "1 Semana"
+      }
+    },
+    "rescheduleWindow": {
+      "title": "Ventana de reprogramación",
+      "description": "Los clientes no podrán reprogramar o cancelar después de que esta ventana se cierre",
+      "options": {
+        "4h": "4 Horas",
+        "6h": "6 Horas",
+        "24h": "24 Horas",
+        "2d": "2 Días",
+        "1w": "1 Semana"
+      }
+    },
+    "save": "Guardar"
+  },
+  "websiteThemeSelection": {
+    "websiteTheme": "Tema del Sitio Web",
+    "title": "Elige tu Estilo",
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "error": "Error al guardar el tema. Por favor, inténtalo de nuevo."
+  },
+  "websiteSlug": {
+    "badge": "Dirección del Sitio Web",
+    "title": "Elige tu URL",
+    "subtitle": "Elige una dirección única para tu sitio web. Usa solo letras, números y guiones.",
+    "available": "¡Esta URL está disponible!",
+    "notAvailable": "Esta URL no está disponible. Por favor, prueba otra.",
+    "placeholder": "tu-nombre-de-negocio",
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "error": "Error al guardar la URL. Por favor, inténtalo de nuevo."
+  },
+  "websiteLogo": {
+    "badge": "Logo del Sitio Web",
+    "title": "Agrega tu Logo",
+    "subtitle": "Elige entre un logo de texto o sube tu propia imagen.",
+    "textLogo": {
+      "title": "Logo de Texto",
+      "description": "Usa el nombre de tu negocio como un logo de texto estilizado",
+      "inputLabel": "Ingresa el nombre de tu negocio o marca personal",
+      "placeholder": "Ingresa el nombre de tu negocio"
+    },
+    "imageLogo": {
+      "title": "Subir Logo",
+      "description": "Sube tu propio logo (PNG, JPG, SVG)",
+      "placeholder": "Haz clic para subir tu logo",
+      "sizeError": "El archivo debe ser menor a 5MB"
+    },
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "error": "Error al guardar el logo. Por favor, inténtalo de nuevo."
+  },
+  "websiteMainHeadline": {
+    "badge": "Título Principal",
+    "title": "Crea tu Título Principal",
+    "subtitle": "Tu título principal es lo primero que verán los visitantes. Hazlo claro, convincente y enfocado en tu propuesta de valor principal.",
+    "examples": {
+      "title": "Ejemplos de Títulos:",
+      "1": "Maquillador Profesional para tu Día Especial",
+      "2": "Experto en Peluquería en Nueva York",
+      "3": "Transforma tu Imagen con Servicios de Belleza Expertos"
+    },
+    "input": {
+      "label": "Título Principal",
+      "placeholder": "Ingresa tu título principal...",
+      "characters": "caracteres"
+    },
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "error": "Error al guardar el título. Por favor, inténtalo de nuevo."
+  },
+  "websiteCover": {
+    "badge": "Imagen de Portada",
+    "title": "Agrega una Imagen de Portada",
+    "subtitle": "Sube una hermosa imagen de portada para la sección principal de tu sitio web. Usaremos nuestra imagen predeterminada si omites este paso.",
+    "placeholder": "Haz clic para subir una imagen de portada",
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "skip": "Omitir",
+    "error": "Error al guardar la imagen de portada. Por favor, inténtalo de nuevo."
+  },
+  "websiteSuccess": {
+    "badge": "Configuración del Sitio Web",
+    "title": "Configuración Completada",
+    "subtitle": "Ahora, diseñemos tu sitio web en menos de 1 minuto",
+    "continue": "Continuar"
+  },
+  "websiteSubheadline": {
+    "badge": "Subtítulo",
+    "title": "Añade tu Subtítulo",
+    "subtitle": "Tu subtítulo proporciona contexto adicional y apoya tu mensaje principal. Úsalo para destacar beneficios clave o puntos de venta únicos.",
+    "examples": {
+      "title": "Ejemplos de Subtítulos:",
+      "example1": "Resaltando tu belleza natural para bodas, eventos y sesiones fotográficas",
+      "example2": "Creando looks impresionantes que te hacen sentir segura y hermosa",
+      "example3": "Servicios de belleza personalizados brindados con experiencia y cuidado"
+    },
+    "input": {
+      "label": "Subtítulo",
+      "placeholder": "Ingresa tu subtítulo...",
+      "characters": "120 caracteres"
+    },
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "error": "Error al guardar el subtítulo. Por favor, inténtalo de nuevo."
+  },
+  "contactDisplay": {
+    "badge": "Mostrar Contacto",
+    "title": "Información de Contacto",
+    "subtitle": "Elige qué información de contacto mostrar en tu sitio web. Puedes cambiar esta configuración en cualquier momento.",
+    "instagram": {
+      "title": "Instagram",
+      "placeholder": "@tunegocio"
+    },
+    "phone": {
+      "title": "Número de Teléfono"
+    },
+    "email": {
+      "title": "Correo Electrónico"
+    },
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "error": "Error al guardar la configuración. Por favor, inténtalo de nuevo."
+  },
+  "websitePortfolio": {
+    "badge": "Imágenes de Portafolio",
+    "title": "Agrega tu Mejor Trabajo",
+    "subtitle": "Sube fotos de tu trabajo para mostrar tus habilidades y estilo. Puedes recortar y ajustar cada imagen. Este paso es opcional.",
+    "upload": {
+      "placeholder": "Agregar Imagen",
+      "helperText": "PNG o JPG (máximo 10MB)"
+    },
+    "cropModal": {
+      "title": "Recortar Imagen",
+      "done": "Listo"
+    },
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "skip": "Omitir",
+    "error": "Error al guardar las imágenes del portafolio. Por favor, inténtalo de nuevo."
+  },
+  "marketplaceVerification": {
+    "badge": "Verificación del Mercado",
+    "title": "Únete a Nuestros Vendedores Verificados",
+    "subtitle": "Agrega tu foto de perfil para unirte al mercado de Glamic y desbloquear acceso a reservas de alto valor, oportunidad de convertirte en un vendedor verificado con beneficios exclusivos.",
+    "requirements": {
+      "profilePhoto": {
+        "title": "Requerido: Foto de Perfil Profesional",
+        "description": "Sube una foto clara de ti mismo para aparecer en el mercado"
+      },
+      "verifiedBadge": {
+        "title": "Beneficios de la Insignia Verificada",
+        "description": "Obtén reservas del mercado, mayor visibilidad y funciones exclusivas. Se requiere verificación de ID y verificación de antecedentes al calificar."
+      },
+      "badgeRequirements": {
+        "title": "Requisitos para la Insignia Verificada",
+        "description": "Mantén una calificación de más de 4 estrellas durante 6 meses con tus reservas regulares de clientes. Completa la verificación de ID y antecedentes cuando califiques."
+      }
+    },
+    "photoGuidelines": {
+      "title": "Tu foto de perfil es crucial para generar confianza con los clientes potenciales. Asegúrate de que tu foto:",
+      "items": [
+        "Muestre tu rostro claramente",
+        "Tenga buena iluminación",
+        "Use un fondo sólido y claro",
+        "Se vea profesional",
+        "Sea reciente y precisa"
+      ]
+    },
+    "securityNotice": "Por tu seguridad, cooperamos con las autoridades locales y podemos compartir información de la cuenta en casos raros de investigaciones o procedimientos legales.",
+    "upload": {
+      "placeholder": "Sube tu foto de perfil",
+      "helperText": "PNG o JPG (máximo 5MB)"
+    },
+    "verificationStatus": {
+      "withPhoto": "Tu perfil aparecerá en el mercado después de la revisión. Gana tu insignia verificada para desbloquear beneficios premium y mayor visibilidad.",
+      "withoutPhoto": "Agrega tu foto de perfil para aparecer en el mercado."
+    },
+    "buttons": {
+      "continue": "Continuar",
+      "skip": "Omitir",
+      "saving": "Guardando..."
+    },
+    "error": "Error al guardar la foto de perfil. Por favor, inténtalo de nuevo."
+  },
+  "websitePaymentsSuccess": {
+    "title": "Sitio Web Completado",
+    "subtitle": "Ahora, configuremos los pagos",
+    "continue": "Continuar"
+  },
+  "depositSettings": {
+    "badge": "Configuración de Depósito",
+    "title": "Elige el Monto del Depósito",
+    "subtitle": "Establece el porcentaje de depósito requerido para las reservas. Este monto se cobrará por adelantado cuando los clientes reserven tus servicios.",
+    "options": {
+      "noDeposit": "Sin Depósito",
+      "custom": "Personalizado"
+    },
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "error": "Error al guardar la configuración. Por favor, inténtalo de nuevo."
+  },
+  "websiteBio": {
+    "badge": "Biografía Profesional",
+    "title": "Cuenta tu Historia",
+    "subtitle": "Escribe una biografía convincente que muestre tu experiencia y conecte con clientes potenciales.",
+    "exampleSection": {
+      "title": "Ejemplo de Biografía:",
+      "content": "Con más de 8 años de experiencia en maquillaje profesional, me especializo en crear looks impresionantes para bodas, eventos especiales y sesiones fotográficas. Mi enfoque combina técnicas clásicas con tendencias actuales para realzar tu belleza natural. Ya sea que estés planeando tu boda soñada o preparándote para una sesión fotográfica importante, estoy aquí para ayudarte a lucir y sentirte absolutamente increíble"
+    },
+    "input": {
+      "placeholder": "Escribe tu biografía profesional aquí...",
+      "charactersRemaining": "caracteres restantes"
+    },
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "error": "Error al guardar la biografía. Por favor, inténtalo de nuevo."
+  },
+  "cashPaymentSettings": {
+    "badge": "Pagos en Efectivo",
+    "title": "Instrucciones de Pago en Efectivo",
+    "subtitle": "Personaliza las instrucciones de pago que los clientes recibirán por SMS después de la reserva. El monto del depósito se agregará automáticamente al mensaje.",
+    "countryTag": {
+      "us": "Instrucciones de Pago en EE.UU.",
+      "other": "Instrucciones de Pago en Canadá"
+    },
+    "input": {
+      "label": "Instrucciones de Pago",
+      "placeholder": "Ingresa tus instrucciones de pago..."
+    },
+    "saving": "Guardando...",
+    "save": "Guardar",
+    "error": "Error al guardar la configuración. Por favor, inténtalo de nuevo."
+  },
+  "subscriptionPlans": {
+    "badge": "Plan de Suscripción",
+    "title": "Comienza Hoy",
+    "subtitle": "Accede a todas las funciones y comienza a hacer crecer tu negocio con Glamic",
+    "plans": {
+      "yearly": {
+        "title": "Plan Anual",
+        "subtitle": "Facturado anualmente",
+        "savings": "Ahorra 20%"
+      },
+      "monthly": {
+        "title": "Plan Mensual",
+        "subtitle": "Facturado mensualmente"
+      }
+    },
+    "features": {
+      "booking": "Herramientas avanzadas de reserva para hacer crecer tu negocio",
+      "automation": "Tareas administrativas automatizadas para ahorrarte tiempo",
+      "security": "Sitio web profesional y pagos seguros"
+    },
+    "action": {
+      "button": "Comienza Hoy - $0 a Pagar Ahora",
+      "disclaimer": "Cancela cuando quieras. No se requiere compromiso a largo plazo."
+    }
+  },
+  "creditCardPayments": {
+    "badge": "Pagos con Tarjeta",
+    "title": "Acepta Pagos con Tarjeta",
+    "subtitle": "Permite que los clientes paguen de forma segura con tarjetas de crédito, Apple Pay y más. Impulsado por el procesamiento de pagos confiable de Stripe.",
+    "features": {
+      "cards": {
+        "title": "Tarjetas de Crédito y Débito",
+        "description": "Acepta todas las principales tarjetas de crédito y débito de forma segura"
+      },
+      "digitalWallets": {
+        "title": "Billeteras Digitales",
+        "description": "Apple Pay, Google Pay y pago con un toque en tu teléfono"
+      },
+      "financing": {
+        "title": "Financiamiento Affirm",
+        "description": "Permite que los clientes dividan los pagos en cuotas fáciles"
+      },
+      "pricing": {
+        "title": "Precios Simples",
+        "description": "4% por transacción. Sin cargos ocultos ni costos mensuales"
+      }
+    },
+    "setup": "Configurar Pagos con Tarjeta",
+    "skip": "Omitir por Ahora"
+  },
+  "appDownload": {
+    "badge": "Aplicación Móvil",
+    "title": "Descarga Glamic",
+    "subtitle": "Experimenta el futuro de la gestión de negocios de belleza en tu dispositivo móvil. ¡Nuestra experiencia web estará disponible pronto!",
+    "downloadButton": "Descargar App",
+    "qrCodeInstruction": "Escanea el código QR con tu dispositivo móvil",
+    "availableDevices": "Disponible para dispositivos iOS y Android"
+  },
+  "subscriptionSuccess": {
+    "title": "¡Bienvenido a Glamic! 🎉",
+    "subtitle": "Tu sitio web profesional está listo. ¡Compártelo con tus clientes y comienza a aceptar reservas!",
+    "websiteUrl": {
+      "copyTooltip": "Copiar enlace",
+      "copied": "¡Copiado!",
+      "instagramHint": "Agrega este enlace a tu biografía de Instagram para comenzar a aceptar reservas directamente desde tu perfil"
+    },
+    "actions": {
+      "previewWebsite": "Vista Previa del Sitio Web",
+      "goToAccount": "Ir a la Cuenta",
+      "accountHint": {
+        "preview": "Vista previa de tu sitio web primero para habilitar el acceso a la cuenta",
+        "ready": "Accede a tu calendario y administra tu negocio"
+      }
+    }
+  }
+}

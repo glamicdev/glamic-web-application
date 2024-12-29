@@ -1,10 +1,5 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-  Calendar as CalendarIcon,
-  Settings,
-  Plus,
-} from "lucide-react";
+import React from 'react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Settings, Plus } from 'lucide-react';
 
 export function Header() {
   return (
@@ -14,7 +9,7 @@ export function Header() {
           <button className="px-4 py-2 text-sm font-medium bg-primary-navy text-white rounded-lg">
             Today
           </button>
-
+          
           <div className="flex items-center gap-2">
             <button className="p-2 hover:bg-gray-100 rounded-lg">
               <ChevronLeft className="w-4 h-4" />
