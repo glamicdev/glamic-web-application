@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
+import type { Service } from '../../types/onboarding';
 import { Heading, Text } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { Palette, Scissors, Droplets, Bath, User, Sparkles, Eye, Crown, Loader } from 'lucide-react';
@@ -45,12 +47,13 @@ function ServiceCard({ icon, name, selected, onClick }: ServiceCardProps) {
 
 export default function ServicesSelection() {
   const { state, dispatch } = useOnboarding();
+  const navigate = useNavigate();
   const { translations } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const toggleService = (id: string) => {
-    const updatedServices = state.services.map(service =>
+    const updatedServices = state.services.map((service: Service) =>
       service.id === id ? { ...service, selected: !service.selected } : service
     );
     console.log('Service toggled:', { id, services: updatedServices });
@@ -58,7 +61,7 @@ export default function ServicesSelection() {
   };
 
   const handleContinue = async () => {
-    const selectedServices = state.services.filter(service => service.selected);
+    const selectedServices = state.services.filter((service: Service) => service.selected);
     console.log('Selected services:', selectedServices);
     
     setLoading(true);
@@ -69,7 +72,7 @@ export default function ServicesSelection() {
       console.log('API Response:', response);
 
       if (response.success) {
-        dispatch({ type: 'SET_STEP', payload: 6 });
+        navigate('/location');
       } else {
         setError(response.error || 'Failed to save services');
       }
@@ -81,31 +84,35 @@ export default function ServicesSelection() {
     }
   };
 
-  const hasSelectedServices = state.services.some(service => service.selected);
+  const hasSelectedServices = state.services.some((service: Service) => service.selected);
 
-  const services = [
-    { id: '1', name: translations.services.categories.makeup, icon: <Palette className="w-8 h-8" /> },
-    { id: '2', name: translations.services.categories.nails, icon: <Scissors className="w-8 h-8" /> },
-    { id: '3', name: translations.services.categories.sprayTan, icon: <Droplets className="w-8 h-8" /> },
-    { id: '4', name: translations.services.categories.hair, icon: <Scissors className="w-8 h-8" /> },
-    { id: '5', name: translations.services.categories.waxing, icon: <Bath className="w-8 h-8" /> },
-    { id: '6', name: translations.services.categories.esthetics, icon: <User className="w-8 h-8" /> },
-    { id: '7', name: translations.services.categories.henna, icon: <Sparkles className="w-8 h-8" /> },
-    { id: '8', name: translations.services.categories.eyelashes, icon: <Eye className="w-8 h-8" /> },
-    { id: '9', name: translations.services.categories.eyelashesEyebrows, icon: <Eye className="w-8 h-8" /> },
-    { id: '10', name: translations.services.categories.hairstyling, icon: <Scissors className="w-8 h-8" /> },
-    { id: '11', name: translations.services.categories.barber, icon: <Scissors className="w-8 h-8" /> },
-    { id: '12', name: translations.services.categories.wedding, icon: <Crown className="w-8 h-8" /> },
+  const services: Array<{
+    id: string;
+    name: string;
+    icon: React.ReactNode;
+  }> = [
+    { id: '1', name: translations.services?.categories?.makeup ?? 'Makeup', icon: <Palette className="w-8 h-8" /> },
+    { id: '2', name: translations.services?.categories?.nails ?? 'Nails', icon: <Scissors className="w-8 h-8" /> },
+    { id: '3', name: translations.services?.categories?.sprayTan ?? 'Spray Tan', icon: <Droplets className="w-8 h-8" /> },
+    { id: '4', name: translations.services?.categories?.hair ?? 'Hair', icon: <Scissors className="w-8 h-8" /> },
+    { id: '5', name: translations.services?.categories?.waxing ?? 'Waxing', icon: <Bath className="w-8 h-8" /> },
+    { id: '6', name: translations.services?.categories?.esthetics ?? 'Esthetics', icon: <User className="w-8 h-8" /> },
+    { id: '7', name: translations.services?.categories?.henna ?? 'Henna', icon: <Sparkles className="w-8 h-8" /> },
+    { id: '8', name: translations.services?.categories?.eyelashes ?? 'Eyelashes', icon: <Eye className="w-8 h-8" /> },
+    { id: '9', name: translations.services?.categories?.eyelashesEyebrows ?? 'Eyelashes & Eyebrows', icon: <Eye className="w-8 h-8" /> },
+    { id: '10', name: translations.services?.categories?.hairstyling ?? 'Hairstyling', icon: <Scissors className="w-8 h-8" /> },
+    { id: '11', name: translations.services?.categories?.barber ?? 'Barber', icon: <Scissors className="w-8 h-8" /> },
+    { id: '12', name: translations.services?.categories?.wedding ?? 'Wedding', icon: <Crown className="w-8 h-8" /> },
   ];
 
   return (
     <Layout maxWidth="xl">
       <Heading className="text-center mb-4 dark:text-white">
-        {translations.services.title}
+        {translations.services?.title ?? 'Select Your Services'}
       </Heading>
       
       <Text className="text-center mb-16 max-w-2xl mx-auto dark:text-gray-300">
-        {translations.services.subtitle}
+        {translations.services?.subtitle ?? 'Choose the services you want to offer'}
       </Text>
       
       <motion.div {...staggerChildren} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
@@ -114,7 +121,7 @@ export default function ServicesSelection() {
             key={service.id}
             icon={service.icon}
             name={service.name}
-            selected={state.services.find(s => s.id === service.id)?.selected || false}
+            selected={state.services.find((s: Service) => s.id === service.id)?.selected || false}
             onClick={() => toggleService(service.id)}
           />
         ))}
@@ -134,10 +141,10 @@ export default function ServicesSelection() {
           {loading ? (
             <span className="flex items-center gap-2">
               <Loader className="w-4 h-4 animate-spin" />
-              {translations.services.saving}
+              {translations.services?.saving ?? 'Saving...'}
             </span>
           ) : (
-            translations.services.continue
+            translations.services?.continue ?? 'Continue'
           )}
         </Button>
         

@@ -1,10 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Heading, Text } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
 import { useLanguage } from '../../context/LanguageContext';
-import { useOnboarding } from '../../context/OnboardingContext';
 
 const checkmarkVariants = {
   hidden: { 
@@ -51,8 +51,8 @@ const containerVariants = {
 };
 
 export default function SuccessCompletion() {
-  const { dispatch } = useOnboarding();
   const { translations } = useLanguage();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center px-4">
@@ -73,11 +73,11 @@ export default function SuccessCompletion() {
           className="text-center space-y-6"
         >
           <Heading>
-            {translations.success.title}
+            {translations.success!.title}
           </Heading>
           
           <Text className="text-gray-600">
-            {translations.success.subtitle}
+            {translations.success!.subtitle}
           </Text>
           
           <motion.div 
@@ -87,9 +87,9 @@ export default function SuccessCompletion() {
             <Button 
               variant="primary" 
               fullWidth
-              onClick={() => dispatch({ type: 'SET_STEP', payload: 10 })}
+              onClick={() => navigate('/website-success')}
             >
-              {translations.success.continue}
+              {translations.success!.continue}
             </Button>
           </motion.div>
         </motion.div>

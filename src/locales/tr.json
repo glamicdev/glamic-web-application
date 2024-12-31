@@ -1,124 +1,198 @@
 {
-  "subscriptionManagement": {
-    "title": "Yıllık planda tasarruf edin",
-    "subtitle": "Glamic Pro üyeleri ortalama olarak diğerlerinden 5x daha fazla kazanır ve 10x daha fazla zaman tasarrufu sağlar",
-    "features": {
-      "earnings": {
-        "title": "Kazancınızı Artırın:",
-        "description": "Gelişmiş rezervasyon araçları ve akıllı fiyatlandırma ile 5 kata kadar daha fazla kazanın."
-      },
-      "time": {
-        "title": "Zamandan Tasarruf Edin:",
-        "description": "Hatırlatıcıları ve depozitoları otomatikleştirerek yönetim görevlerini 10 kat azaltın."
-      },
-      "image": {
-        "title": "Gelişmiş Profesyonel İmaj:",
-        "description": "Özel web sitesi, güvenli ödemeler ve dinamik planlama erişimi."
-      }
-    },
-    "plans": {
-      "yearly": "YILLIK",
-      "monthly": "AYLIK",
-      "currentPlan": "Mevcut Plan",
-      "yearPeriod": "YIL",
-      "monthPeriod": "AY",
-      "savings": "%20 tasarruf",
-      "equivalent": "Aylık {price} eşdeğeri",
-      "pricePerDay": "Günlük 65 kuruş"
-    },
-    "currentPlan": "Şu anda aylık planda bulunuyorsunuz. {date} tarihinde yenilenir",
-    "switchButton": "YILLIK PLANA GEÇ",
-    "cancelButton": "İptal"
-  },
-  "subscriptionCancel": {
-    "title": "Emin misiniz?",
-    "subtitle": "Aşağıdaki tüm avantajlara erişiminizi kaybedeceksiniz!",
-    "benefits": {
-      "website": {
-        "title": "Premium Web Sitesi:",
-        "description": "Premium profesyonel rezervasyon web sitesine erişiminizi kaybedeceksiniz."
-      },
-      "policies": {
-        "title": "Politika Özellikleri:",
-        "description": "Tüm politikalarınıza ve feragatnamelerinize erişiminizi kaybedeceksiniz."
-      },
-      "customization": {
-        "title": "Pro Özelleştirmeleri:",
-        "description": "İşletme ayarlarınızı özelleştirme yeteneğinizi kaybedeceksiniz."
-      },
-      "marketplace": {
-        "title": "Pazar Yeri Ücretleri:",
-        "description": "Glamic pazar yerinden aldığınız rezervasyonlarda %25 komisyon ücreti ödenecek (pro planda %0'dır)."
-      },
-      "features": {
-        "title": "Gelecek Premium Özellikler:",
-        "description": "Gelecekteki Pro özelliklerimize erişim kazanamayacaksınız."
-      },
-      "pricing": {
-        "title": "Fiyatlandırma:",
-        "description": "Mevcut fiyatınıza erişiminizi kaybedeceksiniz ve geri dönmeye karar verirseniz daha fazla ödeme yapmanız gerekebilir."
-      }
-    },
-    "confirmButton": "Evet, Aboneliği İptal Et",
-    "feedback": {
-      "title": "Gitmenize üzüldük.",
-      "subtitle": "İptal etme nedeninizi bizimle paylaşır mısınız?",
-      "reasons": {
-        "features": "Abonelik ihtiyacım olan özelliklere sahip değil.",
-        "expensive": "Abonelik pahalı.",
-        "buggy": "Uygulama hatalı çalışıyor.",
-        "otherSoftware": "Başka bir yazılım kullanmayı tercih ediyorum.",
-        "hardToUse": "Uygulamayı kullanmak zor."
-      },
-      "detailsPrompt": "İptal nedeninizi daha detaylı açıklayabilir misiniz?",
-      "submitButton": "İptal Et"
-    },
-    "modal": {
-      "title": "Abonelik İptal Edildi",
-      "message": "Aboneliğiniz iptal edildi.\nE-posta ile onay alacaksınız.\n{date} tarihine kadar pro kullanıcı olarak kalacaksınız",
-      "closeButton": "Kapat"
+  "api": {
+    "errors": {
+      "network": "Ağ bağlantısı kullanılamıyor",
+      "general": "Bir hata oluştu. Lütfen tekrar deneyin",
+      "unauthorized": "Oturumunuz sona erdi. Lütfen tekrar giriş yapın",
+      "forbidden": "Bu kaynağa erişim izniniz yok",
+      "kicked": "Oturumunuz sonlandırıldı",
+      "client": "Geçersiz istek. Lütfen girişinizi kontrol edin"
     }
   },
-  "subscriptionSwitch": {
-    "title": "Yıllık Plana Geç",
-    "subtitle": "Yıllık abonelikle daha fazla tasarruf edin!",
-    "comparison": {
-      "monthly": {
-        "label": "Mevcut Aylık Plan",
-        "price": "₺24.99",
-        "period": "/ay"
-      },
-      "annual": {
-        "label": "Yıllık Plan",
-        "price": "₺19.99",
-        "period": "/ay"
-      },
-      "savings": "Yılda ₺60 tasarruf edin"
+  "auth": {
+    "title": "Giriş yap veya Kaydol",
+    "subtitle": "İşletmenizi yönetmek için hesap oluşturun veya giriş yapın",
+    "continueWithEmail": "E-posta ile devam et",
+    "continueWithPhone": "Telefon ile devam et",
+    "continueWithGoogle": "Google ile devam et",
+    "continueWithApple": "Apple ile devam et",
+    "or": "VEYA",
+    "phoneNumber": "Telefon numarası",
+    "emailAddress": "E-posta Adresi",
+    "continue": "Devam et",
+    "pleaseWait": "Lütfen bekleyin..."
+  },
+  "signup": {
+    "businessName": {
+      "title": "İşletmenizin adı nedir?",
+      "placeholder": "İşletme adını girin (isteğe bağlı)",
+      "hint": "Emin değilseniz daha sonra ekleyebilirsiniz"
     },
-    "benefits": {
-      "cost": {
-        "title": "Daha Düşük Aylık Maliyet",
-        "description": "Yıllık abonelikle ayda daha az ödeyin."
-      },
-      "price": {
-        "title": "Garantili Fiyat",
-        "description": "Mevcut fiyatınızı tüm yıl boyunca kilitleyin."
-      },
-      "support": {
-        "title": "Öncelikli Destek",
-        "description": "Müşteri destek ekibimize öncelikli erişim."
-      },
-      "access": {
-        "title": "Erken Erişim",
-        "description": "Yeni premium özellikleri ilk deneyen siz olun."
+    "firstName": {
+      "title": "Adınız nedir?",
+      "placeholder": "Adınızı girin"
+    },
+    "lastName": {
+      "title": "Soyadınız nedir?",
+      "placeholder": "Soyadınızı girin"
+    },
+    "email": {
+      "title": "E-posta adresiniz nedir?",
+      "placeholder": "E-posta adresinizi girin"
+    },
+    "instagram": {
+      "title": "Instagram kullanıcı adınız nedir?",
+      "placeholder": "@isletmeniz"
+    },
+    "complete": "Tamamla",
+    "continue": "Devam et",
+    "validation": {
+      "required": "Bu alan zorunludur",
+      "email": "Lütfen geçerli bir e-posta adresi girin"
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Telefonunuzu Doğrulayın",
+      "message": "Doğrulama kodu {phone} numarasına gönderildi",
+      "socialMessage": "Doğrulama kodu telefon numaranıza gönderildi"
+    },
+    "email": {
+      "title": "E-postanızı Doğrulayın",
+      "message": "{email} adresine gönderilen 4 haneli kodu girin"
+    },
+    "common": {
+      "codeExpires": "Kod {seconds} saniye içinde sona erecek",
+      "resendCode": "Kodu Tekrar Gönder"
+    }
+  },
+  "services": {
+    "title": "Sunduğunuz Hizmetleri Seçin!",
+    "subtitle": "Sunduğunuz hizmetleri seçin. Daha sonra hizmet ekleyip çıkarabilirsiniz.",
+    "categories": {
+      "makeup": "Makyaj",
+      "nails": "Tırnak",
+      "sprayTan": "Sprey Bronzluk",
+      "hair": "Saç",
+      "waxing": "Epilasyon",
+      "esthetics": "Estetik",
+      "henna": "Kına",
+      "eyelashes": "Kirpik",
+      "eyelashesEyebrows": "Kirpik Kaş",
+      "hairstyling": "Saç Şekillendirme",
+      "barber": "Berber",
+      "wedding": "Düğün"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "location": {
+    "title": "Hizmetleri Nerede Sunuyorsunuz?",
+    "subtitle": "Hizmetlerinizi nerede sunmak istediğinizi seçin. Mobil olabilir, stüdyodan çalışabilir veya her ikisini de yapabilirsiniz.",
+    "mobile": {
+      "title": "Mobil Hizmetler",
+      "description": "Müşterilerinizin konumuna gidin"
+    },
+    "studio": {
+      "title": "Stüdyo Hizmetleri",
+      "description": "Müşteriler size gelsin"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "address": {
+    "title": "Baz Adresinizi Girin",
+    "subtitle": "Stüdyonuzun konumunu veya mobil hizmetler için başlangıç noktanızı ekleyin. Bu, seyahat mesafelerini doğru hesaplamamıza yardımcı olur.",
+    "searchPlaceholder": "Adres ara...",
+    "billingAddress": {
+      "same": "Fatura adresi baz adres ile aynı",
+      "title": "Fatura Adresi",
+      "searchPlaceholder": "Fatura adresi ara..."
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor...",
+    "validation": {
+      "selectAddress": "Lütfen önerilerden geçerli bir adres seçin",
+      "selectBilling": "Lütfen önerilerden geçerli bir fatura adresi seçin"
+    }
+  },
+  "serviceArea": {
+    "title": "Hizmet Alanınız",
+    "subtitle": "Sektör standartlarına göre bazı önerilen ayarlar belirledik. Bu değerleri işletmenizin ihtiyaçlarına göre özelleştirebilirsiniz.",
+    "radius": {
+      "title": "km yarıçap",
+      "description": "{address} çevresindeki hizmet alanı"
+    },
+    "travelFee": {
+      "title": "/ km",
+      "description": "Km başına yol ücreti"
+    },
+    "minimumFee": {
+      "title": "minimum yol ücreti",
+      "description": "Mesafeden bağımsız"
+    },
+    "minimumSpend": {
+      "title": "minimum harcama",
+      "description": "Rezervasyon başına minimum harcama"
+    },
+    "continue": "Devam et",
+    "saving": "Kaydediliyor..."
+  },
+  "success": {
+    "title": "Temel Bilgiler Tamamlandı",
+    "subtitle": "Şimdi ayarlarınızı gözden geçirelim",
+    "continue": "Devam et"
+  },
+  "serviceConfirmation": {
+    "badge": "Hizmetler Eklendi",
+    "title": "Hizmetleriniz",
+    "addedToProfile": "Profilinize eklendi",
+    "pricing": {
+      "value": "Sektör Standart Fiyatlandırması",
+      "label": "Fiyatlandırma uygulandı"
+    },
+    "addons": {
+      "value": "Ek hizmetler eklendi",
+      "label": "Süreleri ve fiyatları daha sonra ayarlayın"
+    },
+    "continue": "Devam et"
+  },
+  "policies": {
+    "badge": "İşletme Koruması",
+    "title": "Politikalar ve Feragatnameler",
+    "subtitle": "İşletmeniz için kapsamlı politikalar ve feragatnameler oluşturduk, böylece sıfırdan başlamanıza gerek kalmaz. Bunları ihtiyaçlarınıza göre özelleştirebilirsiniz.",
+    "stats": {
+      "policies": {
+        "value": "10 Politika",
+        "label": "Önceden yazılmış işletme politikaları"
       }
     },
-    "confirmButton": "Yıllık Plana Geçişi Onayla",
-    "priceNote": "Yeni planınız yıllık ₺239.99 olarak faturalandırılacak",
-    "modal": {
-      "title": "Yıllık Plana Geçildi!",
-      "message": "Aboneliğiniz yıllık plana yükseltildi.\nE-posta ile onay alacaksınız.\nYeni fatura tarihiniz {date} olacak",
-      "closeButton": "Kapat"
+    "setup": "Kart Ödemelerini Ayarla",
+    "skip": "Şimdilik Atla"
+  },
+  "appDownload": {
+    "badge": "Mobil Uygulama",
+    "title": "Glamic'i İndirin",
+    "subtitle": "Güzellik işletmenizi mobil cihazınızdan yönetmenin geleceğini keşfedin. Web deneyimimiz yakında geliyor!",
+    "downloadButton": "Uygulamayı İndir",
+    "qrCodeInstruction": "QR kodunu mobil cihazınızla tarayın",
+    "availableDevices": "iOS ve Android cihazlar için kullanılabilir"
+  },
+  "subscriptionSuccess": {
+    "title": "Glamic'e Hoş Geldiniz! 🎉",
+    "subtitle": "Profesyonel web siteniz hazır. Müşterilerinizle paylaşın ve rezervasyon almaya başlayın!",
+    "websiteUrl": {
+      "copyTooltip": "Bağlantıyı kopyala",
+      "copied": "Kopyalandı!",
+      "instagramHint": "Profilinizden doğrudan rezervasyon almaya başlamak için bu bağlantıyı Instagram biyografinize ekleyin"
+    },
+    "actions": {
+      "previewWebsite": "Web Sitenizi Önizleyin",
+      "goToAccount": "Hesaba Git",
+      "accountHint": {
+        "preview": "Hesap erişimini etkinleştirmek için önce web sitenizi önizleyin",
+        "ready": "Takviminize erişin ve işletmenizi yönetin"
+      }
     }
   }
 }

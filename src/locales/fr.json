@@ -1,4 +1,178 @@
 {
+  "api": {
+    "errors": {
+      "network": "La connexion réseau n'est pas disponible",
+      "general": "Une erreur s'est produite. Veuillez réessayer",
+      "unauthorized": "Votre session a expiré. Veuillez vous reconnecter",
+      "forbidden": "Vous n'avez pas la permission d'accéder à cette ressource",
+      "kicked": "Votre session a été terminée",
+      "client": "Requête invalide. Veuillez vérifier vos entrées"
+    }
+  },
+  "auth": {
+    "title": "Connexion ou Inscription",
+    "subtitle": "Créez un compte ou connectez-vous pour gérer votre entreprise",
+    "continueWithEmail": "Continuer avec l'email",
+    "continueWithPhone": "Continuer avec le téléphone",
+    "continueWithGoogle": "Continuer avec Google",
+    "continueWithApple": "Continuer avec Apple",
+    "or": "OU",
+    "phoneNumber": "Numéro de téléphone",
+    "emailAddress": "Adresse e-mail",
+    "continue": "Continuer",
+    "pleaseWait": "Veuillez patienter..."
+  },
+  "signup": {
+    "businessName": {
+      "title": "Quel est le nom de votre entreprise ?",
+      "placeholder": "Entrez le nom de l'entreprise (facultatif)",
+      "hint": "Si vous n'êtes pas sûr, vous pouvez l'ajouter plus tard"
+    },
+    "firstName": {
+      "title": "Quel est votre prénom ?",
+      "placeholder": "Entrez votre prénom"
+    },
+    "lastName": {
+      "title": "Quel est votre nom de famille ?",
+      "placeholder": "Entrez votre nom de famille"
+    },
+    "email": {
+      "title": "Quelle est votre adresse e-mail ?",
+      "placeholder": "Entrez votre adresse e-mail"
+    },
+    "instagram": {
+      "title": "Quel est votre nom d'utilisateur Instagram ?",
+      "placeholder": "@votreentreprise"
+    },
+    "complete": "Terminer",
+    "continue": "Continuer",
+    "validation": {
+      "required": "Ce champ est requis",
+      "email": "Veuillez entrer une adresse e-mail valide"
+    }
+  },
+  "verification": {
+    "phone": {
+      "title": "Vérifiez votre téléphone",
+      "message": "Un code de vérification a été envoyé au {phone}",
+      "socialMessage": "Le code de vérification a été envoyé à votre numéro de téléphone"
+    },
+    "email": {
+      "title": "Vérifiez votre e-mail",
+      "message": "Entrez le code à 4 chiffres envoyé à {email}"
+    },
+    "common": {
+      "codeExpires": "Le code expire dans {seconds} secondes",
+      "resendCode": "Renvoyer le code"
+    }
+  },
+  "services": {
+    "title": "Choisissez les services que vous proposez !",
+    "subtitle": "Sélectionnez les services que vous proposez. Vous pouvez ajouter ou supprimer des services plus tard.",
+    "categories": {
+      "makeup": "Maquillage",
+      "nails": "Ongles",
+      "sprayTan": "Bronzage en spray",
+      "hair": "Cheveux",
+      "waxing": "Épilation à la cire",
+      "esthetics": "Esthétique",
+      "henna": "Henné",
+      "eyelashes": "Cils",
+      "eyelashesEyebrows": "Cils et Sourcils",
+      "hairstyling": "Coiffure",
+      "barber": "Barbier",
+      "wedding": "Mariage"
+    },
+    "continue": "Continuer",
+    "saving": "Enregistrement..."
+  },
+  "location": {
+    "title": "Où proposez-vous vos services ?",
+    "subtitle": "Choisissez où vous souhaitez offrir vos services. Cela peut être mobile, en studio ou les deux.",
+    "mobile": {
+      "title": "Services mobiles",
+      "description": "Rendez-vous chez vos clients"
+    },
+    "studio": {
+      "title": "Services en studio",
+      "description": "Les clients viennent chez vous"
+    },
+    "continue": "Continuer",
+    "saving": "Enregistrement..."
+  },
+  "address": {
+    "title": "Entrez votre adresse principale",
+    "subtitle": "Ajoutez l'emplacement de votre studio ou le point de départ pour les services mobiles. Cela nous aide à calculer les distances correctement.",
+    "searchPlaceholder": "Rechercher une adresse...",
+    "billingAddress": {
+      "same": "L'adresse de facturation est la même que l'adresse principale",
+      "title": "Adresse de facturation",
+      "searchPlaceholder": "Rechercher une adresse de facturation..."
+    },
+    "continue": "Continuer",
+    "saving": "Enregistrement...",
+    "validation": {
+      "selectAddress": "Veuillez sélectionner une adresse valide parmi les suggestions",
+      "selectBilling": "Veuillez sélectionner une adresse de facturation valide parmi les suggestions"
+    }
+  },
+  "serviceArea": {
+    "title": "Votre zone de service",
+    "subtitle": "Nous avons défini quelques paramètres recommandés en fonction des standards du secteur. Vous pouvez personnaliser ces valeurs selon vos besoins.",
+    "radius": {
+      "title": "rayon en km",
+      "description": "Zone de service autour de {address}"
+    },
+    "travelFee": {
+      "title": "/ km",
+      "description": "Frais par kilomètre"
+    },
+    "minimumFee": {
+      "title": "frais de déplacement minimum",
+      "description": "Indépendant de la distance"
+    },
+    "minimumSpend": {
+      "title": "dépense minimale",
+      "description": "Dépense minimale par réservation"
+    },
+    "continue": "Continuer",
+    "saving": "Enregistrement..."
+  },
+  "success": {
+    "title": "Informations de base complétées",
+    "subtitle": "Examinons maintenant vos paramètres",
+    "continue": "Continuer"
+  },
+  "serviceConfirmation": {
+    "badge": "Services ajoutés",
+    "title": "Vos services",
+    "addedToProfile": "Ajouté à votre profil",
+    "pricing": {
+      "value": "Tarification standard du secteur",
+      "label": "Tarification appliquée"
+    },
+    "addons": {
+      "value": "Services supplémentaires ajoutés",
+      "label": "Ajustez les durées et les prix plus tard"
+    },
+    "continue": "Continuer"
+  },
+  "policies": {
+    "badge": "Protection de l'entreprise",
+    "title": "Politiques et Décharges",
+    "subtitle": "Nous avons créé des politiques et des décharges complètes pour votre entreprise afin que vous n'ayez pas à partir de zéro. Vous pouvez les personnaliser selon vos besoins.",
+    "stats": {
+      "policies": {
+        "value": "10 Politiques",
+        "label": "Politiques commerciales pré-rédigées"
+      },
+      "waivers": {
+        "value": "5 Décharges",
+        "label": "Décharges de service pré-rédigées"
+      }
+    },
+    "continue": "Continuer"
+  },
   "subscriptionManagement": {
     "title": "Économisez avec le plan annuel",
     "subtitle": "Les membres Glamic Pro gagnent 5 fois plus et économisent 10 fois plus de temps en moyenne que les autres",
