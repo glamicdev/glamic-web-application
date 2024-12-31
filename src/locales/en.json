@@ -10,7 +10,26 @@
     "phoneNumber": "Phone Number",
     "emailAddress": "Email Address",
     "continue": "Continue",
-    "pleaseWait": "Please wait..."
+    "pleaseWait": "Please wait...",
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "phone": "Please enter a valid phone number"
+    },
+    "errors": {
+      "failed": "Authentication failed",
+      "general": "Something went wrong. Please try again"
+    }
+  },
+  "api": {
+    "errors": {
+      "network": "Network connection is not available",
+      "general": "Something went wrong. Please try again",
+      "unauthorized": "Your session has expired. Please log in again",
+      "forbidden": "You don't have permission to access this resource",
+      "kicked": "Your session has been terminated",
+      "client": "Invalid request. Please check your input"
+    }
   },
   "signup": {
     "businessName": {

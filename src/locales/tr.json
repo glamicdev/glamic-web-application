@@ -1,4 +1,14 @@
 {
+  "api": {
+    "errors": {
+      "network": "Ağ bağlantısı kullanılamıyor",
+      "general": "Bir hata oluştu. Lütfen tekrar deneyin",
+      "unauthorized": "Oturumunuz sona erdi. Lütfen tekrar giriş yapın",
+      "forbidden": "Bu kaynağa erişim izniniz yok",
+      "kicked": "Oturumunuz sonlandırıldı",
+      "client": "Geçersiz istek. Lütfen girişinizi kontrol edin"
+    }
+  },
   "auth": {
     "title": "Giriş yap veya Kaydol",
     "subtitle": "İşletmenizi yönetmek için hesap oluşturun veya giriş yapın",
@@ -539,10 +549,10 @@
     "websiteUrl": {
       "copyTooltip": "Bağlantıyı kopyala",
       "copied": "Kopyalandı!",
-      "instagramHint": "Instagram biyografinize bu bağlantıyı ekleyerek profilinizden direkt rezervasyon almaya başlayın"
+      "instagramHint": "Profilinizden doğrudan rezervasyon almaya başlamak için bu bağlantıyı Instagram biyografinize ekleyin"
     },
     "actions": {
-      "previewWebsite": "Web Sitesi Önizleme",
+      "previewWebsite": "Web Sitenizi Önizleyin",
       "goToAccount": "Hesaba Git",
       "accountHint": {
         "preview": "Hesap erişimini etkinleştirmek için önce web sitenizi önizleyin",

@@ -1,7 +1,7 @@
-import React from 'react';
 import { OnboardingProvider } from './context/OnboardingContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './ui/Header';
 import AuthOptions from './components/common/AuthOptions';
 import SignUpForm from './components/provider/SignUpForm';
@@ -35,94 +35,52 @@ import SubscriptionPlans from './components/provider/SubscriptionPlans';
 import SubscriptionSuccess from './components/provider/SubscriptionSuccess';
 import AppDownload from './components/common/AppDownload';
 import ContactDisplaySettings from './components/provider/ContactDisplaySettings';
-import { useOnboarding } from './context/OnboardingContext';
+import ToastMessage from './components/common/ToastMessage';
+import ToastHandler from './services/toastHandler';
+import { Provider } from 'react-redux';
+import store from './store';
 
-function OnboardingFlow() {
-  const { state, dispatch } = useOnboarding();
-
-  const renderStep = () => {
-    // Skip ServiceArea step if studio-only is selected
-    if (state.step === 8 && state.serviceLocation.type === 'studio') {
-      dispatch({ type: 'SET_STEP', payload: 9 });
-      return null;
-    }
-
-    switch (state.step) {
-      case 1:
-        return <AuthOptions />;
-      case 2:
-        return <SignUpForm />;
-      case 3:
-        return <VerificationCode />;
-      case 4:
-        return <EmailVerification />;
-      case 5:
-        return <ServicesSelection />;
-      case 6:
-        return <ServiceLocation />;
-      case 7:
-        return <AddressInput />;
-      case 8: 
-        return <ServiceArea />;
-      case 9: 
-        return <SuccessCompletion />;
-      case 10:
-        return <ServiceConfirmation />;
-      case 11:
-        return <PoliciesConfirmation />;
-      case 12:
-        return <ScheduleConfirmation />;
-      case 13:
-        return <AvailabilityConfirmation />;
-      case 14:
-        return <WebsiteSuccess />;
-      case 15:
-        return <ContactDisplaySettings />;
-      case 16:
-        return <WebsiteThemeSelection />;
-      case 17:
-        return <WebsiteSlug />;
-      case 18:
-        return <WebsiteLogo />;
-      case 19:
-        return <WebsiteCover />;
-      case 20:
-        return <WebsiteMainHeadline />;
-      case 21:
-        return <WebsiteSubheadline />;
-      case 22:
-        return <WebsitePortfolio />;
-      case 23:
-        return <WebsiteBio />;
-      case 24:
-        return <MarketplaceVerification />;
-      case 25:
-        return <WebsitePaymentsSuccess />;
-      case 26:
-        return <DepositSettings />;
-      case 27:
-        return <BalanceReminder />;
-      case 28:
-        return <CashPaymentSettings />;
-      case 29:
-        return <CreditCardPayments />;
-      case 30:
-        return <SubscriptionPlans />;
-      case 31:
-        return <SubscriptionSuccess />;
-      case 32:
-        return <AppDownload />;
-      default:
-        return <AuthOptions />;
-    }
-  };
-
+function OnboardingLayout() {
   return (
     <div className="h-[100dvh] bg-background flex flex-col overflow-hidden">
       <Header />
       <div className="flex-1 overflow-y-auto pb-safe">
-        <div className={`w-full ${state.step === 4 ? 'max-w-5xl' : 'max-w-3xl'} mx-auto px-[7.5px] sm:px-4 md:px-6 py-4 md:py-6`}>
-        {renderStep()}
+        <div className="w-full max-w-3xl mx-auto px-[7.5px] sm:px-4 md:px-6 py-4 md:py-6">
+          <Routes>
+            <Route path="/" element={<Navigate to="/auth" replace />} />
+            <Route path="/auth" element={<AuthOptions />} />
+            <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/verify" element={<VerificationCode />} />
+            <Route path="/email-verification" element={<EmailVerification />} />
+            <Route path="/services" element={<ServicesSelection />} />
+            <Route path="/location" element={<ServiceLocation />} />
+            <Route path="/address" element={<AddressInput />} />
+            <Route path="/service-area" element={<ServiceArea />} />
+            <Route path="/completion" element={<SuccessCompletion />} />
+            <Route path="/service-confirmation" element={<ServiceConfirmation />} />
+            <Route path="/policies" element={<PoliciesConfirmation />} />
+            <Route path="/schedule" element={<ScheduleConfirmation />} />
+            <Route path="/availability" element={<AvailabilityConfirmation />} />
+            <Route path="/website-success" element={<WebsiteSuccess />} />
+            <Route path="/contact-display" element={<ContactDisplaySettings />} />
+            <Route path="/theme" element={<WebsiteThemeSelection />} />
+            <Route path="/slug" element={<WebsiteSlug />} />
+            <Route path="/logo" element={<WebsiteLogo />} />
+            <Route path="/cover" element={<WebsiteCover />} />
+            <Route path="/headline" element={<WebsiteMainHeadline />} />
+            <Route path="/subheadline" element={<WebsiteSubheadline />} />
+            <Route path="/portfolio" element={<WebsitePortfolio />} />
+            <Route path="/bio" element={<WebsiteBio />} />
+            <Route path="/marketplace" element={<MarketplaceVerification />} />
+            <Route path="/payments-success" element={<WebsitePaymentsSuccess />} />
+            <Route path="/deposit" element={<DepositSettings />} />
+            <Route path="/balance" element={<BalanceReminder />} />
+            <Route path="/cash-payments" element={<CashPaymentSettings />} />
+            <Route path="/credit-card" element={<CreditCardPayments />} />
+            <Route path="/subscription" element={<SubscriptionPlans />} />
+            <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+            <Route path="/app-download" element={<AppDownload />} />
+          </Routes>
         </div>
       </div>
     </div>
@@ -131,13 +89,20 @@ function OnboardingFlow() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <OnboardingProvider>
-          <OnboardingFlow />
-        </OnboardingProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider>
+          <LanguageProvider>
+            <OnboardingProvider>
+              <Routes>
+                <Route path="/*" element={<OnboardingLayout />} />
+              </Routes>
+              <ToastMessage ref={ToastHandler.setToastRef} />
+            </OnboardingProvider>
+          </LanguageProvider>
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
   );
 }
 

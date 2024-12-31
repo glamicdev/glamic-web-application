@@ -1,8 +1,7 @@
-import React from 'react';
 import { Home, Calendar, Tag, Users, Book, Bell, BarChart, Settings } from 'lucide-react';
 
 const menuItems = [
-  { icon: Home, label: 'Home' },
+  { icon: Home, label: 'Home' ,page:'home'},
   { icon: Calendar, label: 'Calendar', active: true },
   { icon: Tag, label: 'Services' },
   { icon: Users, label: 'Clients' },

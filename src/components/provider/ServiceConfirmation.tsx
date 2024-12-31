@@ -1,6 +1,7 @@
 import React from 'react';
 import { Service } from '../../types/onboarding'; // Import the Service type
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
@@ -33,8 +34,9 @@ function StatCard({ icon, value, label }: StatCardProps) {
 }
 
 export default function ServiceConfirmation() {
-  const { state, dispatch } = useOnboarding();
+  const { state } = useOnboarding();
   const { translations } = useLanguage();
+  const navigate = useNavigate();
   const selectedServices: Service[] = state.services.filter((s: Service) => s.selected);
 
   const getServicesDisplay = () => {
@@ -48,7 +50,7 @@ export default function ServiceConfirmation() {
   };
 
   const handleAccept = () => {
-    dispatch({ type: 'SET_STEP', payload: 11 });
+    navigate('/policies');
   };
 
   return (

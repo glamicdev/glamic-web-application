@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading, Text } from '../../ui/Typography';
 import { fadeIn, staggerChildren } from '../../ui/animations';
@@ -8,6 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export default function VerificationCode() {
   const { state, dispatch } = useOnboarding();
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState(59);
   const [code, setCode] = useState(["", "", "", ""]);
   const firstInputRef = useRef<HTMLInputElement>(null);
@@ -56,10 +58,10 @@ export default function VerificationCode() {
           // If social login, skip email verification
           if (state.userData.authMethod === "social") {
             console.log("Social login detected - skipping email verification");
-            dispatch({ type: "SET_STEP", payload: 5 }); // Go to services
+            navigate('/services');
           } else {
             console.log("Standard auth flow - proceeding to email verification");
-            dispatch({ type: "SET_STEP", payload: 4 }); // Go to email verification
+            navigate('/email-verification');
           }
         } catch (error) {
           console.error('Verification error:', error);

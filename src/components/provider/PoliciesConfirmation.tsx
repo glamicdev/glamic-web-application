@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useOnboarding } from '../../context/OnboardingContext';
+import { useNavigate } from 'react-router-dom';
 import { Heading, Text } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
-import { Shield, FileCheck, AlertCircle, FileWarning, ScrollText } from 'lucide-react';
+import { Shield, FileCheck, ScrollText } from 'lucide-react';
 import { fadeIn, staggerChildren } from '../../ui/animations';
 import { useLanguage } from '../../context/LanguageContext';
 import { Layout } from '../../ui/Layout';
@@ -32,11 +32,11 @@ function StatCard({ icon, value, label }: StatCardProps) {
 }
 
 export default function PoliciesConfirmation() {
-  const { dispatch } = useOnboarding();
   const { translations } = useLanguage();
+  const navigate = useNavigate();
 
   const handleAccept = () => {
-    dispatch({ type: 'SET_STEP', payload: 12 });
+    navigate('/schedule');
   };
 
   return (

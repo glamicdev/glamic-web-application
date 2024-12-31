@@ -1,4 +1,14 @@
 {
+  "api": {
+    "errors": {
+      "network": "La connexion réseau n'est pas disponible",
+      "general": "Une erreur s'est produite. Veuillez réessayer",
+      "unauthorized": "Votre session a expiré. Veuillez vous reconnecter",
+      "forbidden": "Vous n'avez pas la permission d'accéder à cette ressource",
+      "kicked": "Votre session a été terminée",
+      "client": "Requête invalide. Veuillez vérifier vos entrées"
+    }
+  },
   "auth": {
     "title": "Connexion ou Inscription",
     "subtitle": "Créez un compte ou connectez-vous pour gérer votre entreprise",

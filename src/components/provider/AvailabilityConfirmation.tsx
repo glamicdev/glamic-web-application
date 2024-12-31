@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
@@ -68,6 +69,7 @@ function StatCard({ icon, value, label, onClick, isButton, children }: StatCardP
 export default function AvailabilityConfirmation() {
   const { state, dispatch } = useOnboarding();
   const { translations } = useLanguage();
+  const navigate = useNavigate();
   const t = {
     badge: translations.availability?.badge ?? 'Availability',
     title: translations.availability?.title ?? 'Set Your Availability',
@@ -122,7 +124,7 @@ export default function AvailabilityConfirmation() {
       }
     });
 
-    dispatch({ type: 'SET_STEP', payload: 14 });
+    navigate('/website-success');
   };
 
   return (

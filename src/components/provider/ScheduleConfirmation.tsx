@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading, Text } from '../../ui/Typography';
 import { Button, Switch } from '../../ui/Button'; 
@@ -216,6 +217,7 @@ function DayCard({ day, onUpdate, canCopyTo, onCopyTo }: DayCardProps) {
 export default function ScheduleConfirmation() {
   const { state, dispatch } = useOnboarding();
   const { translations } = useLanguage();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [scheduleSettings, setScheduleSettings] = useState<ScheduleSettings>({
@@ -335,7 +337,7 @@ export default function ScheduleConfirmation() {
       });
 
       // Navigate to next step
-      dispatch({ type: 'SET_STEP', payload: 13 });
+      navigate('/availability');
     } catch (err) {
       console.error('Error saving schedule:', err);
       setError('Failed to save schedule. Please try again.');

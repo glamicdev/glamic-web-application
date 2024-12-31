@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading, Text } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
@@ -49,6 +50,7 @@ function LocationOption({ icon, title, description, selected, onClick }: Locatio
 
 export default function ServiceLocation() {
   const { state, dispatch } = useOnboarding();
+  const navigate = useNavigate();
   const { translations } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -90,7 +92,7 @@ export default function ServiceLocation() {
         });
 
         console.log('API Response:', response);
-        dispatch({ type: 'SET_STEP', payload: 7 });
+        navigate('/address');
       } catch (err) {
         console.error('Error saving service location:', err);
         setError('Something went wrong. Please try again.');
@@ -103,26 +105,26 @@ export default function ServiceLocation() {
   return (
     <Layout maxWidth="lg">
       <Heading className="text-center mb-4 dark:text-white">
-        {translations.location.title}
+        {translations.location?.title ?? 'Where do you provide your services?'}
       </Heading>
 
       <Text className="text-center mb-8 max-w-xl mx-auto dark:text-gray-300">
-        {translations.location.subtitle}
+        {translations.location?.subtitle ?? 'Select the locations where you offer your services'}
       </Text>
       
       <motion.div {...staggerChildren} className="grid gap-4 mb-12">
         <LocationOption
           icon={<MapPin className="w-6 h-6" />}
-          title={translations.location.mobile.title}
-          description={translations.location.mobile.description}
+          title={translations.location?.mobile?.title ?? 'Mobile Services'}
+          description={translations.location?.mobile?.description ?? 'Travel to your clients'}
           selected={['mobile', 'both'].includes(state.serviceLocation.type)}
           onClick={() => setLocationType('mobile')}
         />
         
         <LocationOption
           icon={<Home className="w-6 h-6" />}
-          title={translations.location.studio.title}
-          description={translations.location.studio.description}
+          title={translations.location?.studio?.title ?? 'Studio Services'}
+          description={translations.location?.studio?.description ?? 'Clients come to you'}
           selected={['studio', 'both'].includes(state.serviceLocation.type)}
           onClick={() => setLocationType('studio')}
         />
@@ -142,10 +144,10 @@ export default function ServiceLocation() {
           {loading ? (
             <span className="flex items-center gap-2">
               <Loader className="w-4 h-4 animate-spin" />
-              {translations.location.saving}
+              {translations.location?.saving ?? 'Saving...'}
             </span>
           ) : (
-            translations.location.continue
+            translations.location?.continue ?? 'Continue'
           )}
         </Button>
         

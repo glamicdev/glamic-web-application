@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useOnboarding } from '../../context/OnboardingContext';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../ui/Button';
 import { PhoneInput } from '../../ui/PhoneInput';
 import { Heading, Text } from '../../ui/Typography';
@@ -129,6 +130,8 @@ export default function SignUpForm() {
     return true;
   };
 
+  const navigate = useNavigate();
+  
   const handleNext = async () => {
     if (!validateCurrentQuestion()) return;
 
@@ -158,8 +161,8 @@ export default function SignUpForm() {
           });
         }
 
-        // Move to verification step
-        dispatch({ type: "SET_STEP", payload: 3 });
+        // Navigate to verification page
+        navigate('/verify');
       } catch (err) {
         console.error("Error saving user data:", err);
         setError("Something went wrong. Please try again.");

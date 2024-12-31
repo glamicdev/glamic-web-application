@@ -1,4 +1,14 @@
 {
+  "api": {
+    "errors": {
+      "network": "La conexión de red no está disponible",
+      "general": "Algo salió mal. Por favor, inténtalo de nuevo",
+      "unauthorized": "Tu sesión ha expirado. Por favor, inicia sesión de nuevo",
+      "forbidden": "No tienes permiso para acceder a este recurso",
+      "kicked": "Tu sesión ha sido terminada",
+      "client": "Solicitud inválida. Por favor, verifica tu entrada"
+    }
+  },
   "auth": {
     "title": "Iniciar Sesión o Registrarse",
     "subtitle": "Crea una cuenta o inicia sesión para gestionar tu negocio",

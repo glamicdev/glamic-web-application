@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { fadeIn, staggerChildren } from '../../ui/animations';
 import { Layout } from '../../ui/Layout';
@@ -7,6 +8,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export default function EmailVerification() {
   const { state, dispatch } = useOnboarding();
+  const navigate = useNavigate();
   const { translations } = useLanguage();
   const [timeLeft, setTimeLeft] = useState(59);
   const [code, setCode] = useState(['', '', '', '']);
@@ -51,7 +53,7 @@ export default function EmailVerification() {
           await new Promise(resolve => setTimeout(resolve, 1000));
           
           // Only proceed if verification is successful
-          dispatch({ type: "SET_STEP", payload: 5 }); // Move to services selection
+          navigate('/services');
         } catch (error) {
           console.error('Verification error:', error);
           dispatch({ 
