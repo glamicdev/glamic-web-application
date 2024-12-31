@@ -123,7 +123,6 @@ export async function handleResponse(
 ): Promise<void> {
   let response: ApiResponse = { status: responseApi.status };
 
-  console.log('aksdfnlaksdjflakdjfklafj',responseApi)
   try {
     response.data = await responseApi.json();
     console.log('API Response:', response, endPoint);
