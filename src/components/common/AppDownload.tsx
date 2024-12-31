@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Heading, Text } from '../../ui/Typography';
@@ -9,11 +10,11 @@ import { fadeIn, staggerChildren } from '../../ui/animations';
 import { Layout } from '../../ui/Layout';
 
 export default function AppDownload() {
+  const navigate = useNavigate();
   const { translations } = useLanguage();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const qrCodeUrl = 'https://groomee-storage.s3.us-east-2.amazonaws.com/glamic-qr-code-website-download.png';
   const onelinkUrl = 'https://onelink.to/glamic_website';
-  const manageSubscriptionUrl = '#'; // Replace with actual subscription management URL
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,7 +30,7 @@ export default function AppDownload() {
   };
 
   const handleManageSubscription = () => {
-    window.location.href = manageSubscriptionUrl;
+    navigate('/subscription');
   };
 
   return (
