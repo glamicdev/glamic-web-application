@@ -13,19 +13,15 @@ const LoadingScreen = () => {
   const steps = [
     {
       message: translations.loading?.settingUpStore ?? 'Creating your beauty business profile',
-      animation: '💅',
     },
     {
       message: translations.loading?.settingUpShelves ?? 'Customizing your service menu',
-      animation: '✨',
     },
     {
       message: translations.loading?.cleaningUp ?? 'Polishing the final details',
-      animation: '✨',
     },
     {
       message: translations.loading?.settingUpSystems ?? 'Setting up your booking system and website',
-      animation: '🌟',
     },
   ];
 
@@ -36,17 +32,16 @@ const LoadingScreen = () => {
         setCurrentStep((prev) => {
           if (prev === steps.length - 1) {
             clearInterval(interval);
-            // Move to next step in onboarding flow after 20 seconds
             setTimeout(() => {
               dispatch({ type: 'SET_STEP', payload: 11 });
-            }, 5000); // Last message shows for 5 seconds
+            }, 5000);
             return prev;
           }
           return prev + 1;
         });
         setIsTransitioning(false);
-      }, 300); // Wait for fade out before changing step
-    }, 5000); // Change message every 5 seconds
+      }, 300);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [dispatch, steps.length]);
@@ -54,16 +49,40 @@ const LoadingScreen = () => {
   return (
     <div className={`flex flex-col items-center justify-center min-h-[60vh] ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
       <div className="text-center space-y-12 relative">
-        <div 
-          className={`
-            text-6xl 
-            animate-float
-            transition-all duration-300 ease-in-out
-            ${isTransitioning ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}
-          `}
-        >
-          {steps[currentStep].animation}
+        {/* Modern Loading Animation */}
+        <div className="relative w-24 h-24 mx-auto">
+          {/* Spinning ring */}
+          <div 
+            className={`
+              absolute inset-0 border-4 rounded-full animate-spin
+              ${theme === 'dark' 
+                ? 'border-primary-gold border-t-transparent' 
+                : 'border-primary-navy border-t-transparent'
+              }
+            `}
+          />
+          {/* Ripple effect */}
+          <div 
+            className={`
+              absolute inset-0 border-2 rounded-full animate-ripple
+              ${theme === 'dark' 
+                ? 'border-primary-gold/30' 
+                : 'border-primary-navy/30'
+              }
+            `}
+          />
+          {/* Inner pulse */}
+          <div 
+            className={`
+              absolute inset-4 rounded-full animate-pulse
+              ${theme === 'dark' 
+                ? 'bg-primary-gold/20' 
+                : 'bg-primary-navy/20'
+              }
+            `}
+          />
         </div>
+
         <h2 
           className={`
             text-2xl font-semibold
