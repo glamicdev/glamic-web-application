@@ -303,5 +303,12 @@
       "message": "Your subscription has been upgraded to the annual plan.\nYou will receive an email confirmation.\nYour new billing date will be {date}",
       "closeButton": "Close"
     }
+  },
+  "loading": {
+    "settingUpStore": "Creating your beauty business profile",
+    "settingUpShelves": "Customizing your service menu",
+    "cleaningUp": "Polishing the final details",
+    "settingUpSystems": "Setting up your booking system and website",
+    "almostReady": "Your glamorous business space is almost ready!"
   }
 }

@@ -35,6 +35,7 @@ import SubscriptionPlans from './components/provider/SubscriptionPlans';
 import SubscriptionSuccess from './components/provider/SubscriptionSuccess';
 import AppDownload from './components/common/AppDownload';
 import ContactDisplaySettings from './components/provider/ContactDisplaySettings';
+import LoadingScreen from './components/provider/LoadingScreen';
 import ToastMessage from './components/common/ToastMessage';
 import ToastHandler from './services/toastHandler';
 import { Provider } from 'react-redux';
@@ -57,6 +58,7 @@ function OnboardingLayout() {
             <Route path="/address" element={<AddressInput />} />
             <Route path="/service-area" element={<ServiceArea />} />
             <Route path="/completion" element={<SuccessCompletion />} />
+            <Route path="/loading" element={<LoadingScreen />} />
             <Route path="/service-confirmation" element={<ServiceConfirmation />} />
             <Route path="/policies" element={<PoliciesConfirmation />} />
             <Route path="/schedule" element={<ScheduleConfirmation />} />

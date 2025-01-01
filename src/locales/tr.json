@@ -194,5 +194,12 @@
         "ready": "Takviminize erişin ve işletmenizi yönetin"
       }
     }
+  },
+  "loading": {
+    "settingUpStore": "Güzellik işletme profiliniz oluşturuluyor",
+    "settingUpShelves": "Hizmet menünüz özelleştiriliyor",
+    "cleaningUp": "Son detaylar düzenleniyor",
+    "settingUpSystems": "Rezervasyon sisteminiz ve web siteniz ayarlanıyor",
+    "almostReady": "Göz alıcı işletme alanınız neredeyse hazır!"
   }
 }

@@ -294,5 +294,12 @@
       "message": "Votre abonnement a été mis à niveau vers le plan annuel.\nVous recevrez une confirmation par email.\nVotre nouvelle date de facturation sera le {date}",
       "closeButton": "Fermer"
     }
+  },
+  "loading": {
+    "settingUpStore": "Création de votre profil beauté",
+    "settingUpShelves": "Personnalisation de votre menu de services",
+    "cleaningUp": "Peaufinage des derniers détails",
+    "settingUpSystems": "Configuration de votre système de réservation et site web",
+    "almostReady": "Votre espace beauté éblouissant est presque prêt !"
   }
 }

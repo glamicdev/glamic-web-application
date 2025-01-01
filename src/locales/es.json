@@ -294,5 +294,12 @@
       "message": "Su suscripción ha sido actualizada al plan anual.\nRecibirá una confirmación por correo electrónico.\nSu nueva fecha de facturación será el {date}",
       "closeButton": "Cerrar"
     }
+  },
+  "loading": {
+    "settingUpStore": "Creando tu perfil de negocio de belleza",
+    "settingUpShelves": "Personalizando tu menú de servicios",
+    "cleaningUp": "Puliendo los últimos detalles",
+    "settingUpSystems": "Configurando tu sistema de reservas y sitio web",
+    "almostReady": "¡Tu espacio de belleza deslumbrante está casi listo!"
   }
 }

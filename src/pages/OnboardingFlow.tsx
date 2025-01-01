@@ -32,6 +32,7 @@ import SubscriptionPlans from '../components/provider/SubscriptionPlans';
 import SubscriptionSuccess from '../components/provider/SubscriptionSuccess';
 import AppDownload from '../components/common/AppDownload';
 import ContactDisplaySettings from '../components/provider/ContactDisplaySettings';
+import LoadingScreen from '../components/provider/LoadingScreen';
 import { useOnboarding } from '../context/OnboardingContext';
 
 export default function OnboardingFlow() {
@@ -61,53 +62,55 @@ export default function OnboardingFlow() {
         return <AddressInput />;
       case 8: 
         return <ServiceArea />;
-      case 9: 
+      case 9:
         return <SuccessCompletion />;
       case 10:
-        return <ServiceConfirmation />;
+        return <LoadingScreen />;
       case 11:
-        return <PoliciesConfirmation />;
+        return <ServiceConfirmation />;
       case 12:
-        return <ScheduleConfirmation />;
+        return <PoliciesConfirmation />;
       case 13:
-        return <AvailabilityConfirmation />;
+        return <ScheduleConfirmation />;
       case 14:
-        return <WebsiteSuccess />;
+        return <AvailabilityConfirmation />;
       case 15:
-        return <ContactDisplaySettings />;
+        return <WebsiteSuccess />;
       case 16:
-        return <WebsiteThemeSelection />;
+        return <ContactDisplaySettings />;
       case 17:
-        return <WebsiteSlug />;
+        return <WebsiteThemeSelection />;
       case 18:
-        return <WebsiteLogo />;
+        return <WebsiteSlug />;
       case 19:
-        return <WebsiteCover />;
+        return <WebsiteLogo />;
       case 20:
-        return <WebsiteMainHeadline />;
+        return <WebsiteCover />;
       case 21:
-        return <WebsiteSubheadline />;
+        return <WebsiteMainHeadline />;
       case 22:
-        return <WebsitePortfolio />;
+        return <WebsiteSubheadline />;
       case 23:
-        return <WebsiteBio />;
+        return <WebsitePortfolio />;
       case 24:
-        return <MarketplaceVerification />;
+        return <WebsiteBio />;
       case 25:
-        return <WebsitePaymentsSuccess />;
+        return <MarketplaceVerification />;
       case 26:
-        return <DepositSettings />;
+        return <WebsitePaymentsSuccess />;
       case 27:
-        return <BalanceReminder />;
+        return <DepositSettings />;
       case 28:
-        return <CashPaymentSettings />;
+        return <BalanceReminder />;
       case 29:
-        return <CreditCardPayments />;
+        return <CashPaymentSettings />;
       case 30:
-        return <SubscriptionPlans />;
+        return <CreditCardPayments />;
       case 31:
-        return <SubscriptionSuccess />;
+        return <SubscriptionPlans />;
       case 32:
+        return <SubscriptionSuccess />;
+      case 33:
         return <AppDownload />;
       default:
         return <AuthOptions />;

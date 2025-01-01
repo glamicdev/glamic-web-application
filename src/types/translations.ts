@@ -123,9 +123,18 @@ export interface SubscriptionSwitchTranslations {
   };
 }
 
+export interface LoadingTranslations {
+  settingUpStore: string;
+  settingUpShelves: string;
+  cleaningUp: string;
+  settingUpSystems: string;
+  almostReady: string;
+}
+
 export interface Translations {
   subscriptionManagement: SubscriptionManagementTranslations;
   subscriptionCancel: SubscriptionCancelTranslations;
   subscriptionSwitch: SubscriptionSwitchTranslations;
+  loading: LoadingTranslations;
   [key: string]: any;
 }
