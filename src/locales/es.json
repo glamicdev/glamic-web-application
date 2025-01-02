@@ -1,4 +1,31 @@
 {
+  "dashboard": {
+    "header": {
+      "today": "Hoy",
+      "scheduledTeam": "Equipo programado",
+      "addButton": "Agregar",
+      "calendar": "Calendario",
+      "settings": "Configuración",
+      "theme": "Cambiar tema"
+    },
+    "sidebar": {
+      "home": "Inicio",
+      "calendar": "Calendario",
+      "services": "Servicios",
+      "clients": "Clientes",
+      "bookings": "Reservas",
+      "notifications": "Notificaciones",
+      "analytics": "Análisis",
+      "settings": "Configuración"
+    },
+    "calendar": {
+      "day": "Día",
+      "week": "Semana",
+      "month": "Mes",
+      "noAppointments": "No hay citas programadas",
+      "currentTime": "Hora actual"
+    }
+  },
   "api": {
     "errors": {
       "network": "La conexión de red no está disponible",

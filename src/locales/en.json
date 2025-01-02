@@ -1,4 +1,31 @@
 {
+  "dashboard": {
+    "header": {
+      "today": "Today",
+      "scheduledTeam": "Scheduled team",
+      "addButton": "Add",
+      "calendar": "Calendar",
+      "settings": "Settings",
+      "theme": "Toggle theme"
+    },
+    "sidebar": {
+      "home": "Home",
+      "calendar": "Calendar",
+      "services": "Services",
+      "clients": "Clients",
+      "bookings": "Bookings",
+      "notifications": "Notifications",
+      "analytics": "Analytics",
+      "settings": "Settings"
+    },
+    "calendar": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "noAppointments": "No appointments scheduled",
+      "currentTime": "Current time"
+    }
+  },
   "auth": {
     "title": "Log In or Sign Up",
     "subtitle": "Create an account or log in to manage your business",

@@ -1,4 +1,31 @@
 {
+  "dashboard": {
+    "header": {
+      "today": "Bugün",
+      "scheduledTeam": "Planlanan ekip",
+      "addButton": "Ekle",
+      "calendar": "Takvim",
+      "settings": "Ayarlar",
+      "theme": "Tema değiştir"
+    },
+    "sidebar": {
+      "home": "Ana Sayfa",
+      "calendar": "Takvim",
+      "services": "Hizmetler",
+      "clients": "Müşteriler",
+      "bookings": "Rezervasyonlar",
+      "notifications": "Bildirimler",
+      "analytics": "Analitik",
+      "settings": "Ayarlar"
+    },
+    "calendar": {
+      "day": "Gün",
+      "week": "Hafta",
+      "month": "Ay",
+      "noAppointments": "Planlanmış randevu yok",
+      "currentTime": "Şu an"
+    }
+  },
   "api": {
     "errors": {
       "network": "Ağ bağlantısı kullanılamıyor",

@@ -1,4 +1,31 @@
 {
+  "dashboard": {
+    "header": {
+      "today": "Сегодня",
+      "scheduledTeam": "Запланированная команда",
+      "addButton": "Добавить",
+      "calendar": "Календарь",
+      "settings": "Настройки",
+      "theme": "Сменить тему"
+    },
+    "sidebar": {
+      "home": "Главная",
+      "calendar": "Календарь",
+      "services": "Услуги",
+      "clients": "Клиенты",
+      "bookings": "Бронирования",
+      "notifications": "Уведомления",
+      "analytics": "Аналитика",
+      "settings": "Настройки"
+    },
+    "calendar": {
+      "day": "День",
+      "week": "Неделя",
+      "month": "Месяц",
+      "noAppointments": "Нет запланированных встреч",
+      "currentTime": "Текущее время"
+    }
+  },
   "api": {
     "errors": {
       "network": "Отсутствует подключение к сети",
