@@ -74,7 +74,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
           </h3>
           <button 
             onClick={() => onMemberSelect([])}
-            className="text-sm text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+            className="text-sm text-[#0F172A] hover:text-[#0F172A]/80 dark:text-primary-gold dark:hover:text-primary-gold/80"
           >
             Clear all
           </button>
@@ -89,7 +89,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
                 onClick={() => handleMemberToggle(member)}
                 className={`w-full flex items-center gap-3 px-4 py-3 text-sm md:text-base rounded-lg
                   ${isSelected
-                    ? 'bg-purple-50 dark:bg-purple-900/20'
+                    ? 'bg-[#0F172A] dark:bg-primary-gold text-white'
                     : 'hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
               >
@@ -100,7 +100,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
                     className="w-8 h-8 rounded-full"
                   />
                 ) : (
-                  <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center font-medium">
+                  <div className="w-8 h-8 rounded-full bg-[#0F172A] dark:bg-primary-gold text-white flex items-center justify-center font-medium">
                     {member.initials}
                   </div>
                 )}
@@ -109,7 +109,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
                   {member.isCurrentUser && ' (You)'}
                 </span>
                 {isSelected && (
-                  <div className="w-5 h-5 rounded bg-purple-600 dark:bg-purple-500 flex items-center justify-center">
+                  <div className="w-5 h-5 rounded bg-[#0F172A] dark:bg-primary-gold flex items-center justify-center">
                     <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -145,12 +145,12 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
               className="w-8 h-8 rounded-full"
             />
           ) : (
-            <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center font-medium">
+            <div className="w-8 h-8 rounded-full bg-[#0F172A] dark:bg-primary-gold text-white flex items-center justify-center font-medium">
               {selectedMembers[0].initials}
             </div>
           )
         ) : (
-          <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-[#0F172A] dark:bg-primary-gold text-white flex items-center justify-center">
             <Users className="w-5 h-5" />
           </div>
         )}

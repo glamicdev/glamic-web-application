@@ -152,7 +152,7 @@ export function Header({ teamMembers, selectedTeamMembers, onTeamMemberSelect }:
           />
 
           {/* Add Button */}
-          <button className="flex items-center gap-2 px-4 py-2 md:bg-[#0F172A] md:dark:bg-primary-gold text-[#0F172A] md:text-white dark:text-primary-gold md:dark:text-white rounded-lg hover:bg-gray-100 md:hover:bg-[#1E293B] dark:hover:bg-gray-700 md:dark:hover:bg-primary-gold/90">
+          <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#0F172A] dark:text-white border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <Plus className="w-4 h-4" />
             <span className="hidden md:inline text-sm font-medium">
               {t?.addButton || 'Add'}
