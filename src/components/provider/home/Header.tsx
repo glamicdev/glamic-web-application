@@ -49,11 +49,36 @@ export function Header({
     }
   ];
 
-  const formattedDate = selectedDate.toLocaleDateString('en-US', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short'
-  });
+  const getFormattedDate = () => {
+    if (selectedView === 'month') {
+      return selectedDate.toLocaleDateString('en-US', {
+        month: 'long',
+        year: 'numeric'
+      });
+    } else if (selectedView === 'week') {
+      const startOfWeek = new Date(selectedDate);
+      startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay());
+      const endOfWeek = new Date(startOfWeek);
+      endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+      const startMonth = startOfWeek.toLocaleDateString('en-US', { month: 'short' });
+      const endMonth = endOfWeek.toLocaleDateString('en-US', { month: 'short' });
+      const startDay = startOfWeek.getDate();
+      const endDay = endOfWeek.getDate();
+
+      return startMonth === endMonth
+        ? `${startMonth} ${startDay} - ${endDay}`
+        : `${startMonth} ${startDay} - ${endMonth} ${endDay}`;
+    } else {
+      return selectedDate.toLocaleDateString('en-US', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short'
+      });
+    }
+  };
+
+  const formattedDate = getFormattedDate();
 
   const handlePrevDay = () => {
     const newDate = new Date(selectedDate);
