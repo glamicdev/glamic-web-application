@@ -3,6 +3,7 @@ import {
   VERIFY_CODE,
   LOG_ME_IN,
   SIGN_ME_UP,
+  STORE_USER,
   CheckUserPayload,
   VerifyCodePayload,
   LoginPayload,
@@ -32,15 +33,15 @@ export function checkUserExists({
 
 export function verifyCode({
   payload,
-  verificationForSignup
+  callback
 }: {
   payload: VerifyCodePayload;
-  verificationForSignup?: boolean;
+  callback?: ActionCallback;
 }): VerifyCodeAction {
   return {
     type: VERIFY_CODE,
     payload,
-    verificationForSignup
+    callback
   }
 }
 
@@ -65,6 +66,17 @@ export function successLogMeIn({
 }): LoginSuccessAction {
   return {
     type: LOG_ME_IN.SUCCESS,
+    payload
+  }
+}
+
+export function storeUser({
+  payload
+}: {
+  payload: User;
+}): LoginSuccessAction {
+  return {
+    type: STORE_USER,
     payload
   }
 }

@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useOnboarding } from '../../context/OnboardingContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../../ui/Button';
 import { PhoneInput } from '../../ui/PhoneInput';
 import { Heading, Text } from '../../ui/Typography';
-import { fadeIn, staggerChildren } from '../../ui/animations';
 import { validateEmail } from '../../utils/validation';
 import { Layout } from '../../ui/Layout';
-import { useLanguage } from '../../context/LanguageContext';
 import { Input } from '../../ui/Input';
+import { useDispatch } from 'react-redux';
+import { signMeUp } from '../../ducks/auth/actions';
 
 interface FormData {
-  businessName: string;
-  firstName: string;
-  lastName: string;
+  business_name: string;
+  full_name: string;
+  last_name: string;
   email: string;
   instagram: string;
-  phone: string;
+  mobile_number: string;
+  timezone: string;
 }
 
 interface Question {
@@ -31,24 +32,30 @@ interface Question {
 }
 
 export default function SignUpForm() {
-  const { state, dispatch } = useOnboarding();
+  const { state } = useOnboarding();
+  const [searchParams] = useSearchParams();
+  const method = searchParams.get('method') as 'phone' | 'email' | 'social';
+
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const [formData, setFormData] = useState<FormData>({
-    businessName: state.userData.businessName || "",
-    firstName: state.userData.firstName || "",
-    lastName: state.userData.lastName || "",
+    business_name: state.userData.business_name || "",
+    full_name: state.userData.full_name || "",
+    last_name: state.userData.last_name || "",
     email: state.userData.email || "",
     instagram: state.userData.instagram || "",
-    phone: state.userData.phone || ""
+    mobile_number: state.userData.phone || "",
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
   });
 
+  const reduxDispatch = useDispatch()
   const questions: Question[] = [
     // Show phone input first for social login users and email login users who don't have phone
-    ...((state.userData.authMethod === 'social' || state.userData.authMethod === 'email') && !state.userData.phone ? [{
+    ...((method === 'social' || method === 'email') && !state.userData.phone ? [{
       id: "phone",
-      field: "phone" as keyof FormData,
+      field: "mobile_number" as keyof FormData,
       label: "What's your phone number?",
       placeholder: "Enter your phone number",
       type: "tel",
@@ -56,22 +63,22 @@ export default function SignUpForm() {
     }] : []),
     {
       id: "businessName",
-      field: "businessName" as keyof FormData,
+      field: "business_name" as keyof FormData,
       label: "What's your business name?",
       placeholder: "Enter business name (optional)",
       type: "text",
     },
     {
-      id: "firstName",
-      field: "firstName" as keyof FormData,
+      id: "full_name",
+      field: "full_name" as keyof FormData,
       label: "What's your first name?",
       placeholder: "Enter your first name",
       type: "text",
       required: true,
     },
     {
-      id: "lastName",
-      field: "lastName" as keyof FormData,
+      id: "last_name",
+      field: "last_name" as keyof FormData,
       label: "What's your last name?",
       placeholder: "Enter your last name",
       type: "text",
@@ -133,36 +140,33 @@ export default function SignUpForm() {
   const navigate = useNavigate();
   
   const handleNext = async () => {
-    if (!validateCurrentQuestion()) return;
 
-    if (currentQuestionIndex < questions.length - 1) {
+    if (!validateCurrentQuestion()) return;
+    if (currentQuestionIndex < questions.length - 1) {;
+
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
       setLoading(true);
       try {
-        // For social login users who just entered phone
-        if (state.userData.authMethod === 'social' && currentQuestion.field === 'phone') {
-          // Only update the phone number
-          dispatch({
-            type: "SET_USER_DATA",
-            payload: { 
-              ...state.userData,
-              phone: formData.phone 
-            }
-          });
-        } else {
-          // For non-social users, update all form data
-          dispatch({
-            type: "SET_USER_DATA",
-            payload: {
-              ...state.userData,
-              ...formData
-            }
-          });
-        }
 
-        // Navigate to verification page
-        navigate('/verify');
+        const verify_phone = method === 'phone';
+        const verify_email = method === 'email';
+
+        reduxDispatch(signMeUp({
+          payload:{
+            verify_phone,
+            verify_email,
+            user_type:'provider',
+            ...formData
+          },
+          callback:()=>{
+            if(method !== 'social'){
+              navigate(`/verify?method=${method}`);
+            }else{
+              navigate('/services')
+            }
+          }
+        }))
       } catch (err) {
         console.error("Error saving user data:", err);
         setError("Something went wrong. Please try again.");
@@ -189,7 +193,7 @@ export default function SignUpForm() {
       >
         <div className="text-center space-y-4">
           <Heading>{currentQuestion.label}</Heading>
-          {currentQuestion.field === "businessName" && (
+          {currentQuestion.field === "business_name" && (
             <Text className="text-gray-500 dark:text-gray-400">
               You can add this later if you're not sure yet
             </Text>

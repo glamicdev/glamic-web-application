@@ -15,6 +15,7 @@ import { showErrorToast } from '../../services/toastHandler';
 import { checkUserExists } from '../../ducks/auth/actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Util from '../../utils/Util';
 
 export default function AuthOptions() {
   const dispatch = useDispatch()
@@ -61,11 +62,16 @@ export default function AuthOptions() {
           verify_email : authMethod === 'email',
           verify_phone: authMethod === 'phone',
           verify_social_login: authMethod === 'social',
-        }}));
-
-        navigate('/verify');
-
-      
+        },
+        callback:(data:any)=>{
+          if(Util.isEmpty(data)){
+            navigate(`/signup?method=${authMethod}`);
+          }else{
+            navigate('/verify')
+          }
+        }
+       }
+      ));
   };
 
   const handleSocialAuth = async (provider: 'google' | 'apple') => {

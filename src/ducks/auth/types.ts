@@ -4,6 +4,7 @@ export const CHECK_USER_EXISTS = 'CHECK_USER_EXISTS'
 export const VERIFY_CODE = 'VERIFY_CODE'
 export const LOG_ME_IN = createRequestTypes('LOG_ME_IN')
 export const SIGN_ME_UP = createRequestTypes('SIGN_ME_UP')
+export const STORE_USER = 'STORE_USER'
 
 // User interfaces
 export interface User {
@@ -26,8 +27,8 @@ export interface CheckUserPayload {
 
 export interface VerifyCodePayload {
   email?: string;
-  phone?: string;
-  code: string;
+  mobile_number?: string;
+  verification_code: string;
 }
 
 export interface LoginPayload {
@@ -39,14 +40,18 @@ export interface LoginPayload {
 
 export interface SignupPayload {
   email?: string;
-  phone?: string;
-  password?: string;
-  verify_social_login?: boolean;
+  mobile_number?: string;
+  verify_email?: boolean;
+  verify_phone?: boolean;
+  full_name:string;
+  last_name:string,
+  timezone:string,
+  user_type:'provider'
 }
 
 // Action interfaces
 export interface ActionCallback<T = any> {
-  (data: T): void;
+  (data?: T): void;
 }
 
 import { Action } from 'redux';

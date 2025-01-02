@@ -4,10 +4,10 @@ import type { OnboardingState, OnboardingAction } from '../types/onboarding';
 const initialState: OnboardingState = {
   step: 1,
   userData: {
-    businessName: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
+    business_name: '',
+    full_name: '',
+    last_name: '',
+    mobile_number: '',
     email: '',
     instagram: '',
     verificationCode: '',
@@ -71,10 +71,10 @@ function onboardingReducer(
         userData: { 
           ...state.userData,
           ...action.payload,
-          displaySettings: {
-            ...state.userData.displaySettings,
-            ...(action.payload.displaySettings || {})
-          }
+          // displaySettings: {
+          //   ...state.userData.displaySettings,
+          //   ...(action.payload.displaySettings || {})
+          // }
         },
       };
     case 'SET_SERVICES':

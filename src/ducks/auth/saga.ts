@@ -18,10 +18,9 @@ import {
   API_VERIFY_EMAIL_CODE,
   API_VERIFY_PHONE_CODE
 } from '../../config/WebService';
-import ToastHandler, { showErrorToast, showSuccessToast } from '../../services/toastHandler';
-import { logMeIn, successLogMeIn } from './actions';
+import ToastHandler, { showErrorToast } from '../../services/toastHandler';
+import { logMeIn, storeUser, successLogMeIn } from './actions';
 import { callRequest } from '../../utils/ApiSauce';
-import Util from '../../utils/Util';
 
 function* watchCheckUserExists() {
   while (true) {
@@ -36,17 +35,15 @@ function* watchCheckUserExists() {
         { ...payload, requestFrom: 'provider_app' }
       );
 
-      showSuccessToast('successssss', 3000);
-
-      if (payload?.verify_social_login && Util.isNotEmpty(data)) {
-        // Convert AuthResponse to LoginPayload
-        const loginPayload = {
-          email: data.email,
-          phone: data.phone,
-          social_login: true
-        };
-        yield put(logMeIn({ payload: loginPayload }));
-      }
+      // if (payload?.verify_social_login && Util.isNotEmpty(data)) {
+      //   // Convert AuthResponse to LoginPayload
+      //   const loginPayload = {
+      //     email: data.email,
+      //     phone: data.phone,
+      //     social_login: true
+      //   };
+      //   yield put(logMeIn({ payload: loginPayload }));
+      // }
 
       if (callback) {
         callback(data);
@@ -72,12 +69,7 @@ function* watchVerifyCodeRequest() {
         payload
       );
 
-      // Convert AuthResponse to LoginPayload
-      const loginPayload = {
-        email: data.email,
-        phone: data.phone
-      };
-      yield put(logMeIn({ payload: loginPayload }));
+      console.log('----------------------DATA---------------\n',data)
 
       if (callback) {
         callback(data);
@@ -139,23 +131,18 @@ function* watchSignupRequest() {
     const { payload, callback } = action;
 
     try {
-      const { data }: { data: AuthResponse } = yield call(
+      const { data }: { data: User } = yield call(
         callRequest,
         API_SIGNUP,
         payload
       );
 
-      if (payload?.verify_social_login) {
-        // Convert AuthResponse to LoginPayload
-        const loginPayload = {
-          email: data.email,
-          phone: data.phone,
-          social_login: true
-        };
-        yield put(logMeIn({ payload: loginPayload }));
-      } else if (callback) {
-        callback(data);
+      yield put(storeUser({payload:data}))
+
+      if(callback){
+        callback()
       }
+
     } catch (err: any) {
       ToastHandler.showToast(err.message, 'error', 3000);
     }

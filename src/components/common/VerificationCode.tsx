@@ -1,18 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
 import { Heading, Text } from '../../ui/Typography';
-import { fadeIn, staggerChildren } from '../../ui/animations';
+import { staggerChildren } from '../../ui/animations';
 import { Layout } from '../../ui/Layout';
-import { useLanguage } from '../../context/LanguageContext';
+import { verifyCode } from '../../ducks/auth/actions';
+import { useDispatch } from 'react-redux';
 
 export default function VerificationCode() {
   const { state, dispatch } = useOnboarding();
+  const [searchParams] = useSearchParams();
+  const method = searchParams.get('method') as 'phone' | 'email' | 'social';
   const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState(59);
   const [code, setCode] = useState(["", "", "", ""]);
   const firstInputRef = useRef<HTMLInputElement>(null);
+
+  const _dispatch = useDispatch()
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -45,33 +50,16 @@ export default function VerificationCode() {
       // If all digits are filled, proceed
       if (newCode.every((digit) => digit) && value) {
         console.log("Verification code complete:", newCode.join(""));
-        try {
-          dispatch({ type: "SET_LOADING", payload: true });
-          dispatch({
-            type: "SET_USER_DATA",
-            payload: { phoneVerificationCode: newCode.join("") },
-          });
+       
 
-          // Simulate API verification (replace with actual API call)
-          await new Promise(resolve => setTimeout(resolve, 1000));
-
-          // If social login, skip email verification
-          if (state.userData.authMethod === "social") {
-            console.log("Social login detected - skipping email verification");
-            navigate('/services');
-          } else {
-            console.log("Standard auth flow - proceeding to email verification");
-            navigate('/email-verification');
-          }
-        } catch (error) {
-          console.error('Verification error:', error);
-          dispatch({ 
-            type: "SET_ERROR", 
-            payload: "Verification failed. Please try again." 
-          });
-        } finally {
-          dispatch({ type: "SET_LOADING", payload: false });
-        }
+        _dispatch(verifyCode({
+          payload:{
+            mobile_number:method === 'phone' ? state.userData.mobile_number : null,
+            email:method === 'email' ? state.userData.email : null,
+            verification_code:newCode.join("")
+          },
+          callback:()=>navigate('/services')
+        }))
       }
     }
   };
