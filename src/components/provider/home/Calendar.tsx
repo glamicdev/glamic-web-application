@@ -2,8 +2,19 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import type { TeamMember } from './TeamSelector';
 
+interface Appointment {
+  id: string;
+  memberId: string;
+  startTime: string;
+  endTime: string;
+  title: string;
+  type: string;
+}
+
 interface CalendarProps {
   selectedMembers: TeamMember[];
+  view: 'day' | 'week' | 'month';
+  selectedDate: Date;
 }
 
 interface TimeSlot {
@@ -28,17 +39,42 @@ const timeSlots: TimeSlot[] = Array.from({ length: 48 }, (_, i) => {
   const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
   
   return {
-    // Only show time for full hours
     time: minutes === '00' ? `${displayHour} ${period}` : '',
     hour: hour,
     minutes: minutes === '00' ? 0 : 30,
-    showLabel: minutes === '00' // Only show label for full hours
+    showLabel: minutes === '00'
   };
 });
 
-export function Calendar({ selectedMembers }: CalendarProps) {
-  const { translations } = useLanguage();
-  const t = translations?.dashboard?.calendar;
+// Mock appointments - replace with actual data
+const appointments: Appointment[] = [
+  {
+    id: '1',
+    memberId: '1',
+    startTime: '13:30',
+    endTime: '14:45',
+    title: 'Classic Lash Fill',
+    type: 'Walk-In'
+  },
+  {
+    id: '2',
+    memberId: '2',
+    startTime: '14:45',
+    endTime: '15:45',
+    title: 'Haircut',
+    type: 'Walk-In'
+  },
+  {
+    id: '3',
+    memberId: '3',
+    startTime: '16:15',
+    endTime: '16:45',
+    title: 'Manicure',
+    type: 'Walk-In'
+  }
+];
+
+const DayView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMember[], selectedDate: Date }) => {
   const [hoverInfo, setHoverInfo] = useState<{
     time: string;
     x: number;
@@ -51,7 +87,6 @@ export function Calendar({ selectedMembers }: CalendarProps) {
     minutes: number,
     memberIndex: number
   ) => {
-    // Ensure we don't exceed 23:30
     if (hour >= 24 || (hour === 23 && minutes > 30)) {
       return;
     }
@@ -69,170 +104,165 @@ export function Calendar({ selectedMembers }: CalendarProps) {
     setHoverInfo(null);
   };
 
-  // Mock appointments - replace with actual data
-  const appointments = [
-    {
-      id: '1',
-      memberId: '1',
-      startTime: '13:30',
-      endTime: '14:45',
-      title: 'Classic Lash Fill',
-      type: 'Walk-In'
-    },
-    {
-      id: '2',
-      memberId: '2',
-      startTime: '14:45',
-      endTime: '15:45',
-      title: 'Haircut',
-      type: 'Walk-In'
-    },
-    {
-      id: '3',
-      memberId: '3',
-      startTime: '16:15',
-      endTime: '16:45',
-      title: 'Manicure',
-      type: 'Walk-In'
-    }
-  ];
-
   return (
-    <div className="flex-1 overflow-y-auto bg-white dark:bg-[#0B1121]">
-      <div className="min-h-full relative">
-        {/* Current Time Indicator */}
-        <div 
-          className="absolute left-0 right-0 border-t-2 border-red-400 dark:border-red-500 z-10"
-          style={{
-            top: `${(new Date().getHours() * 60 + new Date().getMinutes()) / 720 * 100}%`
-          }}
-        >
-          <div className="absolute -top-3 -left-16 text-xs text-red-400 dark:text-red-500">
-            {new Date().toLocaleTimeString('en-US', {
-              hour: 'numeric',
-              minute: '2-digit',
-              hour12: true
-            })}
-          </div>
-        </div>
-
-        {/* Calendar Grid */}
-        <div className="grid" style={{ gridTemplateColumns: `auto repeat(${selectedMembers.length}, 1fr)` }}>
-          {/* Time Column */}
-          <div className="border-r border-gray-200 dark:border-gray-700">
-            {/* Empty header cell to align with member headers */}
-            <div className="h-[30px] sticky top-0 z-20 bg-white dark:bg-[#0B1121] border-b border-gray-200 dark:border-gray-700" />
-            {timeSlots.map((slot, i) => (
-              <div 
-                key={i} 
-                className="h-[30px] px-4 sticky left-0 bg-white dark:bg-[#0B1121] z-10 flex items-center"
-              >
-                {slot.showLabel && (
-                  <span className="text-xs text-[#64748B] dark:text-gray-400">
-                    {slot.time}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Member Columns */}
-          {selectedMembers.map((member, memberIndex) => (
-            <div key={member.id} className="relative">
-              {/* Member Header */}
-              <div className="h-[30px] sticky top-0 z-20 bg-white dark:bg-[#0B1121] border-b border-gray-200 dark:border-gray-700 px-4 flex items-center gap-2">
-                {member.avatar ? (
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-6 h-6 rounded-full"
-                  />
-                ) : (
-                  <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xs font-medium">
-                    {member.initials}
-                  </div>
-                )}
-                <span className="text-xs font-medium text-[#0F172A] dark:text-white truncate">
-                  {member.name}
+    <>
+      {/* Calendar Grid */}
+      <div className="grid" style={{ gridTemplateColumns: `auto repeat(${selectedMembers.length}, 1fr)` }}>
+        {/* Time Column */}
+        <div className="border-r border-gray-200 dark:border-gray-700">
+          {/* Empty header cell to align with member headers */}
+          <div className="h-[30px] sticky top-0 z-20 bg-white dark:bg-[#0B1121] border-b border-gray-200 dark:border-gray-700" />
+          {timeSlots.map((slot, i) => (
+            <div 
+              key={i} 
+              className="h-[30px] px-4 sticky left-0 bg-white dark:bg-[#0B1121] z-10 flex items-center"
+            >
+              {slot.showLabel && (
+                <span className="text-xs text-[#64748B] dark:text-gray-400">
+                  {slot.time}
                 </span>
-              </div>
-
-              {/* Time Grid */}
-              {timeSlots.map((slot, i) => (
-                <div 
-                  key={i}
-                  className="h-[30px] border-b border-r border-gray-100 dark:border-gray-800 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 relative cursor-pointer"
-                  onMouseMove={(e) => handleTimeSlotHover(e, slot.hour, slot.minutes, memberIndex)}
-                  onMouseLeave={handleTimeSlotLeave}
-                />
-              ))}
-
-              {/* Appointments */}
-              {appointments
-                .filter(apt => apt.memberId === member.id)
-                .map(appointment => {
-                  const startHour = parseInt(appointment.startTime.split(':')[0]);
-                  const startMinute = parseInt(appointment.startTime.split(':')[1]);
-                  const endHour = parseInt(appointment.endTime.split(':')[0]);
-                  const endMinute = parseInt(appointment.endTime.split(':')[1]);
-                  
-                  const startMinutes = startHour * 60 + startMinute;
-                  const endMinutes = endHour * 60 + endMinute;
-                  const durationMinutes = endMinutes - startMinutes;
-                  
-                  // Calculate position and height based on 30px per 30 minutes
-                  // Each hour block is 60px (two 30px slots)
-                  // Add header height offset (30px)
-                  const headerHeight = 30;
-                  const top = headerHeight + Math.floor(startMinutes / 30) * 30;
-                  const height = Math.ceil(durationMinutes / 30) * 30;
-
-                  return (
-                    <div
-                      key={appointment.id}
-                      className="absolute left-0 right-0 mx-1 bg-blue-100 dark:bg-blue-900/20 rounded-lg p-2 overflow-hidden border border-blue-200 dark:border-blue-800"
-                      style={{
-                        top: `${top}px`,
-                        height: `${height}px`
-                      }}
-                    >
-                      <div className="text-xs flex flex-col h-full justify-center">
-                        <div className="font-medium text-blue-900 dark:text-blue-100 truncate">
-                          {formatTime(startHour, startMinute)} - {formatTime(endHour, endMinute)}
-                        </div>
-                        <div className="text-blue-700 dark:text-blue-300 truncate">
-                          {appointment.type} • {appointment.title}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              )}
             </div>
           ))}
         </div>
 
-        {/* No Appointments Message */}
-        {selectedMembers.length > 0 && appointments.length === 0 && (
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="text-sm text-[#64748B] dark:text-gray-400">
-              {t?.noAppointments || 'No appointments scheduled'}
+        {/* Member Columns */}
+        {selectedMembers.map((member, memberIndex) => (
+          <div key={member.id} className="relative">
+            {/* Member Header */}
+            <div className="h-[30px] sticky top-0 z-20 bg-white dark:bg-[#0B1121] border-b border-gray-200 dark:border-gray-700 px-4 flex items-center gap-2">
+              {member.avatar ? (
+                <img
+                  src={member.avatar}
+                  alt={member.name}
+                  className="w-6 h-6 rounded-full"
+                />
+              ) : (
+                <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xs font-medium">
+                  {member.initials}
+                </div>
+              )}
+              <span className="text-xs font-medium text-[#0F172A] dark:text-white truncate">
+                {member.name}
+              </span>
             </div>
-          </div>
-        )}
 
-        {/* Time Hover Tooltip */}
-        {hoverInfo && (
-          <div
-            className="fixed bg-[#0F172A] dark:bg-primary-gold text-white px-3 py-1.5 rounded-md text-sm font-medium pointer-events-none z-50 shadow-lg"
-            style={{
-              left: `${hoverInfo.x + 10}px`,
-              top: `${hoverInfo.y - 25}px`,
-              transform: 'translateX(-50%)'
-            }}
-          >
-            {hoverInfo.time}
+            {/* Time Grid */}
+            {timeSlots.map((slot, i) => (
+              <div 
+                key={i}
+                className="h-[30px] border-b border-r border-gray-100 dark:border-gray-800 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 relative cursor-pointer"
+                onMouseMove={(e) => handleTimeSlotHover(e, slot.hour, slot.minutes, memberIndex)}
+                onMouseLeave={handleTimeSlotLeave}
+              />
+            ))}
+
+            {/* Appointments */}
+            {appointments
+              .filter(apt => apt.memberId === member.id)
+              .map(appointment => {
+                const startHour = parseInt(appointment.startTime.split(':')[0]);
+                const startMinute = parseInt(appointment.startTime.split(':')[1]);
+                const endHour = parseInt(appointment.endTime.split(':')[0]);
+                const endMinute = parseInt(appointment.endTime.split(':')[1]);
+                
+                const startMinutes = startHour * 60 + startMinute;
+                const endMinutes = endHour * 60 + endMinute;
+                const durationMinutes = endMinutes - startMinutes;
+                
+                const headerHeight = 30;
+                const top = headerHeight + Math.floor(startMinutes / 30) * 30;
+                const height = Math.ceil(durationMinutes / 30) * 30;
+
+                return (
+                  <div
+                    key={appointment.id}
+                    className="absolute left-0 right-0 mx-1 bg-blue-100 dark:bg-blue-900/20 rounded-lg overflow-hidden border border-blue-200 dark:border-blue-800"
+                    style={{
+                      top: `${top}px`,
+                      height: `${height}px`
+                    }}
+                  >
+                    <div className={`text-xs flex flex-col ${height <= 30 ? 'h-[30px] justify-center py-0.5 px-1.5' : 'h-full justify-center p-2'}`}>
+                      <div className="font-medium text-blue-900 dark:text-blue-100 truncate text-[10px]">
+                        {formatTime(startHour, startMinute)} - {formatTime(endHour, endMinute)}
+                      </div>
+                      <div className="text-blue-700 dark:text-blue-300 truncate text-[10px]">
+                        {appointment.type} • {appointment.title}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
-        )}
+        ))}
+      </div>
+
+      {/* Current Time Indicator */}
+      <div 
+        className="absolute left-0 right-0 border-t-2 border-red-400 dark:border-red-500 z-10"
+        style={{
+          top: `${(new Date().getHours() * 60 + new Date().getMinutes()) / 720 * 100}%`
+        }}
+      >
+        <div className="absolute -top-3 -left-16 text-xs text-red-400 dark:text-red-500">
+          {new Date().toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+          })}
+        </div>
+      </div>
+
+      {/* No Appointments Message */}
+      {selectedMembers.length > 0 && appointments.length === 0 && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="text-sm text-[#64748B] dark:text-gray-400">
+            No appointments scheduled
+          </div>
+        </div>
+      )}
+
+      {/* Time Hover Tooltip */}
+      {hoverInfo && (
+        <div
+          className="fixed bg-[#0F172A] dark:bg-primary-gold text-white px-3 py-1.5 rounded-md text-sm font-medium pointer-events-none z-50 shadow-lg"
+          style={{
+            left: `${hoverInfo.x + 10}px`,
+            top: `${hoverInfo.y - 25}px`,
+            transform: 'translateX(-50%)'
+          }}
+        >
+          {hoverInfo.time}
+        </div>
+      )}
+    </>
+  );
+};
+
+const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMember[], selectedDate: Date }) => (
+  <div className="min-h-full relative p-4">
+    <div className="text-center text-gray-500">
+      Week view coming soon for {selectedMembers.length} members, starting {selectedDate.toLocaleDateString()}
+    </div>
+  </div>
+);
+
+const MonthView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMember[], selectedDate: Date }) => (
+  <div className="min-h-full relative p-4">
+    <div className="text-center text-gray-500">
+      Month view coming soon for {selectedMembers.length} members, starting {selectedDate.toLocaleDateString()}
+    </div>
+  </div>
+);
+
+export function Calendar({ selectedMembers, view, selectedDate }: CalendarProps) {
+  return (
+    <div className="flex-1 overflow-y-auto bg-white dark:bg-[#0B1121] h-full">
+      <div className="h-[1440px] relative">
+        {view === 'day' && <DayView selectedMembers={selectedMembers} selectedDate={selectedDate} />}
+        {view === 'week' && <WeekView selectedMembers={selectedMembers} selectedDate={selectedDate} />}
+        {view === 'month' && <MonthView selectedMembers={selectedMembers} selectedDate={selectedDate} />}
       </div>
     </div>
   );

@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { CalendarIcon, ChevronDown } from 'lucide-react';
 import { BottomSheet } from '../../common/BottomSheet';
 
-interface ViewOption {
+export interface ViewOption {
   label: string;
-  value: string;
+  value: 'day' | 'week' | 'month';
   icon?: React.ReactNode;
 }
 
 interface ViewSelectorProps {
-  selectedView: string;
-  onViewChange: (view: string) => void;
+  selectedView: 'day' | 'week' | 'month';
+  onViewChange: (view: 'day' | 'week' | 'month') => void;
   options: ViewOption[];
 }
 
@@ -35,7 +35,7 @@ export function ViewSelector({ selectedView, onViewChange, options }: ViewSelect
     };
   }, [isOpen]);
 
-  const handleSelect = (value: string) => {
+  const handleSelect = (value: 'day' | 'week' | 'month') => {
     onViewChange(value);
     setIsOpen(false);
   };

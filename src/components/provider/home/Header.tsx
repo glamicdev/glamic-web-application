@@ -5,36 +5,46 @@ import { ThemeToggle } from '../../../ui/ThemeToggle';
 import { NotificationsMenu } from './NotificationsMenu';
 import { UserMenu } from './UserMenu';
 import { DatePicker } from './DatePicker';
-import { ViewSelector } from './ViewSelector';
+import { ViewSelector, type ViewOption } from './ViewSelector';
 import { TeamSelector, type TeamMember } from './TeamSelector';
 
 interface HeaderProps {
   teamMembers: TeamMember[];
   selectedTeamMembers: TeamMember[];
   onTeamMemberSelect: (members: TeamMember[]) => void;
+  selectedView: 'day' | 'week' | 'month';
+  onViewChange: (view: 'day' | 'week' | 'month') => void;
+  selectedDate: Date;
+  onDateChange: (date: Date) => void;
 }
 
-export function Header({ teamMembers, selectedTeamMembers, onTeamMemberSelect }: HeaderProps) {
+export function Header({
+  teamMembers,
+  selectedTeamMembers,
+  onTeamMemberSelect,
+  selectedView,
+  onViewChange,
+  selectedDate,
+  onDateChange
+}: HeaderProps) {
   const { translations } = useLanguage();
   const t = translations?.dashboard?.header;
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const [selectedView, setSelectedView] = useState('day');
 
-  const viewOptions = [
+  const viewOptions: Array<ViewOption> = [
     { 
       label: translations?.dashboard?.calendar?.day || 'Day', 
-      value: 'day',
+      value: 'day' as const,
       icon: <CalendarDays className="w-5 h-5" />
     },
     { 
       label: translations?.dashboard?.calendar?.week || 'Week', 
-      value: 'week',
+      value: 'week' as const,
       icon: <CalendarIcon className="w-5 h-5" />
     },
     { 
       label: translations?.dashboard?.calendar?.month || 'Month', 
-      value: 'month',
+      value: 'month' as const,
       icon: <CalendarIcon className="w-5 h-5" />
     }
   ];
@@ -48,17 +58,17 @@ export function Header({ teamMembers, selectedTeamMembers, onTeamMemberSelect }:
   const handlePrevDay = () => {
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() - 1);
-    setSelectedDate(newDate);
+    onDateChange(newDate);
   };
 
   const handleNextDay = () => {
     const newDate = new Date(selectedDate);
     newDate.setDate(selectedDate.getDate() + 1);
-    setSelectedDate(newDate);
+    onDateChange(newDate);
   };
 
   const handleDateSelect = (date: Date) => {
-    setSelectedDate(date);
+    onDateChange(date);
     setShowDatePicker(false);
   };
 
@@ -87,7 +97,7 @@ export function Header({ teamMembers, selectedTeamMembers, onTeamMemberSelect }:
         <div className="flex items-center gap-4">
           {/* Today button - Desktop only */}
           <button 
-            onClick={() => setSelectedDate(new Date())}
+            onClick={() => onDateChange(new Date())}
             className="hidden md:block px-4 py-2 text-sm font-medium border border-gray-200 dark:border-gray-700 text-[#0F172A] dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             {t?.today || 'Today'}
@@ -147,7 +157,7 @@ export function Header({ teamMembers, selectedTeamMembers, onTeamMemberSelect }:
           {/* View Selector */}
           <ViewSelector
             selectedView={selectedView}
-            onViewChange={setSelectedView}
+            onViewChange={onViewChange}
             options={viewOptions}
           />
 

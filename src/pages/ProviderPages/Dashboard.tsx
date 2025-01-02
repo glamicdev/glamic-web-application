@@ -27,18 +27,28 @@ const teamMembers: TeamMember[] = [
 
 export default function Dashboard() {
   const [selectedTeamMembers, setSelectedTeamMembers] = useState<TeamMember[]>([teamMembers[0]]);
+  const [selectedView, setSelectedView] = useState<'day' | 'week' | 'month'>('day');
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-primary-navy/95">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden pl-16">
-        <Header 
+        <Header
           teamMembers={teamMembers}
           selectedTeamMembers={selectedTeamMembers}
           onTeamMemberSelect={setSelectedTeamMembers}
+          selectedView={selectedView}
+          onViewChange={setSelectedView}
+          selectedDate={selectedDate}
+          onDateChange={setSelectedDate}
         />
         <main className="flex-1 overflow-x-auto bg-white dark:bg-primary-navy/50">
-          <Calendar selectedMembers={selectedTeamMembers} />
+          <Calendar
+            selectedMembers={selectedTeamMembers}
+            view={selectedView}
+            selectedDate={selectedDate}
+          />
         </main>
       </div>
     </div>
