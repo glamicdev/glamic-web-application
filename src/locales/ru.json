@@ -34,6 +34,20 @@
         "thu": "Чт",
         "fri": "Пт",
         "sat": "Сб"
+      },
+      "months": {
+        "january": "Январь",
+        "february": "Февраль",
+        "march": "Март",
+        "april": "Апрель",
+        "may": "Май",
+        "june": "Июнь",
+        "july": "Июль",
+        "august": "Август",
+        "september": "Сентябрь",
+        "october": "Октябрь",
+        "november": "Ноябрь",
+        "december": "Декабрь"
       }
     },
     "teamSelector": {

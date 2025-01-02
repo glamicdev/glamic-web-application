@@ -32,11 +32,11 @@ export function UserMenu({ name }: UserMenuProps) {
   }, [isOpen]);
 
   const menuItems = [
-    { icon: User, label: 'Profile' },
-    { icon: Star, label: 'Reviews' },
-    { icon: Settings, label: 'Settings' },
-    { icon: Users, label: 'Refer a friend' },
-    { icon: HelpCircle, label: 'Help and support' },
+    { icon: User, label: translations?.dashboard?.userMenu?.profile || 'Profile' },
+    { icon: Star, label: translations?.dashboard?.userMenu?.reviews || 'Reviews' },
+    { icon: Settings, label: translations?.dashboard?.userMenu?.settings || 'Settings' },
+    { icon: Users, label: translations?.dashboard?.userMenu?.referFriend || 'Refer a friend' },
+    { icon: HelpCircle, label: translations?.dashboard?.userMenu?.helpSupport || 'Help and support' },
   ];
 
   // Get initials from name
@@ -62,7 +62,7 @@ export function UserMenu({ name }: UserMenuProps) {
         <div className="flex items-center justify-between text-sm md:text-base text-[#0F172A] dark:text-white">
           <div className="flex items-center gap-3">
             <Globe className="w-5 h-5" />
-            <span>Language</span>
+            <span>{translations?.dashboard?.userMenu?.language || 'Language'}</span>
           </div>
           <LanguageToggle />
         </div>
@@ -70,7 +70,7 @@ export function UserMenu({ name }: UserMenuProps) {
 
       <button className="w-full flex items-center gap-3 px-4 py-3 text-sm md:text-base text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg mt-1 border-t border-gray-200 dark:border-gray-700">
         <LogOut className="w-5 h-5" />
-        <span>Log out</span>
+        <span>{translations?.dashboard?.userMenu?.logout || 'Log out'}</span>
       </button>
     </div>
   );
@@ -102,7 +102,7 @@ export function UserMenu({ name }: UserMenuProps) {
         <BottomSheet
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          title="Menu"
+          title={translations?.dashboard?.userMenu?.title || "Menu"}
         >
           <MenuContent />
         </BottomSheet>
