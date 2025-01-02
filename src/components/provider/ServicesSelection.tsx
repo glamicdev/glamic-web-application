@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useOnboarding } from '../../context/OnboardingContext';
-import type { Service } from '../../types/onboarding';
+import { useDispatch, useSelector } from 'react-redux';
+import type { Dispatch } from 'redux';
+import type { ServiceCategoriesActionTypes } from '../../ducks/serviceCategories/types';
 import { Heading, Text } from '../../ui/Typography';
 import { Button } from '../../ui/Button';
-import { Palette, Scissors, Droplets, Bath, User, Sparkles, Eye, Crown, Loader } from 'lucide-react';
-import { fadeIn, staggerChildren, scaleIn } from '../../ui/animations';
+import { Loader } from 'lucide-react';
+import { staggerChildren, scaleIn } from '../../ui/animations';
 import { Layout } from '../../ui/Layout';
 import { saveServices } from '../../services/api';
 import { useLanguage } from '../../context/LanguageContext';
+import FlatListApi from '../../components/common/FlatListApi';
+import { getServiceCategories } from '../../ducks/serviceCategories/selectors';
+import { requestServiceCategories, serviceCategoriesSuccess } from '../../ducks/serviceCategories/actions';
+import { getRequestFlag } from '../../ducks/requestFlags/selectors';
+import { ServiceCategory } from '../../ducks/serviceCategories/types';
 
 interface ServiceCardProps {
-  icon: React.ReactNode;
+  iconUrl: string;
   name: string;
   selected: boolean;
   onClick: () => void;
 }
 
-function ServiceCard({ icon, name, selected, onClick }: ServiceCardProps) {
+function ServiceCard({ iconUrl, name, selected, onClick }: ServiceCardProps) {
   return (
     <motion.button
       {...scaleIn}
@@ -29,11 +35,13 @@ function ServiceCard({ icon, name, selected, onClick }: ServiceCardProps) {
           : 'bg-white/80 dark:bg-white/5 hover:bg-white/90 dark:hover:bg-white/10'
       }`}
     >
-      <div className={`w-10 h-10 mb-2 flex items-center justify-center ${
-        selected ? 'text-primary-gold' : 'text-gray-600 dark:text-gray-400'
-      }`}>
-        {icon}
-      </div>
+      <img 
+        src={iconUrl} 
+        alt={name}
+        className={`w-10 h-10 mb-2 object-contain ${
+          selected ? 'filter-gold' : 'filter-gray'
+        }`}
+      />
       <Text className={`text-sm font-medium ${
         selected 
           ? 'text-primary-gold dark:text-primary-gold' 
@@ -45,23 +53,27 @@ function ServiceCard({ icon, name, selected, onClick }: ServiceCardProps) {
   );
 }
 
+const SERVICE_CATEGORIES_REQUEST_ID = 'service_categories';
+
 export default function ServicesSelection() {
-  const { state, dispatch } = useOnboarding();
   const navigate = useNavigate();
   const { translations } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const dispatch = useDispatch<Dispatch<ServiceCategoriesActionTypes>>();
+  const categories = useSelector(getServiceCategories);
+  const requestFlags = useSelector(getRequestFlag(SERVICE_CATEGORIES_REQUEST_ID));
 
-  const toggleService = (id: string) => {
-    const updatedServices = state.services.map((service: Service) =>
-      service.id === id ? { ...service, selected: !service.selected } : service
+  const toggleService = (category: ServiceCategory) => {
+    const updatedCategories = categories.map(cat => 
+      cat.id === category.id ? { ...cat, selected: !cat.selected } : cat
     );
-    console.log('Service toggled:', { id, services: updatedServices });
-    dispatch({ type: 'SET_SERVICES', payload: updatedServices });
+    dispatch(serviceCategoriesSuccess(updatedCategories));
   };
 
   const handleContinue = async () => {
-    const selectedServices = state.services.filter((service: Service) => service.selected);
+    const selectedServices = categories.filter(category => category.selected);
     console.log('Selected services:', selectedServices);
     
     setLoading(true);
@@ -84,26 +96,17 @@ export default function ServicesSelection() {
     }
   };
 
-  const hasSelectedServices = state.services.some((service: Service) => service.selected);
+  const hasSelectedServices = categories.some(category => category.selected);
 
-  const services: Array<{
-    id: string;
-    name: string;
-    icon: React.ReactNode;
-  }> = [
-    { id: '1', name: translations.services?.categories?.makeup ?? 'Makeup', icon: <Palette className="w-8 h-8" /> },
-    { id: '2', name: translations.services?.categories?.nails ?? 'Nails', icon: <Scissors className="w-8 h-8" /> },
-    { id: '3', name: translations.services?.categories?.sprayTan ?? 'Spray Tan', icon: <Droplets className="w-8 h-8" /> },
-    { id: '4', name: translations.services?.categories?.hair ?? 'Hair', icon: <Scissors className="w-8 h-8" /> },
-    { id: '5', name: translations.services?.categories?.waxing ?? 'Waxing', icon: <Bath className="w-8 h-8" /> },
-    { id: '6', name: translations.services?.categories?.esthetics ?? 'Esthetics', icon: <User className="w-8 h-8" /> },
-    { id: '7', name: translations.services?.categories?.henna ?? 'Henna', icon: <Sparkles className="w-8 h-8" /> },
-    { id: '8', name: translations.services?.categories?.eyelashes ?? 'Eyelashes', icon: <Eye className="w-8 h-8" /> },
-    { id: '9', name: translations.services?.categories?.eyelashesEyebrows ?? 'Eyelashes & Eyebrows', icon: <Eye className="w-8 h-8" /> },
-    { id: '10', name: translations.services?.categories?.hairstyling ?? 'Hairstyling', icon: <Scissors className="w-8 h-8" /> },
-    { id: '11', name: translations.services?.categories?.barber ?? 'Barber', icon: <Scissors className="w-8 h-8" /> },
-    { id: '12', name: translations.services?.categories?.wedding ?? 'Wedding', icon: <Crown className="w-8 h-8" /> },
-  ];
+  const renderServiceCard = ({ item: category }: { item: ServiceCategory; index: number }) => (
+    <ServiceCard
+      key={category.id}
+      iconUrl={category.icon}
+      name={category.title}
+      selected={category.selected || false}
+      onClick={() => toggleService(category)}
+    />
+  );
 
   return (
     <Layout maxWidth="xl">
@@ -115,16 +118,22 @@ export default function ServicesSelection() {
         {translations.services?.subtitle ?? 'Choose the services you want to offer'}
       </Text>
       
-      <motion.div {...staggerChildren} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
-        {services.map((service) => (
-          <ServiceCard
-            key={service.id}
-            icon={service.icon}
-            name={service.name}
-            selected={state.services.find((s: Service) => s.id === service.id)?.selected || false}
-            onClick={() => toggleService(service.id)}
-          />
-        ))}
+      <motion.div {...staggerChildren} className="mb-16">
+        <FlatListApi
+          requestAction={requestServiceCategories}
+          requestFlags={requestFlags}
+          data={categories}
+          identifier={SERVICE_CATEGORIES_REQUEST_ID}
+          renderItem={renderServiceCard}
+          numColumns={4}
+          listStyle={{ overflowY: 'hidden' }}
+          contentContainerStyle={{ gap: '1.5rem' }}
+          emptyView={() => (
+            <div className="col-span-full text-center text-gray-500">
+              No service categories available
+            </div>
+          )}
+        />
       </motion.div>
       
       <motion.div

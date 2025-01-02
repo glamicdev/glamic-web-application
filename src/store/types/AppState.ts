@@ -1,4 +1,6 @@
 import { User } from "../../ducks/auth/types";
+import { ServiceCategoriesState } from "../../ducks/serviceCategories/types";
+import { RequestFlagsState } from "../../ducks/requestFlags/types";
 
 export interface AuthState {
   user: User | null;
@@ -8,4 +10,6 @@ export interface AuthState {
 
 export interface AppState {
   auth: AuthState;
+  serviceCategories: ServiceCategoriesState;
+  requestFlags: RequestFlagsState;
 }

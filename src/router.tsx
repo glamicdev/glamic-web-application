@@ -1,4 +1,6 @@
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import AuthWrapper from './components/common/AuthWrapper';
+import OnboardingWrapper from './components/common/OnboardingWrapper';
 import { Header } from './ui/Header';
 import AuthOptions from './components/common/AuthOptions';
 import SignUpForm from './components/provider/SignUpForm';
@@ -65,51 +67,51 @@ export const router = createBrowserRouter([
       },
       {
         path: "auth",
-        element: <AuthOptions />,
+        element: <AuthWrapper><AuthOptions /></AuthWrapper>,
       },
       {
         path: "auth/business-name",
-        element: <BusinessNamePage />,
+        element: <AuthWrapper><BusinessNamePage /></AuthWrapper>,
       },
       {
         path: "auth/name",
-        element: <NamePage />,
+        element: <AuthWrapper><NamePage /></AuthWrapper>,
       },
       {
         path: "auth/email",
-        element: <EmailPage />,
+        element: <AuthWrapper><EmailPage /></AuthWrapper>,
       },
       {
         path: "auth/phone",
-        element: <PhonePage />,
+        element: <AuthWrapper><PhonePage /></AuthWrapper>,
       },
       {
         path: "auth/instagram",
-        element: <InstagramPage />,
+        element: <AuthWrapper><InstagramPage /></AuthWrapper>,
       },
       {
         path: "signup",
-        element: <SignUpForm />,
+        element: <AuthWrapper><SignUpForm /></AuthWrapper>,
       },
       {
         path: "verify",
-        element: <VerificationCode />,
+        element: <AuthWrapper><VerificationCode /></AuthWrapper>,
       },
       {
         path: "email-verification",
-        element: <EmailVerification />,
+        element: <AuthWrapper><EmailVerification /></AuthWrapper>,
       },
       {
         path: "services",
-        element: <ServicesSelection />,
+        element: <OnboardingWrapper><ServicesSelection /></OnboardingWrapper>,
       },
       {
         path: "location",
-        element: <ServiceLocation />,
+        element: <OnboardingWrapper><ServiceLocation /></OnboardingWrapper>,
       },
       {
         path: "address",
-        element: <AddressInput />,
+        element: <OnboardingWrapper><AddressInput /></OnboardingWrapper>,
       },
       {
         path: "service-area",

@@ -19,7 +19,7 @@ import {
   API_VERIFY_PHONE_CODE
 } from '../../config/WebService';
 import ToastHandler, { showErrorToast } from '../../services/toastHandler';
-import { logMeIn, storeUser, successLogMeIn } from './actions';
+import { storeUser, successLogMeIn } from './actions';
 import { callRequest } from '../../utils/ApiSauce';
 
 function* watchCheckUserExists() {
@@ -60,8 +60,6 @@ function* watchVerifyCodeRequest() {
     const action: VerifyCodeAction = yield take(VERIFY_CODE);
     const { payload, callback } = action;
 
-    console.log('----------------------PAYLOAD---------------\n',payload)
-
     const API_VERIFICATION = payload.email ? API_VERIFY_EMAIL_CODE : API_VERIFY_PHONE_CODE;
 
     try {
@@ -71,7 +69,9 @@ function* watchVerifyCodeRequest() {
         payload
       );
 
-      console.log('----------------------DATA---------------\n',data)
+      if (data.auth_token) {
+        localStorage.setItem('token', data.auth_token.token);
+      }
 
       if (callback) {
         callback(data);

@@ -123,9 +123,30 @@ export interface SubscriptionSwitchTranslations {
   };
 }
 
+export interface ServiceCategoriesTranslations {
+  title: string;
+  subtitle: string;
+  saving: string;
+  continue: string;
+  categories: {
+    makeup: string;
+    nails: string;
+    sprayTan: string;
+    hair: string;
+    waxing: string;
+    esthetics: string;
+    henna: string;
+    eyelashes: string;
+    eyelashesEyebrows: string;
+    hairstyling: string;
+    barber: string;
+    wedding: string;
+  };
+}
+
 export interface Translations {
   subscriptionManagement: SubscriptionManagementTranslations;
   subscriptionCancel: SubscriptionCancelTranslations;
   subscriptionSwitch: SubscriptionSwitchTranslations;
-  [key: string]: any;
+  services: ServiceCategoriesTranslations;
 }

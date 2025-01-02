@@ -2,56 +2,14 @@ import React, { createContext, useContext, useReducer } from 'react';
 import type { OnboardingState, OnboardingAction } from '../types/onboarding';
 
 const initialState: OnboardingState = {
-  step: 1,
-  userData: {
-    business_name: '',
-    full_name: '',
-    last_name: '',
-    mobile_number: '',
-    email: '',
-    instagram: '',
-    verificationCode: '',
-    displaySettings: {
-      showPhone: false,
-      showEmail: false,
-      showInstagram: false
-    }
-  },
-  services: [
-    { id: '1', name: 'Makeup', icon: 'palette', selected: false },
-    { id: '2', name: 'Nails', icon: 'scissors', selected: false },
-    { id: '3', name: 'Spray Tan', icon: 'spray', selected: false },
-    { id: '4', name: 'Hair', icon: 'scissors', selected: false },
-    { id: '5', name: 'Waxing', icon: 'bath', selected: false },
-    { id: '6', name: 'Esthetics', icon: 'user', selected: false },
-    { id: '7', name: 'Henna', icon: 'sparkles', selected: false },
-    { id: '8', name: 'Eyelashes', icon: 'eye', selected: false },
-    { id: '9', name: 'Eyelashes Eyebrows', icon: 'eye', selected: false },
-    { id: '10', name: 'Hairstyling', icon: 'scissors', selected: false },
-    { id: '11', name: 'Barber', icon: 'scissors', selected: false },
-    { id: '12', name: 'Wedding', icon: 'crown', selected: false },
-  ],
-  serviceLocation: {
-    type: 'mobile',
-    address: '',
-    billingAddress: '',
-    sameAsBilling: true,
-    mobileRadius: 50,
-    travelFeePerKm: 1,
-    minTravelFee: 15,
-    minimumSpend: 60,
-    scheduleSettings: {
-      bookingWindow: '1y',
-      minimumNotice: '24h',
-      rescheduleWindow: '24h'
-    }
-  },
-  loading: false,
-  error: null,
-  paymentSettings: {
-    cashInstructions: '',
-    depositPercentage: 20,
-    balanceReminderTiming: '3d'
+  selectedCategories:[],
+  selectedServiceTypes:[],
+  baseAddress:{
+    lat:null,
+    long:null,
+    address:null,
+    country_code:null,
+    country:null
   }
 };
 
@@ -65,86 +23,24 @@ function onboardingReducer(
   action: OnboardingAction
 ): OnboardingState {
   switch (action.type) {
-    case 'SET_USER_DATA':
+  
+    case 'SET_SELECTED_CATEGORIES':
       return {
         ...state,
-        userData: { 
-          ...state.userData,
-          ...action.payload,
-          // displaySettings: {
-          //   ...state.userData.displaySettings,
-          //   ...(action.payload.displaySettings || {})
-          // }
-        },
+        selectedCategories: action.payload,
       };
-    case 'SET_SERVICES':
+    case 'SET_SELECTED_SERVICE_TYPES':
       return {
         ...state,
-        services: action.payload,
+        selectedServiceTypes: action.payload,
       };
-    case 'SET_SERVICE_LOCATION':
+    
+    case 'SET_BASE_ADDRESS':
       return {
         ...state,
-        serviceLocation: action.payload,
+        baseAddress: action.payload,
       };
-    case 'SET_STEP':
-      return {
-        ...state,
-        step: action.payload,
-      };
-    case 'SET_LOADING':
-      return {
-        ...state,
-        loading: action.payload,
-      };
-    case 'SET_ERROR':
-      return {
-        ...state,
-        error: action.payload,
-      };
-    case 'SET_WEBSITE_THEME':
-      return {
-        ...state,
-        websiteTheme: action.payload,
-      };
-    case 'SET_WEBSITE_SLUG':
-      return {
-        ...state,
-        websiteSlug: action.payload,
-      };
-    case 'SET_WEBSITE_LOGO':
-      return {
-        ...state,
-        websiteLogo: action.payload,
-      };
-    case 'SET_WEBSITE_COVER':
-      return {
-        ...state,
-        websiteCover: action.payload,
-      };
-    case 'SET_WEBSITE_HEADLINE':
-      return {
-        ...state,
-        websiteHeadline: action.payload,
-      };
-    case 'SET_WEBSITE_BIO':
-      return {
-        ...state,
-        websiteBio: action.payload,
-      };
-    case 'SET_PROFILE_PHOTO':
-      return {
-        ...state,
-        profilePhoto: action.payload,
-      };
-    case 'SET_PAYMENT_SETTINGS':
-      return {
-        ...state,
-        paymentSettings: {
-          ...state.paymentSettings,
-          ...action.payload
-        },
-      };
+  
     default:
       return state;
   }
