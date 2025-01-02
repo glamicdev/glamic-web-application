@@ -10,6 +10,24 @@ interface DatePickerProps {
 }
 
 export function DatePicker({ selectedDate, onDateSelect, onClose, isOpen, isMobile = true }: DatePickerProps) {
+  const calendarRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
   // Generate months from 1 year ago to 2 years in future
   const months = React.useMemo(() => {
     const today = new Date();
@@ -135,6 +153,7 @@ export function DatePicker({ selectedDate, onDateSelect, onClose, isOpen, isMobi
 
   return (
     <div 
+      ref={calendarRef}
       id="calendar-container"
       className="absolute top-full mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 p-4 w-[340px] max-h-[400px] overflow-y-auto"
     >
