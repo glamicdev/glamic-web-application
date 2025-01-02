@@ -1,4 +1,5 @@
-import  { useState } from 'react';
+import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import { motion } from 'framer-motion';
 import { Apple } from 'lucide-react';
 import { Button } from '../../ui/Button';
@@ -29,8 +30,9 @@ export default function AuthOptions() {
   });
   const [emailValue, setEmailValue] = useState('');
 
+  const { dispatch: authDispatch } = useAuth();
+  
   const handleContinue = async () => {
-
     const currentValue = authMethod === 'phone' ? phoneState.value : emailValue;
     
     if (authMethod === 'email') {
@@ -55,23 +57,37 @@ export default function AuthOptions() {
     
     setLoading(true);
 
-     
-        dispatch(checkUserExists({payload:{
-          mobile_number: authMethod === 'phone' ? phoneState.value : '',
-          email: authMethod === 'email' ? currentValue : '',
-          verify_email : authMethod === 'email',
-          verify_phone: authMethod === 'phone',
-          verify_social_login: authMethod === 'social',
-        },
-        callback:(data:any)=>{
-          if(Util.isEmpty(data)){
-            navigate(`/signup?method=${authMethod}`);
-          }else{
-            navigate('/verify')
-          }
+    dispatch(checkUserExists({
+      payload: {
+        mobile_number: authMethod === 'phone' ? phoneState.value : '',
+        email: authMethod === 'email' ? currentValue : '',
+        verify_email: authMethod === 'email',
+        verify_phone: authMethod === 'phone',
+        verify_social_login: authMethod === 'social',
+      },
+      callback: (data: any) => {
+        if (Util.isEmpty(data)) {
+          // Set auth method and initial data in context
+          authDispatch({ 
+            type: 'SET_AUTH_METHOD', 
+            payload: authMethod 
+          });
+          
+          // Set initial data based on auth method
+          authDispatch({
+            type: 'UPDATE_AUTH_DATA',
+            payload: {
+              mobile_number: authMethod === 'phone' ? phoneState.value : '',
+              email: authMethod === 'email' ? currentValue : ''
+            }
+          });
+
+          navigate('/auth/business-name');
+        } else {
+          navigate('/verify');
         }
-       }
-      ));
+      }
+    }));
   };
 
   const handleSocialAuth = async (provider: 'google' | 'apple') => {
@@ -88,14 +104,25 @@ export default function AuthOptions() {
 
       if (response.success) {
         console.log('Social authentication successful, updating user data:', response.data?.user);
-        dispatch({
-          type: 'SET_USER_DATA',
-          payload: { 
-            authMethod: 'social',
-            ...(response.data?.user || {})
-          }
+        
+        // Set auth method and initial data in context
+        authDispatch({ 
+          type: 'SET_AUTH_METHOD', 
+          payload: 'social' 
         });
-        dispatch({ type: 'SET_STEP', payload: 2 });
+        
+        // Set initial data from social login
+        const userData = response.data?.user;
+        if (userData?.email) {
+          authDispatch({
+            type: 'UPDATE_AUTH_DATA',
+            payload: {
+              email: userData.email
+            }
+          });
+        }
+
+        navigate('/auth/business-name');
       } else {
         console.error('Social authentication failed:', response.error);
         showErrorToast(response.error || translations.auth?.errors?.failed || 'Authentication failed');

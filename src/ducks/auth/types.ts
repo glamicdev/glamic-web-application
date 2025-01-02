@@ -43,10 +43,12 @@ export interface SignupPayload {
   mobile_number?: string;
   verify_email?: boolean;
   verify_phone?: boolean;
-  full_name:string;
-  last_name:string,
-  timezone:string,
-  user_type:'provider'
+  full_name: string;
+  last_name: string;
+  timezone: string;
+  user_type: 'provider';
+  business_name?: string;
+  instagram?: string;
 }
 
 // Action interfaces

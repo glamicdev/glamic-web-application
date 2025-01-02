@@ -60,6 +60,8 @@ function* watchVerifyCodeRequest() {
     const action: VerifyCodeAction = yield take(VERIFY_CODE);
     const { payload, callback } = action;
 
+    console.log('----------------------PAYLOAD---------------\n',payload)
+
     const API_VERIFICATION = payload.email ? API_VERIFY_EMAIL_CODE : API_VERIFY_PHONE_CODE;
 
     try {

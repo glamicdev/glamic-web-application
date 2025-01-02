@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useOnboarding } from '../../context/OnboardingContext';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { Heading, Text } from '../../ui/Typography';
 import { staggerChildren } from '../../ui/animations';
 import { Layout } from '../../ui/Layout';
@@ -9,9 +9,7 @@ import { verifyCode } from '../../ducks/auth/actions';
 import { useDispatch } from 'react-redux';
 
 export default function VerificationCode() {
-  const { state, dispatch } = useOnboarding();
-  const [searchParams] = useSearchParams();
-  const method = searchParams.get('method') as 'phone' | 'email' | 'social';
+  const { state, dispatch } = useAuth();
   const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState(59);
   const [code, setCode] = useState(["", "", "", ""]);
@@ -52,13 +50,17 @@ export default function VerificationCode() {
         console.log("Verification code complete:", newCode.join(""));
        
 
+        dispatch({ type: 'UPDATE_AUTH_DATA', payload: { loading: true } });
         _dispatch(verifyCode({
-          payload:{
-            mobile_number:method === 'phone' ? state.userData.mobile_number : null,
-            email:method === 'email' ? state.userData.email : null,
-            verification_code:newCode.join("")
+          payload: {
+            mobile_number: state.authMethod === 'phone' ? state.mobile_number : undefined,
+            email: state.authMethod === 'email' ? state.email : undefined,
+            verification_code: newCode.join("")
           },
-          callback:()=>navigate('/services')
+          callback: () => {
+            dispatch({ type: 'UPDATE_AUTH_DATA', payload: { loading: false } });
+            navigate('/services');
+          }
         }))
       }
     }
@@ -107,15 +109,15 @@ export default function VerificationCode() {
   return (
     <Layout maxWidth="md">
       <Heading className="mb-4 text-center">
-        {state.userData.authMethod === "phone"
-          ? "Verify Your Phone"
-          : "Verify Your Phone Number"}
+        {state.authMethod === "phone" ? "Verify Your Phone" : "Verify Your Email"}
       </Heading>
 
       <Text className="text-center mb-8">
-        {state.userData.phone
-          ? `A verification code has been sent to ${state.userData.phone}`
-          : "A verification code has been sent to your phone number"}
+        {state.authMethod === "phone" && state.mobile_number
+          ? `A verification code has been sent to ${state.mobile_number}`
+          : state.authMethod === "email" && state.email
+          ? `A verification code has been sent to ${state.email}`
+          : "A verification code has been sent"}
       </Text>
 
       <motion.div

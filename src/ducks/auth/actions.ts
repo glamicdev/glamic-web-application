@@ -38,6 +38,7 @@ export function verifyCode({
   payload: VerifyCodePayload;
   callback?: ActionCallback;
 }): VerifyCodeAction {
+  console.log('----------------------ACTIONPAYLOAD---------------\n',payload)
   return {
     type: VERIFY_CODE,
     payload,
