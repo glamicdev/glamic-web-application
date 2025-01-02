@@ -33,6 +33,10 @@ export default function AppDownload() {
     navigate('/subscription');
   };
 
+  const handleDashboard = () => {
+    navigate('/dashboard');
+  };
+
   return (
     <Layout maxWidth="md">
       <motion.div 
@@ -89,10 +93,17 @@ export default function AppDownload() {
             <Button
               variant="outline"
               onClick={handleManageSubscription}
-              className="w-full"
+              className="w-full mb-4"
             >
               <CreditCard className="w-4 h-4 mr-2" />
               {translations?.appDownload?.manageSubscription || "Manage Subscription"}
+            </Button>
+            <Button
+              variant="primary"
+              onClick={handleDashboard}
+              className="w-full"
+            >
+              Dashboard
             </Button>
           </div>
         ) : (
@@ -114,14 +125,23 @@ export default function AppDownload() {
             <Text className="text-sm text-gray-500 dark:text-gray-400 mb-4">
               {translations?.appDownload?.availableDevices || "Available for iOS and Android devices"}
             </Text>
-            <Button
-              variant="outline"
-              onClick={handleManageSubscription}
-              className="w-full max-w-md"
-            >
-              <CreditCard className="w-4 h-4 mr-2" />
-              {translations?.appDownload?.manageSubscription || "Manage Subscription"}
-            </Button>
+            <div className="w-full max-w-md space-y-4">
+              <Button
+                variant="outline"
+                onClick={handleManageSubscription}
+                className="w-full"
+              >
+                <CreditCard className="w-4 h-4 mr-2" />
+                {translations?.appDownload?.manageSubscription || "Manage Subscription"}
+              </Button>
+              <Button
+                variant="primary"
+                onClick={handleDashboard}
+                className="w-full"
+              >
+                Dashboard
+              </Button>
+            </div>
           </div>
         )}
       </motion.div>

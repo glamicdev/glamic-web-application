@@ -1,4 +1,5 @@
 import { OnboardingProvider } from './context/OnboardingContext';
+import Dashboard from './pages/ProviderPages/Dashboard';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -97,6 +98,7 @@ function App() {
           <LanguageProvider>
             <OnboardingProvider>
               <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/*" element={<OnboardingLayout />} />
               </Routes>
               <ToastMessage ref={ToastHandler.setToastRef} />

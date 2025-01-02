@@ -4,6 +4,7 @@ import OnboardingFlow from './pages/OnboardingFlow';
 import SubscriptionManagement from './components/provider/SubscriptionManagement';
 import SubscriptionCancellation from './components/provider/SubscriptionCancellation';
 import SubscriptionSwitch from './components/provider/SubscriptionSwitch';
+import Dashboard from './pages/ProviderPages/Dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -21,5 +22,9 @@ export const router = createBrowserRouter([
   {
     path: '/subscription/switch',
     element: <SubscriptionSwitch />,
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
   },
 ]);
