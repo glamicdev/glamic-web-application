@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Bell } from 'lucide-react';
 import { useLanguage } from '../../../context/LanguageContext';
 import { BottomSheet } from '../../common/BottomSheet';
@@ -6,6 +6,28 @@ import { BottomSheet } from '../../common/BottomSheet';
 export function NotificationsMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const { translations } = useLanguage();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        menuRef.current &&
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   const t = {
     title: translations?.dashboard?.sidebar?.notifications || 'Notifications',
     noNotifications: 'No new notifications'
@@ -23,6 +45,7 @@ export function NotificationsMenu() {
   return (
     <div className="relative">
       <button 
+        ref={buttonRef}
         className="relative p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300"
         onClick={() => setIsOpen(true)}
       >
@@ -34,7 +57,10 @@ export function NotificationsMenu() {
 
       {/* Desktop Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 md:block hidden">
+        <div 
+          ref={menuRef}
+          className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 md:block hidden"
+        >
           <div className="p-4">
             <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-4">
               {t.title}

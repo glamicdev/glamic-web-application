@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useLanguage } from '../../../context/LanguageContext';
 import type { TeamMember } from './TeamSelector';
 
+// Default color palette for team members if no color is set
+const defaultColors = [
+  { bg: 'bg-blue-100 dark:bg-blue-900/20', border: 'border-blue-200 dark:border-blue-800', text: 'text-blue-900 dark:text-blue-100', textSecondary: 'text-blue-700 dark:text-blue-300' },
+  { bg: 'bg-purple-100 dark:bg-purple-900/20', border: 'border-purple-200 dark:border-purple-800', text: 'text-purple-900 dark:text-purple-100', textSecondary: 'text-purple-700 dark:text-purple-300' },
+  { bg: 'bg-green-100 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-green-900 dark:text-green-100', textSecondary: 'text-green-700 dark:text-green-300' },
+  { bg: 'bg-orange-100 dark:bg-orange-900/20', border: 'border-orange-200 dark:border-orange-800', text: 'text-orange-900 dark:text-orange-100', textSecondary: 'text-orange-700 dark:text-orange-300' },
+  { bg: 'bg-pink-100 dark:bg-pink-900/20', border: 'border-pink-200 dark:border-pink-800', text: 'text-pink-900 dark:text-pink-100', textSecondary: 'text-pink-700 dark:text-pink-300' }
+];
+
 interface Appointment {
   id: string;
   memberId: string;
@@ -86,6 +95,13 @@ const appointments: Appointment[] = [
     type: 'Walk-In'
   }
 ];
+
+// Helper function to get color styles for a member
+const getMemberColorStyles = (memberId: string, selectedMembers: TeamMember[]) => {
+  const memberIndex = selectedMembers.findIndex(m => m.id === memberId);
+  const colorIndex = memberIndex % defaultColors.length;
+  return defaultColors[colorIndex];
+};
 
 const DayView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMember[], selectedDate: Date }) => {
   const [hoverInfo, setHoverInfo] = useState<{
@@ -173,8 +189,8 @@ const DayView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMembe
             {/* Appointments */}
             {appointments
               .filter(apt => {
-                // First filter by selected members
-                if (!selectedMembers.some(member => member.id === apt.memberId)) {
+                // Only show appointments for this specific member
+                if (apt.memberId !== member.id) {
                   return false;
                 }
                 
@@ -199,17 +215,17 @@ const DayView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMembe
                 return (
                   <div
                     key={appointment.id}
-                    className="absolute left-0 right-0 mx-1 bg-blue-100 dark:bg-blue-900/20 rounded-lg overflow-hidden border border-blue-200 dark:border-blue-800"
+                    className={`absolute left-0 right-0 mx-1 rounded-lg overflow-hidden border ${getMemberColorStyles(appointment.memberId, selectedMembers).bg} ${getMemberColorStyles(appointment.memberId, selectedMembers).border}`}
                     style={{
                       top: `${top}px`,
                       height: `${height}px`
                     }}
                   >
                     <div className={`text-xs flex flex-col ${height <= 30 ? 'h-[30px] justify-center py-0.5 px-1.5' : 'h-full justify-center p-2'}`}>
-                      <div className="font-medium text-blue-900 dark:text-blue-100 truncate text-[10px]">
+                      <div className={`font-medium truncate text-[10px] ${getMemberColorStyles(appointment.memberId, selectedMembers).text}`}>
                         {formatTime(startHour, startMinute)} - {formatTime(endHour, endMinute)}
                       </div>
-                      <div className="text-blue-700 dark:text-blue-300 truncate text-[10px]">
+                      <div className={`truncate text-[10px] ${getMemberColorStyles(appointment.memberId, selectedMembers).textSecondary}`}>
                         {appointment.type} • {appointment.title}
                       </div>
                     </div>
@@ -324,14 +340,10 @@ const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMemb
           {/* Appointments */}
           {appointments
             .filter(apt => {
-              // First filter by selected members
-              if (!selectedMembers.some(member => member.id === apt.memberId)) {
-                return false;
-              }
-              
-              // Compare dates using the appointment's date property
+              // Only show appointments for selected members that belong to this day
               const aptDate = new Date(apt.date);
-              return aptDate.toDateString() === date.toDateString();
+              return aptDate.toDateString() === date.toDateString() &&
+                     selectedMembers.some(member => member.id === apt.memberId);
             })
             .map(appointment => {
               const startHour = parseInt(appointment.startTime.split(':')[0]);
@@ -350,17 +362,17 @@ const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMemb
               return (
                 <div
                   key={appointment.id}
-                  className="absolute left-0 right-0 mx-1 bg-blue-100 dark:bg-blue-900/20 rounded-lg overflow-hidden border border-blue-200 dark:border-blue-800"
+                  className={`absolute left-0 right-0 mx-1 rounded-lg overflow-hidden border ${getMemberColorStyles(appointment.memberId, selectedMembers).bg} ${getMemberColorStyles(appointment.memberId, selectedMembers).border}`}
                   style={{
                     top: `${top}px`,
                     height: `${height}px`
                   }}
                 >
                   <div className={`text-xs flex flex-col ${height <= 30 ? 'h-[30px] justify-center py-0.5 px-1.5' : 'h-full justify-center p-2'}`}>
-                    <div className="font-medium text-blue-900 dark:text-blue-100 truncate text-[10px]">
+                    <div className={`font-medium truncate text-[10px] ${getMemberColorStyles(appointment.memberId, selectedMembers).text}`}>
                       {formatTime(startHour, startMinute)} - {formatTime(endHour, endMinute)}
                     </div>
-                    <div className="text-blue-700 dark:text-blue-300 truncate text-[10px]">
+                    <div className={`truncate text-[10px] ${getMemberColorStyles(appointment.memberId, selectedMembers).textSecondary}`}>
                       {appointment.type} • {appointment.title}
                     </div>
                   </div>
@@ -436,7 +448,7 @@ const MonthView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMem
               {dayAppointments.map(apt => (
                 <div
                   key={apt.id}
-                  className="text-[10px] bg-blue-100 dark:bg-blue-900/20 text-blue-900 dark:text-blue-100 p-1 rounded truncate"
+                  className={`text-[10px] p-1 rounded truncate ${getMemberColorStyles(apt.memberId, selectedMembers).bg} ${getMemberColorStyles(apt.memberId, selectedMembers).text}`}
                 >
                   {formatTime(parseInt(apt.startTime.split(':')[0]), parseInt(apt.startTime.split(':')[1]))} • {apt.title}
                 </div>
