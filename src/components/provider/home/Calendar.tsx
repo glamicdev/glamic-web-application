@@ -47,10 +47,21 @@ const timeSlots: TimeSlot[] = Array.from({ length: 48 }, (_, i) => {
 });
 
 // Mock appointments - replace with actual data
+interface Appointment {
+  id: string;
+  memberId: string;
+  date: string; // ISO date string
+  startTime: string;
+  endTime: string;
+  title: string;
+  type: string;
+}
+
 const appointments: Appointment[] = [
   {
     id: '1',
     memberId: '1',
+    date: '2025-01-01', // January 1st, 2025
     startTime: '13:30',
     endTime: '14:45',
     title: 'Classic Lash Fill',
@@ -59,6 +70,7 @@ const appointments: Appointment[] = [
   {
     id: '2',
     memberId: '2',
+    date: '2025-01-01', // January 1st, 2025
     startTime: '14:45',
     endTime: '15:45',
     title: 'Haircut',
@@ -67,6 +79,7 @@ const appointments: Appointment[] = [
   {
     id: '3',
     memberId: '3',
+    date: '2025-01-01', // January 1st, 2025
     startTime: '16:15',
     endTime: '16:45',
     title: 'Manicure',
@@ -159,7 +172,16 @@ const DayView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMembe
 
             {/* Appointments */}
             {appointments
-              .filter(apt => selectedMembers.some(member => member.id === apt.memberId))
+              .filter(apt => {
+                // First filter by selected members
+                if (!selectedMembers.some(member => member.id === apt.memberId)) {
+                  return false;
+                }
+                
+                // Compare dates using the appointment's date property
+                const aptDate = new Date(apt.date);
+                return aptDate.toDateString() === selectedDate.toDateString();
+              })
               .map(appointment => {
                 const startHour = parseInt(appointment.startTime.split(':')[0]);
                 const startMinute = parseInt(appointment.startTime.split(':')[1]);
@@ -306,10 +328,9 @@ const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMemb
               if (!selectedMembers.some(member => member.id === apt.memberId)) {
                 return false;
               }
-              // Then filter by date
-              const aptDate = new Date(selectedDate);
-              aptDate.setHours(parseInt(apt.startTime.split(':')[0]));
-              aptDate.setMinutes(parseInt(apt.startTime.split(':')[1]));
+              
+              // Compare dates using the appointment's date property
+              const aptDate = new Date(apt.date);
               return aptDate.toDateString() === date.toDateString();
             })
             .map(appointment => {
@@ -389,10 +410,9 @@ const MonthView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMem
           if (!selectedMembers.some(member => member.id === apt.memberId)) {
             return false;
           }
-          // Then filter by date
-          const aptDate = new Date(selectedDate);
-          aptDate.setHours(parseInt(apt.startTime.split(':')[0]));
-          aptDate.setMinutes(parseInt(apt.startTime.split(':')[1]));
+          
+          // Compare dates using the appointment's date property
+          const aptDate = new Date(apt.date);
           return aptDate.toDateString() === date.toDateString();
         });
 
