@@ -6,7 +6,8 @@
       "addButton": "Add",
       "calendar": "Calendar",
       "settings": "Settings",
-      "theme": "Toggle theme"
+      "theme": "Toggle theme",
+      "brand": "Glamic"
     },
     "sidebar": {
       "home": "Home",
@@ -23,7 +24,54 @@
       "week": "Week",
       "month": "Month",
       "noAppointments": "No appointments scheduled",
-      "currentTime": "Current time"
+      "currentTime": "Current time",
+      "selectDate": "Select Date",
+      "weekDays": {
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat"
+      },
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      }
+    },
+    "teamSelector": {
+      "allTeam": "All team",
+      "teamMembers": "Team members",
+      "clearAll": "Clear all",
+      "you": "(You)",
+      "title": "Select Team Members"
+    },
+    "viewSelector": {
+      "title": "Select View"
+    },
+    "notifications": {
+      "noNotifications": "No new notifications"
+    },
+    "userMenu": {
+      "profile": "Profile",
+      "reviews": "Reviews",
+      "settings": "Settings",
+      "referFriend": "Refer a friend",
+      "helpSupport": "Help and support",
+      "language": "Language",
+      "logout": "Log out",
+      "title": "Menu"
     }
   },
   "auth": {

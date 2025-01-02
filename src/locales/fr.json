@@ -6,7 +6,8 @@
       "addButton": "Ajouter",
       "calendar": "Calendrier",
       "settings": "Paramètres",
-      "theme": "Changer le thème"
+      "theme": "Changer le thème",
+      "brand": "Glamic"
     },
     "sidebar": {
       "home": "Accueil",
@@ -23,7 +24,40 @@
       "week": "Semaine",
       "month": "Mois",
       "noAppointments": "Aucun rendez-vous programmé",
-      "currentTime": "Heure actuelle"
+      "currentTime": "Heure actuelle",
+      "selectDate": "Sélectionner une date",
+      "weekDays": {
+        "sun": "Dim",
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mer",
+        "thu": "Jeu",
+        "fri": "Ven",
+        "sat": "Sam"
+      }
+    },
+    "teamSelector": {
+      "allTeam": "Toute l'équipe",
+      "teamMembers": "Membres de l'équipe",
+      "clearAll": "Tout effacer",
+      "you": "(Vous)",
+      "title": "Sélectionner les membres de l'équipe"
+    },
+    "viewSelector": {
+      "title": "Sélectionner la vue"
+    },
+    "notifications": {
+      "noNotifications": "Aucune nouvelle notification"
+    },
+    "userMenu": {
+      "profile": "Profil",
+      "reviews": "Avis",
+      "settings": "Paramètres",
+      "referFriend": "Parrainer un ami",
+      "helpSupport": "Aide et support",
+      "language": "Langue",
+      "logout": "Déconnexion",
+      "title": "Menu"
     }
   },
   "api": {

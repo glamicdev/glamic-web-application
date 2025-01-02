@@ -290,7 +290,16 @@ const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMemb
     return date;
   });
 
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const { translations } = useLanguage();
+  const weekDays = [
+    translations?.dashboard?.calendar?.weekDays?.sun || 'Sun',
+    translations?.dashboard?.calendar?.weekDays?.mon || 'Mon',
+    translations?.dashboard?.calendar?.weekDays?.tue || 'Tue',
+    translations?.dashboard?.calendar?.weekDays?.wed || 'Wed',
+    translations?.dashboard?.calendar?.weekDays?.thu || 'Thu',
+    translations?.dashboard?.calendar?.weekDays?.fri || 'Fri',
+    translations?.dashboard?.calendar?.weekDays?.sat || 'Sat'
+  ];
 
   return (
     <div className="grid" style={{ gridTemplateColumns: `auto repeat(7, 1fr)` }}>
@@ -386,6 +395,8 @@ const WeekView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMemb
 };
 
 const MonthView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMember[], selectedDate: Date }) => {
+  const { translations } = useLanguage();
+  
   // Get first day of month
   const firstDay = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
   // Get last day of month
@@ -400,7 +411,26 @@ const MonthView = ({ selectedMembers, selectedDate }: { selectedMembers: TeamMem
     return date;
   });
 
-  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const weekDays = [
+    translations?.dashboard?.calendar?.weekDays?.sun || 'Sun',
+    translations?.dashboard?.calendar?.weekDays?.mon || 'Mon',
+    translations?.dashboard?.calendar?.weekDays?.tue || 'Tue',
+    translations?.dashboard?.calendar?.weekDays?.wed || 'Wed',
+    translations?.dashboard?.calendar?.weekDays?.thu || 'Thu',
+    translations?.dashboard?.calendar?.weekDays?.fri || 'Fri',
+    translations?.dashboard?.calendar?.weekDays?.sat || 'Sat'
+  ];
+
+  const getMonthName = (date: Date) => {
+    const monthIndex = date.getMonth();
+    const monthKeys = [
+      'january', 'february', 'march', 'april', 'may', 'june',
+      'july', 'august', 'september', 'october', 'november', 'december'
+    ] as const;
+    const key = monthKeys[monthIndex];
+    return translations?.dashboard?.calendar?.months?.[key] ||
+      key.charAt(0).toUpperCase() + key.slice(1);
+  };
 
   return (
     <div className="h-full grid grid-cols-7 grid-rows-[auto_repeat(6,1fr)] gap-px bg-gray-200 dark:bg-gray-700">

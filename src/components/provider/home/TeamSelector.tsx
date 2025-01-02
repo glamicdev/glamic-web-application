@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Users } from 'lucide-react';
 import { BottomSheet } from '../../common/BottomSheet';
+import { useLanguage } from '../../../context/LanguageContext';
 
 export interface TeamMember {
   id: string;
@@ -19,6 +20,7 @@ interface TeamSelectorProps {
 export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { translations } = useLanguage();
 
   // Handle click outside
   useEffect(() => {
@@ -63,20 +65,20 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
         onClick={handleSelectAll}
       >
         <Users className="w-5 h-5" />
-        <span>All team</span>
+        <span>{translations?.dashboard?.teamSelector?.allTeam || "All team"}</span>
       </button>
 
       {/* Team Members */}
       <div>
         <div className="flex items-center justify-between px-4 py-2">
           <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Team members
+            {translations?.dashboard?.teamSelector?.teamMembers || "Team members"}
           </h3>
           <button 
             onClick={() => onMemberSelect([])}
             className="text-sm text-[#0F172A] hover:text-[#0F172A]/80 dark:text-primary-gold dark:hover:text-primary-gold/80"
           >
-            Clear all
+            {translations?.dashboard?.teamSelector?.clearAll || "Clear all"}
           </button>
         </div>
 
@@ -106,7 +108,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
                 )}
                 <span className={`flex-1 text-left ${member.isCurrentUser ? 'font-medium' : ''}`}>
                   {member.name}
-                  {member.isCurrentUser && ' (You)'}
+                  {member.isCurrentUser && (translations?.dashboard?.teamSelector?.you || "(You)")}
                 </span>
                 {isSelected && (
                   <div className="w-5 h-5 rounded bg-[#0F172A] dark:bg-primary-gold flex items-center justify-center">
@@ -125,7 +127,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
 
   // Display text for the button
   const buttonText = selectedMembers.length === members.length
-    ? 'All team'
+    ? translations?.dashboard?.teamSelector?.allTeam || 'All team'
     : selectedMembers.length === 1
       ? selectedMembers[0].name
       : `${selectedMembers.length} team members`;
@@ -180,7 +182,7 @@ export function TeamSelector({ selectedMembers, members, onMemberSelect }: TeamS
         <BottomSheet
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          title="Select Team Members"
+          title={translations?.dashboard?.teamSelector?.title || "Select Team Members"}
         >
           <div className="px-2">
             <TeamList />

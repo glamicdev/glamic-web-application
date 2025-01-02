@@ -30,7 +30,7 @@ export function NotificationsMenu() {
 
   const t = {
     title: translations?.dashboard?.sidebar?.notifications || 'Notifications',
-    noNotifications: 'No new notifications'
+    noNotifications: translations?.dashboard?.notifications?.noNotifications || 'No new notifications'
   };
 
   const NotificationsContent = () => (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BottomSheet } from '../../common/BottomSheet';
+import { useLanguage } from '../../../context/LanguageContext';
 
 interface DatePickerProps {
   selectedDate: Date;
@@ -11,6 +12,29 @@ interface DatePickerProps {
 
 export function DatePicker({ selectedDate, onDateSelect, onClose, isOpen, isMobile = true }: DatePickerProps) {
   const calendarRef = React.useRef<HTMLDivElement>(null);
+  const { translations } = useLanguage();
+  const t = translations?.dashboard?.calendar;
+
+  const monthKeys = React.useMemo(() => [
+    'january', 'february', 'march', 'april', 'may', 'june',
+    'july', 'august', 'september', 'october', 'november', 'december'
+  ] as const, []);
+
+  const getMonthName = React.useCallback((date: Date) => {
+    const monthIndex = date.getMonth();
+    const key = monthKeys[monthIndex];
+    return t?.months?.[key] || key.charAt(0).toUpperCase() + key.slice(1);
+  }, [t, monthKeys]);
+
+  const weekDays = React.useMemo(() => [
+    { short: t?.weekDays?.sun || 'Sun' },
+    { short: t?.weekDays?.mon || 'Mon' },
+    { short: t?.weekDays?.tue || 'Tue' },
+    { short: t?.weekDays?.wed || 'Wed' },
+    { short: t?.weekDays?.thu || 'Thu' },
+    { short: t?.weekDays?.fri || 'Fri' },
+    { short: t?.weekDays?.sat || 'Sat' }
+  ], [t]);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -96,13 +120,13 @@ export function DatePicker({ selectedDate, onDateSelect, onClose, isOpen, isMobi
       {months.map((month, monthIndex) => (
         <div key={monthIndex} id={`month-${monthIndex}`}>
           <h3 className="text-base font-semibold text-[#0F172A] dark:text-white mb-4">
-            {month.toLocaleString('default', { month: 'long', year: 'numeric' })}
+            {`${getMonthName(month)} ${month.getFullYear()}`}
           </h3>
           <div className="grid grid-cols-7 gap-1">
             {/* Weekday headers */}
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="text-xs text-center text-gray-500 dark:text-gray-400 py-2">
-                {day}
+            {weekDays.map(day => (
+              <div key={day.short} className="text-xs text-center text-gray-500 dark:text-gray-400 py-2">
+                {day.short}
               </div>
             ))}
             
@@ -140,7 +164,7 @@ export function DatePicker({ selectedDate, onDateSelect, onClose, isOpen, isMobi
       <BottomSheet
         isOpen={isOpen}
         onClose={onClose}
-        title="Select Date"
+        title={translations?.dashboard?.calendar?.selectDate || "Select Date"}
       >
         <div id="calendar-container" className="scrollbar-hide overflow-y-auto px-4">
           <CalendarContent />

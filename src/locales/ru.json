@@ -6,7 +6,8 @@
       "addButton": "Добавить",
       "calendar": "Календарь",
       "settings": "Настройки",
-      "theme": "Сменить тему"
+      "theme": "Сменить тему",
+      "brand": "Glamic"
     },
     "sidebar": {
       "home": "Главная",
@@ -23,7 +24,40 @@
       "week": "Неделя",
       "month": "Месяц",
       "noAppointments": "Нет запланированных встреч",
-      "currentTime": "Текущее время"
+      "currentTime": "Текущее время",
+      "selectDate": "Выбрать дату",
+      "weekDays": {
+        "sun": "Вс",
+        "mon": "Пн",
+        "tue": "Вт",
+        "wed": "Ср",
+        "thu": "Чт",
+        "fri": "Пт",
+        "sat": "Сб"
+      }
+    },
+    "teamSelector": {
+      "allTeam": "Вся команда",
+      "teamMembers": "Члены команды",
+      "clearAll": "Очистить все",
+      "you": "(Вы)",
+      "title": "Выбрать членов команды"
+    },
+    "viewSelector": {
+      "title": "Выбрать вид"
+    },
+    "notifications": {
+      "noNotifications": "Нет новых уведомлений"
+    },
+    "userMenu": {
+      "profile": "Профиль",
+      "reviews": "Отзывы",
+      "settings": "Настройки",
+      "referFriend": "Пригласить друга",
+      "helpSupport": "Помощь и поддержка",
+      "language": "Язык",
+      "logout": "Выйти",
+      "title": "Меню"
     }
   },
   "api": {

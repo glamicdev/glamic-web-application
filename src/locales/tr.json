@@ -6,7 +6,8 @@
       "addButton": "Ekle",
       "calendar": "Takvim",
       "settings": "Ayarlar",
-      "theme": "Tema değiştir"
+      "theme": "Tema değiştir",
+      "brand": "Glamic"
     },
     "sidebar": {
       "home": "Ana Sayfa",
@@ -23,7 +24,40 @@
       "week": "Hafta",
       "month": "Ay",
       "noAppointments": "Planlanmış randevu yok",
-      "currentTime": "Şu an"
+      "currentTime": "Şu an",
+      "selectDate": "Tarih seç",
+      "weekDays": {
+        "sun": "Paz",
+        "mon": "Pzt",
+        "tue": "Sal",
+        "wed": "Çar",
+        "thu": "Per",
+        "fri": "Cum",
+        "sat": "Cmt"
+      }
+    },
+    "teamSelector": {
+      "allTeam": "Tüm ekip",
+      "teamMembers": "Ekip üyeleri",
+      "clearAll": "Tümünü temizle",
+      "you": "(Sen)",
+      "title": "Ekip üyelerini seç"
+    },
+    "viewSelector": {
+      "title": "Görünüm seç"
+    },
+    "notifications": {
+      "noNotifications": "Yeni bildirim yok"
+    },
+    "userMenu": {
+      "profile": "Profil",
+      "reviews": "Değerlendirmeler",
+      "settings": "Ayarlar",
+      "referFriend": "Arkadaşını davet et",
+      "helpSupport": "Yardım ve destek",
+      "language": "Dil",
+      "logout": "Çıkış yap",
+      "title": "Menü"
     }
   },
   "api": {
