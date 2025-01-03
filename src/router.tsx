@@ -4,7 +4,7 @@ import OnboardingFlow from './pages/OnboardingFlow';
 import SubscriptionManagement from './components/provider/onboarding/SubscriptionManagement';
 import SubscriptionCancellation from './components/provider/onboarding/SubscriptionCancellation';
 import SubscriptionSwitch from './components/provider/onboarding/SubscriptionSwitch';
-import Dashboard from './pages/ProviderPages/Dashboard';
+import Dashboard from './pages/ProviderPages/dashboard/calendar';
 
 export const router = createBrowserRouter([
   {

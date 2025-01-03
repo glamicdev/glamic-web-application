@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Calendar as CalendarComponent } from '../../../components/provider/dashboard/pages/calendar/Calendar';
+import { Calendar } from '../../../components/provider/dashboard/pages/calendar/Calendar';
+import { Sidebar } from '../../../components/provider/dashboard/common/Sidebar';
 import { Header } from '../../../components/provider/dashboard/common/Header';
 import type { TeamMember } from '../../../components/provider/dashboard/pages/calendar/TeamSelector';
-import { DashboardLayout } from '../../components/provider/home/DashboardLayout';
 
 // Mock team members data - move to a central location later
 const teamMembers: TeamMember[] = [
@@ -25,29 +25,32 @@ const teamMembers: TeamMember[] = [
   }
 ];
 
-export default function CalendarPage() {
+export default function Dashboard() {
   const [selectedTeamMembers, setSelectedTeamMembers] = useState<TeamMember[]>([teamMembers[0]]);
   const [selectedView, setSelectedView] = useState<'day' | 'week' | 'month'>('day');
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
-    <DashboardLayout>
-      <Header
-        teamMembers={teamMembers}
-        selectedTeamMembers={selectedTeamMembers}
-        onTeamMemberSelect={setSelectedTeamMembers}
-        selectedView={selectedView}
-        onViewChange={setSelectedView}
-        selectedDate={selectedDate}
-        onDateChange={setSelectedDate}
-      />
-      <main className="flex-1 overflow-x-auto bg-white dark:bg-primary-navy/50">
-        <CalendarComponent
-          selectedMembers={selectedTeamMembers}
-          view={selectedView}
+    <div className="flex h-screen bg-gray-50 dark:bg-primary-navy/95">
+      <Sidebar />
+      <div className="flex-1 flex flex-col overflow-hidden pl-16">
+        <Header
+          teamMembers={teamMembers}
+          selectedTeamMembers={selectedTeamMembers}
+          onTeamMemberSelect={setSelectedTeamMembers}
+          selectedView={selectedView}
+          onViewChange={setSelectedView}
           selectedDate={selectedDate}
+          onDateChange={setSelectedDate}
         />
-      </main>
-    </DashboardLayout>
+        <main className="flex-1 overflow-x-auto bg-white dark:bg-primary-navy/50">
+          <Calendar
+            selectedMembers={selectedTeamMembers}
+            view={selectedView}
+            selectedDate={selectedDate}
+          />
+        </main>
+      </div>
+    </div>
   );
 }
