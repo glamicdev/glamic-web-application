@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Calendar } from '../../components/provider/home/Calendar';
-import { Sidebar } from '../../components/provider/home/Sidebar';
-import { Header } from '../../components/provider/home/Header';
-import type { TeamMember } from '../../components/provider/home/TeamSelector';
+import { Calendar } from '../../components/provider/dashboard/pages/calendar/Calendar';
+import { Sidebar } from '../../components/provider/dashboard/common/Sidebar';
+import { Header } from '../../components/provider/dashboard/common/Header';
+import type { TeamMember } from '../../components/provider/dashboard/pages/calendar/TeamSelector';
 
 // Mock team members data - move to a central location later
 const teamMembers: TeamMember[] = [
