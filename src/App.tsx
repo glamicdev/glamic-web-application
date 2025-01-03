@@ -1,5 +1,5 @@
 import { OnboardingProvider } from './context/OnboardingContext';
-import Dashboard from './pages/ProviderPages/dashboard/calendar';
+import Dashboard from './pages/ProviderPages/dashboard/Calendar';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
